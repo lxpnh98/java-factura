@@ -1,33 +1,52 @@
-
-/**
- * Write a description of class ContribuinteIndividual here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
 public class ContribuinteIndividual extends Contribuinte
 {
-    // instance variables - replace the example below with your own
-    private int x;
+	private int numDep;
 
     /**
-     * Constructor for objects of class ContribuinteIndividual
-     */
-    public ContribuinteIndividual()
-    {
-        // initialise instance variables
-        x = 0;
+    * Construtor por omissão do contribuiente individual.
+    */
+    public ContribuinteIndividual(){
+        super();
+        this.numDep = 0;
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * Construtor parametrizado do contribuiente individual.
      */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    public ContribuinteIndividual(int numDep){
+        super();
+        this.numDep = numDep;
+    }
+
+    /**
+     * Construtor de cópia do contribuiente individual.
+     */
+    public ContribuinteIndividual(ContribuinteIndividual familia){
+        super(familia);
+        this.numDep = familia.getNumDep();
+    }
+
+    /**
+     * Devolde o valor do número de dependentes do agregado familiar.
+     * @return Valor do NumDep.
+     */
+    public int getNumDep(){
+        return this.numDep;
+    }
+
+    /**
+     * Atualiza número de dependentes do agregado familiar.
+     * @param Novo numDep.
+     */
+    public void setNumDep(int numDep){
+        this.numDep = numDep;
+    }
+
+    /**
+     * Método que devolve a representação em String do contribuiente individual.
+     * @return String com as informações do contribuiente individual.
+     */
+    public String toString(){
+        return super.toString() + "\nNúmero de dependentes: " + this.numDep;
     }
 }

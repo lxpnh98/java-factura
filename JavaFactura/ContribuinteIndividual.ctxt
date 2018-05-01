@@ -1,10 +1,21 @@
 #BlueJ class context
 comment0.target=ContribuinteIndividual
-comment0.text=\n\ Write\ a\ description\ of\ class\ ContribuinteIndividual\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=
 comment1.target=ContribuinteIndividual()
-comment1.text=\n\ Constructor\ for\ objects\ of\ class\ ContribuinteIndividual\n
-comment2.params=y
-comment2.target=int\ sampleMethod(int)
-comment2.text=\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\n\n\ @param\ \ y\ \ a\ sample\ parameter\ for\ a\ method\n\ @return\ \ \ \ the\ sum\ of\ x\ and\ y\n
-numComments=3
+comment1.text=\r\n\ Construtor\ por\ omiss\u00E3o\ do\ contribuiente\ individual.\r\n
+comment2.params=numDep
+comment2.target=ContribuinteIndividual(int)
+comment2.text=\r\n\ Construtor\ parametrizado\ do\ contribuiente\ individual.\r\n
+comment3.params=familia
+comment3.target=ContribuinteIndividual(ContribuinteIndividual)
+comment3.text=\r\n\ Construtor\ de\ c\u00F3pia\ do\ contribuiente\ individual.\r\n
+comment4.params=
+comment4.target=int\ getNumDep()
+comment4.text=\r\n\ Devolde\ o\ valor\ do\ n\u00FAmero\ de\ dependentes\ do\ agregado\ familiar.\r\n\ @return\ Valor\ do\ NumDep.\r\n
+comment5.params=numDep
+comment5.target=void\ setNumDep(int)
+comment5.text=\r\n\ Atualiza\ n\u00FAmero\ de\ dependentes\ do\ agregado\ familiar.\r\n\ @param\ Novo\ numDep.\r\n
+comment6.params=
+comment6.target=java.lang.String\ toString()
+comment6.text=\r\n\ M\u00E9todo\ que\ devolve\ a\ representa\u00E7\u00E3o\ em\ String\ do\ contribuiente\ individual.\r\n\ @return\ String\ com\ as\ informa\u00E7\u00F5es\ do\ contribuiente\ individual.\r\n
+numComments=7
