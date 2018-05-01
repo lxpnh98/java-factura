@@ -7,27 +7,62 @@
  */
 public class AtividadeEconomica
 {
-    // instance variables - replace the example below with your own
-    private int x;
+    // Variáveis de instância.
+    private String atividade;
 
     /**
-     * Constructor for objects of class AtividadeEconomica
-     */
-    public AtividadeEconomica()
-    {
-        // initialise instance variables
-        x = 0;
+    * Construtor por omissão de AtividadeEconomica.
+    */
+    public AtividadeEconomica(){
+        this.atividade = "";
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+    * Construtor parametrizado de AtividadeEconomica.
+    */
+    public AtividadeEconomica(String atividade){
+        this.atividade = atividade;
+    }
+
+    /**
+    * Construtor de cópia de AtividadeEconomica.
+    */
+    public AtividadeEconomica(AtividadeEconomica umaAtividade){
+        this.atividade = umaAtividade.getAtividade();
+    }
+
+    /**
+     * Devolde a string do nome da AtividadeEconomica.
+     * @return Nome da AtividadeEconomica.
      */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    public String getAtividade(){
+        return this.atividade;
+    }
+
+    /**
+     * Atualiza a AtividadeEconomica.
+     * @param Nova AtividadeEconomica.
+     */
+    public void setAtividade(String atividade){
+        this.atividade = atividade;
+    }
+
+    /**
+    * Método que devolve a representação em string da AtividadeEconomica.
+    * @return String com as informações da AtividadeEconomica.
+    */
+    public String toString(){
+        return "A atividade econômica é: " + this.atividade;
+    }
+
+    /**
+    * Método que verifica se dois objetos são iguais, isto é, se são da mesma classe e se têm os mesmos valores.
+    * @return Valor boleano da comparação.
+    */
+    public boolean equals(Object o){
+        if (o == this) return true;
+        if ((o == null) || (o.getClass()!= this.getClass())) return false;
+        AtividadeEconomica p = (AtividadeEconomica) o;
+        return (this.atividade == p.atividade);
     }
 }
