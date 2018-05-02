@@ -1,8 +1,7 @@
 /**
- * Abstract class Contribuinte - write a description of the class here
+ * Abstract class Contribuinte - Classe que representa um contribuinte.
  *
- * @author (your name here)
- * @version (version number or date here)
+ * @author Alexandre Pinho (a82441); Joel Gama (a82202); Tiago Pinheiro (a82491).
  */
 public abstract class Contribuinte
 {
@@ -13,8 +12,8 @@ public abstract class Contribuinte
     private String password;
 
     /**
-    * Construtor por omissão do Contribuinte.
-    */
+     * Construtor por omissão do Contribuinte.
+     */
     public Contribuinte(){
         this.nif = 0;
         this.nome = "";

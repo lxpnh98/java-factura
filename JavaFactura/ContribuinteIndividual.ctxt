@@ -1,10 +1,11 @@
 #BlueJ class context
 comment0.target=ContribuinteIndividual
+comment0.text=\r\n\ class\ ContribuinteIndividual\ -\ Classe\ que\ representa\ um\ contribuinte\ individual.\r\n\r\n\ @author\ Alexandre\ Pinho\ (a82441);\ Joel\ Gama\ (a82202);\ Tiago\ Pinheiro\ (a82491).\r\n
 comment1.params=
 comment1.target=ContribuinteIndividual()
 comment1.text=\r\n\ Construtor\ por\ omiss\u00E3o\ do\ contribuiente\ individual.\r\n
-comment2.params=numDep
-comment2.target=ContribuinteIndividual(int)
+comment2.params=nif\ nome\ email\ morada\ password\ numDep
+comment2.target=ContribuinteIndividual(int,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ int)
 comment2.text=\r\n\ Construtor\ parametrizado\ do\ contribuiente\ individual.\r\n
 comment3.params=familia
 comment3.target=ContribuinteIndividual(ContribuinteIndividual)

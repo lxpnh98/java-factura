@@ -11,22 +11,22 @@ public class AtividadeEconomica
     private String atividade;
 
     /**
-    * Construtor por omissão de AtividadeEconomica.
-    */
+     * Construtor por omissão de AtividadeEconomica.
+     */
     public AtividadeEconomica(){
         this.atividade = "";
     }
 
     /**
-    * Construtor parametrizado de AtividadeEconomica.
-    */
+     * Construtor parametrizado de AtividadeEconomica.
+     */
     public AtividadeEconomica(String atividade){
         this.atividade = atividade;
     }
 
     /**
-    * Construtor de cópia de AtividadeEconomica.
-    */
+     * Construtor de cópia de AtividadeEconomica.
+     */
     public AtividadeEconomica(AtividadeEconomica umaAtividade){
         this.atividade = umaAtividade.getAtividade();
     }
@@ -48,9 +48,9 @@ public class AtividadeEconomica
     }
 
     /**
-    * Método que devolve a representação em string da AtividadeEconomica.
-    * @return String com as informações da AtividadeEconomica.
-    */
+     * Método que devolve a representação em string da AtividadeEconomica.
+     * @return String com as informações da AtividadeEconomica.
+     */
     public String toString(){
         return "A atividade econômica é: " + this.atividade;
     }

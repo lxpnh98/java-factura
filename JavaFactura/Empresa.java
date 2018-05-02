@@ -1,39 +1,37 @@
 /**
- * Write a description of class Empresa here.
+ * class Empresa - Classe que representa um contribuinte coletivo.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Alexandre Pinho (a82441); Joel Gama (a82202); Tiago Pinheiro (a82491).
  */
 public class Empresa extends Contribuinte
 {
-
     // Variáveis de instâcia.
-
+ 
     /**
-    * Construtor por omissão de Empresa.
-    */
+     * Construtor por omissão de Empresa.
+     */
     public Empresa(){
         super();
     }
 
     /**
-    * Construtor parametrizado de Empresa.
-    */
+     * Construtor parametrizado de Empresa.
+     */
     public Empresa(int nif, String nome, String email, String morada, String password){
         super(nif, nome, email, morada, password);
     }
 
     /**
-    * Construtor de cópia de Empresa.
-    */
+     * Construtor de cópia de Empresa.
+     */
     public Empresa(Empresa umaEmpresa){
         super(umaEmpresa);
     }
 
     /**
-    * Método que devolve a representação em string da Empresa.
-    * @return String com as informações da Empresa.
-    */
+     * Método que devolve a representação em string da Empresa.
+     * @return String com as informações da Empresa.
+     */
     public String toString(){
         return super.toString();
     }

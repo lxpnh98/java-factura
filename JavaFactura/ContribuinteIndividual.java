@@ -1,10 +1,15 @@
+/**
+ * class ContribuinteIndividual - Classe que representa um contribuinte individual.
+ *
+ * @author Alexandre Pinho (a82441); Joel Gama (a82202); Tiago Pinheiro (a82491).
+ */
 public class ContribuinteIndividual extends Contribuinte
 {
-	private int numDep;
+    private int numDep;
 
     /**
-    * Construtor por omissão do contribuiente individual.
-    */
+     * Construtor por omissão do contribuiente individual.
+     */
     public ContribuinteIndividual(){
         super();
         this.numDep = 0;
@@ -13,8 +18,8 @@ public class ContribuinteIndividual extends Contribuinte
     /**
      * Construtor parametrizado do contribuiente individual.
      */
-    public ContribuinteIndividual(int numDep){
-        super();
+    public ContribuinteIndividual(int nif, String nome, String email, String morada, String password, int numDep){
+        super(nif, nome, email, morada, password);
         this.numDep = numDep;
     }
 
