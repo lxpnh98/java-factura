@@ -1,9 +1,7 @@
-
 /**
- * Write a description of class AtividadeEconomica here.
+ * class AtividadeEconomica - Classe que representa uma atividade economica.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Alexandre Pinho (a82441); Joel Gama (a82202); Tiago Pinheiro (a82491).
  */
 public class AtividadeEconomica
 {
