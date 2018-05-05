@@ -63,4 +63,11 @@ public class AtividadeEconomica
         AtividadeEconomica p = (AtividadeEconomica) o;
         return (this.atividade == p.atividade);
     }
+
+    /**
+     * Metodo que faz o clone de uma atividade economica
+     */
+    public AtividadeEconomica clone() {
+        return new AtividadeEconomica(this);
+    }
 }

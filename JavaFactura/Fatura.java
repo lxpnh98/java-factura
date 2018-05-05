@@ -8,59 +8,59 @@
 public class Fatura
 {
     // Variáveis de instância
-    private int nifemitente;
+    private int nifEmitente;
     private String emitente;
     private String data;
-    private int nifcliente;
+    private int nifCliente;
     private String descrição;
-    private AtividadeEconomica ae;
+    private AtividadeEconomica atividadeEconomica;
     private int valor;
 
     /**
      * Construtor por omissão de Fatura.
      */
     public Fatura(){
-        this.nifemitente = 0;
+        this.nifEmitente = 0;
         this.emitente = "";
         this.data = "";
-        this.nifcliente = 0;
+        this.nifCliente = 0;
         this.descrição = "";
-        this.ae = new AtividadeEconomica();
+        this.atividadeEconomica = new AtividadeEconomica();
         this.valor = 0;
     }
 
     /**
      * Construtor parametrizado de Fatura.
      */
-    public Fatura(int nifemitente, String emitente, String data, int nifcliente, String descrição, AtividadeEconomica novaae, int valor){
-        this.nifemitente = nifemitente;
+    public Fatura(int nifEmitente, String emitente, String data, int nifCliente, String descrição, AtividadeEconomica atividade, int valor){
+        this.nifEmitente = nifEmitente;
         this.emitente = emitente;
         this.data = data;
-        this.nifcliente = nifcliente;
+        this.nifCliente = nifCliente;
         this.descrição = descrição;
-        this.ae = ae.setAtividade(novaae);
+        this.atividadeEconomica = atividade.clone();
         this.valor = valor;
     }
 
     /**
      * Construtor de cópia de Fatura.
      */
-    public Fatura(Fatura umaFatura){
-        this.nifemitente = getNifemitente();
-        this.emitente = getEmitente();
-        this.data = getData();
-        this.nifcliente = getNifcliente();
-        this.descrição = getDescrição();
-        this.ae = ae.getAtividade();
-        this.valor = getValor();
+    public Fatura(Fatura f){
+        this.nifEmitente = f.getNifEmitente();
+        this.emitente = f.getEmitente();
+        this.data = f.getData();
+        this.nifCliente = f.getNifCliente();
+        this.descrição = f.getDescrição();
+        this.atividadeEconomica = f.getAtividade();
+        this.valor = f.getValor();
     }
 
     /**
      * Devolde o nif do emissor da fatura.
      * @return Nif do emissor.
      */
-    public int getNifemitente(){
-        return this.nifemitente;
+    public int getNifEmitente(){
+        return this.nifEmitente;
     }
 
     /**
@@ -83,8 +83,8 @@ public class Fatura
      * Devolde o nif do cliente da fatura.
      * @return Nif do cliente.
      */
-    public int getNifcliente(){
-        return this.nifcliente;
+    public int getNifCliente(){
+        return this.nifCliente;
     }
 
     /**
@@ -104,11 +104,19 @@ public class Fatura
     }
 
     /**
+     * Devolde o tipo de atividade economica.
+     * @return Atividade economica.
+     */
+    public AtividadeEconomica getAtividade() {
+        return this.atividadeEconomica.clone();
+    }
+
+    /**
      * Atualiza a Fatura.
      * @param Novo nif de emitente.
      */
     public void setNifemitente(int nifemitente){
-        this.nifemitente = nifemitente;
+        this.nifEmitente = nifemitente;
     }
 
     /**
@@ -132,7 +140,7 @@ public class Fatura
      * @param Novo nif de cliente.
      */
     public void setNifcliente(int nifcliente){
-        this.nifcliente = nifcliente;
+        this.nifCliente = nifcliente;
     }
 
     /**
@@ -158,8 +166,10 @@ public class Fatura
     public boolean equals(Object o){
         if (o == this) return true;
         if ((o == null) || (o.getClass()!= this.getClass())) return false;
-        Fatura p = (Fatura) o;
-        return (this.nifemitente == p.nifemitente) && (this.emitente == p.emitente) && (this.data == p.data) && (this.nifcliente == p.nifcliente) && (this.descrição == p.descrição) && (this.valor == p.valor) && this.ae.equals(o.ae);
+        Fatura p = (Fatura)o;
+        return (this.nifEmitente == p.getNifEmitente()) && (this.emitente == p.getEmitente()) &&
+               (this.data == p.getData()) && (this.nifCliente == p.getNifCliente()) && (this.descrição.equals(p.getDescrição())) &&
+               (this.valor == p.getValor()) && this.atividadeEconomica.equals(p.getAtividade());
     }
 
     /**
@@ -167,6 +177,8 @@ public class Fatura
      * @return String com as informações da Fatura.
      */
     public String toString(){
-        return "Fatura: Nif do Emissor - " + this.nifemitente + " Emissor - " + this.emitente + " Data - " + this.data + " Nif do cliente - " + this.nifcliente + " Descrição da fatura - " + this.descrição + ae.toString() + " Valor da fatura - " + this.valor;
+        return "Fatura: Nif do Emissor - " + this.nifEmitente + " Emissor - " + this.emitente +
+               " Data - " + this.data + " Nif do cliente - " + this.nifCliente + " Descrição da fatura - " +
+               this.descrição + this.atividadeEconomica + " Valor da fatura - " + this.valor;
     }
 }
