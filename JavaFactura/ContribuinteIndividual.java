@@ -46,7 +46,6 @@ public class ContribuinteIndividual extends Contribuinte
     public void setNumDep(int numDep){
         this.numDep = numDep;
     }
-
     /**
      * Método que devolve a representação em String do contribuiente individual.
      * @return String com as informações do contribuiente individual.

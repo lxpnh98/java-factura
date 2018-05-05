@@ -93,7 +93,60 @@ public abstract class Contribuinte
     }
 
     /**
-     * Método que devolve a representação em String da contribuinte.
+     * Atualiza o nome do contribuinte.
+     * @param Novo nome.
+     */
+    public void setNome(String nome){
+        this.nome = nome;
+    }
+
+    /**
+     * Atualiza o email do contribuinte.
+     * @param Novo email.
+     */
+    public void setEmail(String email){
+        this.email = email;
+    }
+
+    /**
+     * Atualiza a morada do contribuinte.
+     * @param Nova morada.
+     */
+    public void setMorada(String morada){
+        this.morada = morada;
+    }
+
+    /**
+     * Atualiza a password do contribuinte.
+     * @param Nova password.
+     */
+    public void setPassword(String password){
+        this.password = password;
+    }
+
+    /**
+     * Cria uma cópia do objecto contribuinte
+     * @return
+     *
+     * public abstract Contribuinte clone();
+     */
+    
+    /**
+     * Verifica a igualdade de dois objectos
+     * @param contribuinte
+     * @return 
+     */
+    public boolean equals(Object contribuinte) {
+        if(contribuinte==this) return true;
+        if(contribuinte==null || contribuinte.getClass()!=this.getClass()) return false;
+        Contribuinte c = (Contribuinte) contribuinte;
+        return this.nif == c.getNIF() && this.nome.equals(c.getNome()) &&
+                this.email.equals(c.getEmail()) && this.morada.equals(c.getMorada()) &&
+                this.password.equals(c.getPassword());
+    }
+    
+    /**
+     * Método que devolve a representação em String do contribuinte.
      * @return String com as informações do contribuiente.
      */
     public String toString(){
