@@ -1,4 +1,5 @@
-
+import java.util.Map;
+import java.util.HashMap;
 /**
  * Write a description of class Plataforma here.
  *
@@ -7,27 +8,23 @@
  */
 public class Plataforma
 {
-    // instance variables - replace the example below with your own
-    private int x;
+    private Map<Integer,Contribuinte> contribuintes;
+    private Map<Integer,Fatura> faturas;
 
     /**
      * Constructor for objects of class Plataforma
      */
     public Plataforma()
     {
-        // initialise instance variables
-        x = 0;
+        contribuintes = new HashMap<Integer,Contribuinte>();
+        faturas = new HashMap<Integer,Fatura>();
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    public void adicionarContribuinte(Contribuinte c) {
+        this.contribuintes.put(c.getNIF(), c);
+    }
+
+    public void adicionarFatura(Fatura f) {
+        this.faturas.put(f.getId(), f);
     }
 }

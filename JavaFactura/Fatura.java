@@ -7,7 +7,8 @@
  */
 public class Fatura
 {
-    // Variáveis de instância
+    private static int idCounter = 0;
+    private int id;
     private int nifEmitente;
     private String emitente;
     private String data;
@@ -20,6 +21,7 @@ public class Fatura
      * Construtor por omissão de Fatura.
      */
     public Fatura(){
+        this.id = idCounter++;
         this.nifEmitente = 0;
         this.emitente = "";
         this.data = "";
@@ -33,6 +35,7 @@ public class Fatura
      * Construtor parametrizado de Fatura.
      */
     public Fatura(int nifEmitente, String emitente, String data, int nifCliente, String descrição, AtividadeEconomica atividade, int valor){
+        this.id = idCounter++;
         this.nifEmitente = nifEmitente;
         this.emitente = emitente;
         this.data = data;
@@ -46,6 +49,7 @@ public class Fatura
      * Construtor de cópia de Fatura.
      */
     public Fatura(Fatura f){
+        this.id = idCounter++;
         this.nifEmitente = f.getNifEmitente();
         this.emitente = f.getEmitente();
         this.data = f.getData();
@@ -53,6 +57,14 @@ public class Fatura
         this.descrição = f.getDescrição();
         this.atividadeEconomica = f.getAtividade();
         this.valor = f.getValor();
+    }
+
+    /**
+     * Devolde o id da fatura.
+     * @return Id da fatura.
+     */
+    public int getId() {
+        return this.id;
     }
 
     /**
