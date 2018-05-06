@@ -125,26 +125,25 @@ public abstract class Contribuinte
     }
 
     /**
-     * Cria uma cópia do objecto contribuinte
+     * Cria uma cópia do objecto contribuinte.
      * @return
-     *
-     * public abstract Contribuinte clone();
      */
-    
+    public abstract Contribuinte clone();
+
     /**
-     * Verifica a igualdade de dois objectos
-     * @param contribuinte
-     * @return 
+     * Verifica a igualdade de dois objectos.
+     * @param contribuinte;
+     * @return Valor boleano da comparação. 
      */
     public boolean equals(Object contribuinte) {
         if(contribuinte==this) return true;
-        if(contribuinte==null || contribuinte.getClass()!=this.getClass()) return false;
+        if(contribuinte==null || contribuinte.getClass() !=this.getClass()) return false;
         Contribuinte c = (Contribuinte) contribuinte;
         return this.nif == c.getNIF() && this.nome.equals(c.getNome()) &&
                 this.email.equals(c.getEmail()) && this.morada.equals(c.getMorada()) &&
                 this.password.equals(c.getPassword());
     }
-    
+
     /**
      * Método que devolve a representação em String do contribuinte.
      * @return String com as informações do contribuiente.

@@ -46,6 +46,27 @@ public class ContribuinteIndividual extends Contribuinte
     public void setNumDep(int numDep){
         this.numDep = numDep;
     }
+
+    /**
+     * Cria uma cópia do objecto contribuinte individual.
+     * @return 
+     */
+    public ContribuinteIndividual clone() {
+     	return new ContribuinteIndividual(this);
+    }
+    
+    /**
+     * Verifica a igualdade de dois objectos.
+     * @param ci;
+     * @return Valor boleano da comparação.
+     */
+    public boolean equals(Object ci){
+        if (ci == this) return true;
+        if ((ci == null) || (ci.getClass() != this.getClass())) return false;
+        ContribuinteIndividual c = (ContribuinteIndividual) ci;
+        return super.equals(c) && this.numDep == c.getNumDep();
+    }
+
     /**
      * Método que devolve a representação em String do contribuiente individual.
      * @return String com as informações do contribuiente individual.

@@ -6,7 +6,7 @@
 public class Empresa extends Contribuinte
 {
     // Variáveis de instâcia.
- 
+
     /**
      * Construtor por omissão de Empresa.
      */
@@ -29,6 +29,14 @@ public class Empresa extends Contribuinte
     }
 
     /**
+     * Cria uma cópia do objecto Empresa.
+     * @return
+     */
+    public Empresa clone() {
+        return new Empresa(this);
+    }
+
+    /**
      * Método que devolve a representação em string da Empresa.
      * @return String com as informações da Empresa.
      */
@@ -37,13 +45,14 @@ public class Empresa extends Contribuinte
     }
 
     /**
-    * Método que verifica se dois objetos são iguais, isto é, se são da mesma classe e se têm os mesmos valores.
-    * @return Valor boleano da comparação.
-    
-    public boolean equals(Object o){
-        if (o == this) return true;
-        if ((o == null) || (o.getClass()!= this.getClass())) return false;
-        Empresa p = (Empresa) o;
-        return super.equals();
-    }*/
+     * Verifica a igualdade de dois objectos
+     * @param emp;
+     * @return Valor boleano da comparação.
+     */
+    public boolean equals(Object emp){
+        if (emp == this) return true;
+        if ((emp == null) || (emp.getClass() != this.getClass())) return false;
+        Empresa p = (Empresa) emp;
+        return super.equals(p);
+    }
 }
