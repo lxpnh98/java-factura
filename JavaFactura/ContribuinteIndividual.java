@@ -5,14 +5,14 @@
  */
 public class ContribuinteIndividual extends Contribuinte
 {
-    private int numDep;
+    private int numDependentes;
 
     /**
      * Construtor por omissão do contribuiente individual.
      */
     public ContribuinteIndividual(){
         super();
-        this.numDep = 0;
+        this.numDependentes = 0;
     }
 
     /**
@@ -20,31 +20,31 @@ public class ContribuinteIndividual extends Contribuinte
      */
     public ContribuinteIndividual(int nif, String nome, String email, String morada, String password, int numDep){
         super(nif, nome, email, morada, password);
-        this.numDep = numDep;
+        this.numDependentes = numDependentes;
     }
 
     /**
      * Construtor de cópia do contribuiente individual.
      */
-    public ContribuinteIndividual(ContribuinteIndividual familia){
-        super(familia);
-        this.numDep = familia.getNumDep();
+    public ContribuinteIndividual(ContribuinteIndividual c){
+        super(c);
+        this.numDependentes = c.getNumDependentes();
     }
 
     /**
      * Devolde o valor do número de dependentes do agregado familiar.
      * @return Valor do NumDep.
      */
-    public int getNumDep(){
-        return this.numDep;
+    public int getNumDependentes(){
+        return this.numDependentes;
     }
 
     /**
      * Atualiza número de dependentes do agregado familiar.
      * @param Novo numDep.
      */
-    public void setNumDep(int numDep){
-        this.numDep = numDep;
+    public void setNumDependentes(int numDep){
+        this.numDependentes = numDep;
     }
 
     /**
@@ -64,7 +64,7 @@ public class ContribuinteIndividual extends Contribuinte
         if (ci == this) return true;
         if ((ci == null) || (ci.getClass() != this.getClass())) return false;
         ContribuinteIndividual c = (ContribuinteIndividual) ci;
-        return super.equals(c) && this.numDep == c.getNumDep();
+        return super.equals(c) && this.numDependentes == c.getNumDependentes();
     }
 
     /**
@@ -72,6 +72,6 @@ public class ContribuinteIndividual extends Contribuinte
      * @return String com as informações do contribuiente individual.
      */
     public String toString(){
-        return super.toString() + "\nNúmero de dependentes: " + this.numDep;
+        return super.toString() + "\nNúmero de dependentes: " + this.numDependentes;
     }
 }

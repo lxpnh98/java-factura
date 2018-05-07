@@ -14,7 +14,7 @@ public class Plataforma
     /**
      * Constructor for objects of class Plataforma
      */
-    public Plataforma()
+    private Plataforma()
     {
         contribuintes = new HashMap<Integer,Contribuinte>();
         faturas = new HashMap<Integer,Fatura>();
@@ -26,5 +26,17 @@ public class Plataforma
 
     public void adicionarFatura(Fatura f) {
         this.faturas.put(f.getId(), f);
+    }
+
+    public Contribuinte login(int nif, String password) {
+        Contribuinte c = this.contribuintes.get(nif);
+        if (c != null && c.getPassword().equals(password))
+            return c;
+        return null;
+    }
+
+    public static Plataforma carregarPlataforma() {
+        System.out.println("carregarPlataforma()");
+        return new Plataforma();
     }
 }

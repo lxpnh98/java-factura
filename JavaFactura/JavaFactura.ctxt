@@ -1,13 +1,15 @@
 #BlueJ class context
 comment0.target=JavaFactura
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Interface\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ Interface\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=
 comment1.target=JavaFactura()
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Interface\r\n
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ Interface\n
 comment2.params=
 comment2.target=void\ login()
 comment3.params=
-comment3.target=void\ registarContribuinte()
-comment4.params=args
-comment4.target=void\ main(java.lang.String[])
-numComments=5
+comment3.target=void\ sair()
+comment4.params=
+comment4.target=void\ registarContribuinte()
+comment5.params=args
+comment5.target=void\ main(java.lang.String[])
+numComments=6
