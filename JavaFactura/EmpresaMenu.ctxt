@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=EmpresaMenu
+comment1.params=s\ p\ nif\ password
+comment1.target=EmpresaMenu(java.util.Scanner,\ Plataforma,\ int,\ java.lang.String)
+comment2.params=
+comment2.target=EstadoMenu\ interact()
+numComments=3

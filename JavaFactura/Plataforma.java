@@ -1,5 +1,12 @@
 import java.util.Map;
 import java.util.HashMap;
+
+class FailureOnLoginException extends Exception {
+    FailureOnLoginException(String s) {
+        super(s);
+    }
+}
+
 /**
  * Write a description of class Plataforma here.
  *
@@ -21,17 +28,19 @@ public class Plataforma
     }
 
     public void adicionarContribuinte(Contribuinte c) {
-        this.contribuintes.put(c.getNIF(), c);
+        this.contribuintes.put(c.getNIF(), c.clone());
     }
 
-    public void adicionarFatura(Fatura f) {
-        this.faturas.put(f.getId(), f);
+    public void adicionarFatura(Fatura f, int nif, String password) throws Exception {
+        Contribuinte c = this.login(nif, password);
+        if (c == null) throw new FailureOnLoginException("");
+        this.faturas.put(f.getId(), f.clone());
     }
 
     public Contribuinte login(int nif, String password) {
         Contribuinte c = this.contribuintes.get(nif);
         if (c != null && c.getPassword().equals(password))
-            return c;
+            return c.clone();
         return null;
     }
 

@@ -6,13 +6,13 @@ import java.util.Scanner;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class MainInterface extends EstadoInterface
+public class MainMenu extends EstadoMenu
 {
-    public MainInterface(Scanner s, Plataforma p) {
+    public MainMenu(Scanner s, Plataforma p) {
         super(s, p);
     }
 
-    public EstadoInterface login() {
+    public EstadoMenu login() {
         System.out.println("login()");
         System.out.print("NIF: ");
         int nif = this.scanner.nextInt();
@@ -21,18 +21,22 @@ public class MainInterface extends EstadoInterface
         Contribuinte c = this.plataforma.login(nif, pw);
         if (c != null)  {
             System.out.println("Login com sucesso.");
-        } else {
-            System.out.println("NIF ou password incorretos.");
+            if (c instanceof ContribuinteIndividual) {
+                return new IndividuoMenu(this.scanner, this.plataforma, nif, pw);
+            } else if (c instanceof Empresa) {
+                return new EmpresaMenu(this.scanner, this.plataforma, nif, pw);
+            }
         }
-        return new IndividuoInterface(this.scanner, this.plataforma);
+        System.out.println("NIF ou password incorretos.");
+        return this;
     }
 
-    public EstadoInterface sair() {
+    public EstadoMenu sair() {
         System.out.println("sair()");
         return null;
     }
 
-    public EstadoInterface registarContribuinte() {
+    public EstadoMenu registarContribuinte() {
         Contribuinte c = null;
         System.out.print("(1) - Contribuinte individual\n(2) - Empresa\n> ");
         int tipo = this.scanner.nextInt();
@@ -52,7 +56,7 @@ public class MainInterface extends EstadoInterface
         return this;
     }
     
-    public EstadoInterface interact() {
+    public EstadoMenu interact() {
         System.out.print("(1) - Fazer login\n(2) - Registar novo contribuinte\n(3) - Sair\n> ");
         int decisao = this.scanner.nextInt();
         switch (decisao) {

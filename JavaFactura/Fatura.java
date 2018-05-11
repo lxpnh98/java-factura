@@ -49,7 +49,7 @@ public class Fatura
      * Construtor de cópia de Fatura.
      */
     public Fatura(Fatura f){
-        this.id = idCounter++;
+        this.id = f.getId();
         this.nifEmitente = f.getNifEmitente();
         this.emitente = f.getEmitente();
         this.data = f.getData();
@@ -192,5 +192,9 @@ public class Fatura
         return "Fatura: Nif do Emissor - " + this.nifEmitente + " Emissor - " + this.emitente +
                " Data - " + this.data + " Nif do cliente - " + this.nifCliente + " Descrição da fatura - " +
                this.descrição + this.atividadeEconomica + " Valor da fatura - " + this.valor;
+    }
+
+    public Fatura clone() {
+        return new Fatura(this);
     }
 }

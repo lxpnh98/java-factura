@@ -9,15 +9,14 @@ public class JavaFactura {
     private static Scanner scanner = new Scanner(System.in);
     private static JavaFactura j = new JavaFactura();
     private Plataforma plataforma;
-    private EstadoInterface estado;
+    private EstadoMenu estado;
 
     /**
      * Constructor for objects of class Interface
      */
-    public JavaFactura()
-    {
+    public JavaFactura() {
         this.plataforma = Plataforma.carregarPlataforma();
-        this.estado = new MainInterface(scanner, this.plataforma);
+        this.estado = new MainMenu(scanner, this.plataforma);
         
     }
 

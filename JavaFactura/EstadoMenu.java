@@ -6,15 +6,15 @@ import java.util.Scanner;
  * @author (your name)
  * @version (a version number or a date)
  */
-public abstract class EstadoInterface
+public abstract class EstadoMenu
 {
     protected Scanner scanner;
     protected Plataforma plataforma;
 
-    public EstadoInterface(Scanner s, Plataforma p) {
+    public EstadoMenu(Scanner s, Plataforma p) {
         this.scanner = s;
         this.plataforma = p;
     }
 
-    public abstract EstadoInterface interact();
+    public abstract EstadoMenu interact();
 }
