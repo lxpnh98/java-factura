@@ -1,3 +1,6 @@
+import java.util.Map;
+import java.util.HashMap;
+
 /**
  * class ContribuinteIndividual - Classe que representa um contribuinte individual.
  *
@@ -6,6 +9,7 @@
 public class ContribuinteIndividual extends Contribuinte
 {
     private int numDependentes;
+    private Map<Integer,Fatura> faturas;
 
     /**
      * Construtor por omissão do contribuiente individual.
@@ -13,6 +17,7 @@ public class ContribuinteIndividual extends Contribuinte
     public ContribuinteIndividual(){
         super();
         this.numDependentes = 0;
+        this.faturas = new HashMap<>();
     }
 
     /**
@@ -21,6 +26,7 @@ public class ContribuinteIndividual extends Contribuinte
     public ContribuinteIndividual(int nif, String nome, String email, String morada, String password, int numDep){
         super(nif, nome, email, morada, password);
         this.numDependentes = numDependentes;
+        this.faturas = new HashMap<>();
     }
 
     /**
@@ -29,6 +35,7 @@ public class ContribuinteIndividual extends Contribuinte
     public ContribuinteIndividual(ContribuinteIndividual c){
         super(c);
         this.numDependentes = c.getNumDependentes();
+        this.faturas = new HashMap<>(); // clone
     }
 
     /**
@@ -47,12 +54,16 @@ public class ContribuinteIndividual extends Contribuinte
         this.numDependentes = numDep;
     }
 
+    public void adicionarFatura(Fatura f) {
+        this.faturas.put(f.getId(), f.clone());
+    }
+
     /**
      * Cria uma cópia do objecto contribuinte individual.
      * @return 
      */
     public ContribuinteIndividual clone() {
-     	return new ContribuinteIndividual(this);
+        return new ContribuinteIndividual(this);
     }
     
     /**

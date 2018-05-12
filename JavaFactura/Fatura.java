@@ -15,7 +15,7 @@ public class Fatura
     private int nifCliente;
     private String descrição;
     private AtividadeEconomica atividadeEconomica;
-    private int valor;
+    private double valor;
 
     /**
      * Construtor por omissão de Fatura.
@@ -34,7 +34,7 @@ public class Fatura
     /**
      * Construtor parametrizado de Fatura.
      */
-    public Fatura(int nifEmitente, String emitente, String data, int nifCliente, String descrição, AtividadeEconomica atividade, int valor){
+    public Fatura(int nifEmitente, String emitente, String data, int nifCliente, String descrição, AtividadeEconomica atividade, double valor){
         this.id = idCounter++;
         this.nifEmitente = nifEmitente;
         this.emitente = emitente;
@@ -49,7 +49,7 @@ public class Fatura
      * Construtor de cópia de Fatura.
      */
     public Fatura(Fatura f){
-        this.id = idCounter++;
+        this.id = f.getId();
         this.nifEmitente = f.getNifEmitente();
         this.emitente = f.getEmitente();
         this.data = f.getData();
@@ -111,7 +111,7 @@ public class Fatura
      * Devolde o valor da fatura.
      * @return Valor da fatura.
      */
-    public int getValor(){
+    public double getValor(){
         return this.valor;
     }
 
@@ -192,5 +192,9 @@ public class Fatura
         return "Fatura: Nif do Emissor - " + this.nifEmitente + " Emissor - " + this.emitente +
                " Data - " + this.data + " Nif do cliente - " + this.nifCliente + " Descrição da fatura - " +
                this.descrição + this.atividadeEconomica + " Valor da fatura - " + this.valor;
+    }
+
+    public Fatura clone() {
+        return new Fatura(this);
     }
 }
