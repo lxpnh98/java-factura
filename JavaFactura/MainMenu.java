@@ -12,31 +12,32 @@ public class MainMenu extends EstadoMenu
         super(s, p);
     }
 
-    public EstadoMenu login() {
+    private EstadoMenu login() {
         System.out.println("login()");
         System.out.print("NIF: ");
         int nif = this.scanner.nextInt();
         System.out.print("Password: ");
         String pw = this.scanner.next();
-        Contribuinte c = this.plataforma.login(nif, pw);
-        if (c != null)  {
+        try {
+            Contribuinte c = this.plataforma.login(nif, pw);
             System.out.println("Login com sucesso.");
             if (c instanceof ContribuinteIndividual) {
                 return new IndividuoMenu(this.scanner, this.plataforma, nif, pw);
             } else if (c instanceof Empresa) {
                 return new EmpresaMenu(this.scanner, this.plataforma, nif, pw);
             }
+        } catch (FailureOnLoginException e) {
+            System.out.println("NIF ou password incorretos.");
         }
-        System.out.println("NIF ou password incorretos.");
         return this;
     }
 
-    public EstadoMenu sair() {
+    private EstadoMenu sair() {
         System.out.println("sair()");
         return null;
     }
 
-    public EstadoMenu registarContribuinte() {
+    private EstadoMenu registarContribuinte() {
         Contribuinte c = null;
         System.out.print("(1) - Contribuinte individual\n(2) - Empresa\n> ");
         int tipo = this.scanner.nextInt();

@@ -15,7 +15,7 @@ public class Fatura
     private int nifCliente;
     private String descrição;
     private AtividadeEconomica atividadeEconomica;
-    private int valor;
+    private double valor;
 
     /**
      * Construtor por omissão de Fatura.
@@ -34,7 +34,7 @@ public class Fatura
     /**
      * Construtor parametrizado de Fatura.
      */
-    public Fatura(int nifEmitente, String emitente, String data, int nifCliente, String descrição, AtividadeEconomica atividade, int valor){
+    public Fatura(int nifEmitente, String emitente, String data, int nifCliente, String descrição, AtividadeEconomica atividade, double valor){
         this.id = idCounter++;
         this.nifEmitente = nifEmitente;
         this.emitente = emitente;
@@ -111,7 +111,7 @@ public class Fatura
      * Devolde o valor da fatura.
      * @return Valor da fatura.
      */
-    public int getValor(){
+    public double getValor(){
         return this.valor;
     }
 
