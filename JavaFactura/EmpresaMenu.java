@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Iterator;
 
 public class EmpresaMenu extends EstadoMenu {
     private int nif;
@@ -15,7 +16,19 @@ public class EmpresaMenu extends EstadoMenu {
         int nifCliente = this.scanner.nextInt();
         System.out.print("Valor da despesa: ");
         double valor = this.scanner.nextDouble();
-        Fatura f = new Fatura(this.nif, "", "", nifCliente, "", new AtividadeEconomica(), valor);
+
+        /* Codigo para confirmacao do utilizador
+        System.out.println("Tipo de despesa (opcoes):");
+        Iterator<String> it = this.plataforma.getAtividadesEconomicas().keySet().iterator();
+        while (it.hasNext()) {
+            System.out.println(it.next());
+            it.remove();
+        }
+        System.out.print("> ");
+        String atividade = this.scanner.nextLine();
+        */
+
+        Fatura f = new Fatura(this.nif, "", "", nifCliente, "", "", valor);
         try {
             this.plataforma.adicionarFatura(f, this.nif, this.password);
         } catch (FailureOnLoginException e) {

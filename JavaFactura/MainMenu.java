@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.HashSet;
 
 /**
  * Write a description of class MainInterface here.
@@ -50,7 +51,7 @@ public class MainMenu extends EstadoMenu
                 c = new ContribuinteIndividual(nif, "", "", "", pw, 0);
                 break;
             case 2:
-                c = new Empresa(nif, "", "", "", pw);
+                c = new Empresa(nif, "", "", "", pw, new HashSet<String>());
                 break;
         }
         this.plataforma.adicionarContribuinte(c);

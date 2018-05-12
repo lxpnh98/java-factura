@@ -3,46 +3,44 @@
  *
  * @author Alexandre Pinho (a82441); Joel Gama (a82202); Tiago Pinheiro (a82491).
  */
-public class AtividadeEconomica
-{
-    // Variáveis de instância.
-    private String atividade;
+public class AtividadeEconomica {
+    private String nome;
+    private double coeficiente;
 
     /**
      * Construtor por omissão de AtividadeEconomica.
      */
     public AtividadeEconomica(){
-        this.atividade = "";
+        this.nome = "";
+        this.coeficiente = 0.0;
     }
 
     /**
      * Construtor parametrizado de AtividadeEconomica.
      */
-    public AtividadeEconomica(String atividade){
-        this.atividade = atividade;
+    public AtividadeEconomica(String nome, double coef){
+        this.nome = nome;
+        this.coeficiente = coef;
     }
 
     /**
      * Construtor de cópia de AtividadeEconomica.
      */
-    public AtividadeEconomica(AtividadeEconomica umaAtividade){
-        this.atividade = umaAtividade.getAtividade();
+    public AtividadeEconomica(AtividadeEconomica a){
+        this.nome = a.getNome();
+        this.coeficiente = a.getCoeficiente();
     }
 
     /**
      * Devolde a string do nome da AtividadeEconomica.
      * @return Nome da AtividadeEconomica.
      */
-    public String getAtividade(){
-        return this.atividade;
+    public String getNome() {
+        return this.nome;
     }
 
-    /**
-     * Atualiza a AtividadeEconomica.
-     * @param Nova AtividadeEconomica.
-     */
-    public void setAtividade(String atividade){
-        this.atividade = atividade;
+    public double getCoeficiente() {
+        return this.coeficiente;
     }
 
     /**
@@ -50,7 +48,7 @@ public class AtividadeEconomica
      * @return String com as informações da AtividadeEconomica.
      */
     public String toString(){
-        return "A atividade econômica é: " + this.atividade;
+        return "A atividade econômica é: " + this.nome;
     }
 
     /**
@@ -61,7 +59,7 @@ public class AtividadeEconomica
         if (o == this) return true;
         if ((o == null) || (o.getClass()!= this.getClass())) return false;
         AtividadeEconomica p = (AtividadeEconomica) o;
-        return (this.atividade == p.atividade);
+        return (this.nome == p.getNome());
     }
 
     /**

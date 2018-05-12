@@ -29,6 +29,7 @@ public class Plataforma
 {
     private Map<Integer,Contribuinte> contribuintes;
     private Map<Integer,Fatura> faturas;
+    private Map<String,AtividadeEconomica> atividadesEconomicas;
 
     /**
      * Constructor for objects of class Plataforma
@@ -37,6 +38,7 @@ public class Plataforma
     {
         contribuintes = new HashMap<Integer,Contribuinte>();
         faturas = new HashMap<Integer,Fatura>();
+        atividadesEconomicas = new HashMap<String,AtividadeEconomica>();
     }
 
     public void adicionarContribuinte(Contribuinte c) {
@@ -56,6 +58,7 @@ public class Plataforma
             throw new NonExistentClientException(""+f.getNifCliente());
         }
         if (c instanceof Empresa) {
+            f.setAtividade(((Empresa)c).getDefaultAtividade());
             this.faturas.put(f.getId(), f.clone());
             ((ContribuinteIndividual)this.contribuintes.get(f.getNifCliente())).adicionarFatura(f);
         } else {
@@ -76,6 +79,10 @@ public class Plataforma
         if (this.contribuintes.get(nif) instanceof ContribuinteIndividual == false)
             return false;
         return true;
+    }
+
+    public Map<String,AtividadeEconomica> getAtividadesEconomicas() {
+        return new HashMap(this.atividadesEconomicas);
     }
 
     public static Plataforma carregarPlataforma() {

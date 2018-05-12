@@ -1,3 +1,5 @@
+import java.util.Set;
+import java.util.HashSet;
 /**
  * class Empresa - Classe que representa um contribuinte coletivo.
  *
@@ -5,27 +7,42 @@
  */
 public class Empresa extends Contribuinte
 {
-    // Variáveis de instâcia.
+    private Set<String> atividadesEconomicas;
 
     /**
      * Construtor por omissão de Empresa.
      */
     public Empresa(){
         super();
+        this.atividadesEconomicas = new HashSet<>();
     }
 
     /**
      * Construtor parametrizado de Empresa.
      */
-    public Empresa(int nif, String nome, String email, String morada, String password){
+    public Empresa(int nif, String nome, String email, String morada, String password, Set<String> atividadesEconomicas){
         super(nif, nome, email, morada, password);
+        this.atividadesEconomicas = new HashSet<>(atividadesEconomicas);
     }
 
     /**
      * Construtor de cópia de Empresa.
      */
-    public Empresa(Empresa umaEmpresa){
-        super(umaEmpresa);
+    public Empresa(Empresa e){
+        super(e);
+        this.atividadesEconomicas = e.getAtividadesEconomicas();
+    }
+
+    public Set<String> getAtividadesEconomicas() {
+        return new HashSet<String>(this.atividadesEconomicas);
+    }
+
+    public String getDefaultAtividade() {
+        if (this.atividadesEconomicas.size() == 1) {
+            return this.atividadesEconomicas.iterator().next();
+        } else {
+            return "";
+        }
     }
 
     /**
