@@ -1,4 +1,4 @@
-
+import java.util.Set;
 
 /**
  * classe Fatura - Classe que representa uma fatura.
@@ -14,7 +14,7 @@ public class Fatura
     private String data;
     private int nifCliente;
     private String descrição;
-    private AtividadeEconomica atividadeEconomica;
+    private String atividadeEconomica;
     private double valor;
 
     /**
@@ -27,21 +27,21 @@ public class Fatura
         this.data = "";
         this.nifCliente = 0;
         this.descrição = "";
-        this.atividadeEconomica = new AtividadeEconomica();
+        this.atividadeEconomica = new AtividadeEconomica().getNome();
         this.valor = 0;
     }
 
     /**
      * Construtor parametrizado de Fatura.
      */
-    public Fatura(int nifEmitente, String emitente, String data, int nifCliente, String descrição, AtividadeEconomica atividade, double valor){
+    public Fatura(int nifEmitente, String emitente, String data, int nifCliente, String descrição, String atividade, double valor){
         this.id = idCounter++;
         this.nifEmitente = nifEmitente;
         this.emitente = emitente;
         this.data = data;
         this.nifCliente = nifCliente;
         this.descrição = descrição;
-        this.atividadeEconomica = atividade.clone();
+        this.atividadeEconomica = atividade;
         this.valor = valor;
     }
 
@@ -119,8 +119,12 @@ public class Fatura
      * Devolde o tipo de atividade economica.
      * @return Atividade economica.
      */
-    public AtividadeEconomica getAtividade() {
-        return this.atividadeEconomica.clone();
+    public String getAtividade() {
+        return this.atividadeEconomica;
+    }
+
+    public String setAtividade(String a) {
+        return this.atividadeEconomica = a;
     }
 
     /**
