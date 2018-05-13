@@ -125,7 +125,7 @@ public class Plataforma
      * @param Fatura.
      * @return TreeMap com a fatura inserida.
      */
-    public TreeMap inserirPorValor(Fatura f){
+    public void inserirPorValor(Fatura f){
         Double key = f.getValor();
 
         if (this.faturasPorValor.get(key) == null){
@@ -135,8 +135,6 @@ public class Plataforma
         } else {
             this.faturasPorValor.get(key).add(f);
         }
-
-        return this.faturasPorValor;
     }
 
     /**
@@ -144,7 +142,7 @@ public class Plataforma
      * @param Fatura.
      * @return TreeMap com a fatura inserida.
      */
-    public TreeMap inserirPorData(Fatura f){
+    public void inserirPorData(Fatura f){
         Date key = f.getData();
 
         if (this.faturasPorData.get(key) == null){
@@ -154,7 +152,5 @@ public class Plataforma
         } else {
             this.faturasPorData.get(key).add(f);
         }
-
-        return this.faturasPorData;
     }
 }
