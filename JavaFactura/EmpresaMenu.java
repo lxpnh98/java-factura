@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.Iterator;
+import java.util.Date;
 
 public class EmpresaMenu extends EstadoMenu {
     private int nif;
@@ -28,13 +29,13 @@ public class EmpresaMenu extends EstadoMenu {
         String atividade = this.scanner.nextLine();
         */
 
-        Fatura f = new Fatura(this.nif, "", "", nifCliente, "", "", valor);
+        Fatura f = new Fatura(this.nif, "", new Date(), nifCliente, "", "", valor);
         try {
             this.plataforma.adicionarFatura(f, this.nif, this.password);
         } catch (FailureOnLoginException e) {
             System.out.println("Informacao de login incorreta.");
         } catch (PermissionDeniedException e) {
-            System.out.println("Sem permissao: " + e);
+            System.out.println("Sem permissao.");
         } catch (NonExistentClientException e) {
             System.out.println("Cliente nao registado no sistema.");
         }
@@ -42,7 +43,7 @@ public class EmpresaMenu extends EstadoMenu {
     }
 
     public EstadoMenu interact() {
-        System.out.println("(1) - Criar fatura\n(2) - Voltar");
+        System.out.println("(1) - Criar fatura\n(2) - Logout");
         int decisao = this.scanner.nextInt();
         switch (decisao) {
             case 1:
@@ -50,6 +51,6 @@ public class EmpresaMenu extends EstadoMenu {
             case 2:
                 return new MainMenu(this.scanner, this.plataforma);
             }
-        return new MainMenu(this.scanner, this.plataforma);
+        return this;
     }
 }

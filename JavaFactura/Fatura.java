@@ -39,7 +39,7 @@ public class Fatura
         this.id = idCounter++;
         this.nifEmitente = nifEmitente;
         this.emitente = emitente;
-        this.data.setDate(dateToInt(data));
+        this.data = (Date)data.clone();
         this.nifCliente = nifCliente;
         this.descrição = descrição;
         this.atividadeEconomica = atividade;
@@ -105,7 +105,7 @@ public class Fatura
      * @return Data da fatura.
      */
     public Date getData(){
-        return this.data;
+        return (Date)this.data.clone();
     }
 
     /**
@@ -173,16 +173,6 @@ public class Fatura
     }
 
     /**
-     * Método que converte uma data para milisegundos.
-     * @param Data.
-     * @return Data convertida em milisegundos.
-     */
-    public int dateToInt(Date data){
-        int i = (int) (data.getTime()/1000);
-        return i;
-    }
-
-    /**
     * Método que verifica se dois objetos são iguais, isto é, se são da mesma classe e se têm os mesmos valores.
     * @return Valor boleano da comparação.
     */
@@ -201,7 +191,7 @@ public class Fatura
      */
     public String toString(){
         return "Fatura: Nif do Emissor - " + this.nifEmitente + " Emissor - " + this.emitente +
-               " Data - " + this.data.toString() + " Nif do cliente - " + this.nifCliente + " Descrição da fatura - " +
+               " Data - " + this.data + " Nif do cliente - " + this.nifCliente + " Descrição da fatura - " +
                this.descrição + this.atividadeEconomica + " Valor da fatura - " + this.valor;
     }
 
