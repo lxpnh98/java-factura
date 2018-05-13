@@ -19,6 +19,12 @@ class NonExistentClientException extends Exception {
     }
 }
 
+class NonExistentBillException extends Exception {
+    NonExistentBillException(String s) {
+        super(s);
+    }
+}
+
 /**
  * Write a description of class Plataforma here.
  *
@@ -79,6 +85,24 @@ public class Plataforma
         if (this.contribuintes.get(nif) instanceof ContribuinteIndividual == false)
             return false;
         return true;
+    }
+
+    public Fatura getFatura(int id, int nif, String password) throws NonExistentBillException,
+                                                                     PermissionDeniedException,
+                                                                     FailureOnLoginException {
+        Fatura f = this.faturas.get(id);
+        if (f == null) {
+            throw new NonExistentBillException("");
+        }
+        if (nif != f.getNifEmitente() && nif != f.getNifCliente()) {
+            throw new PermissionDeniedException("");
+        }
+        try {
+            this.login(nif, password);
+        } catch (FailureOnLoginException e) {
+            throw e;
+        }
+        return f.clone();
     }
 
     public Map<String,AtividadeEconomica> getAtividadesEconomicas() {
