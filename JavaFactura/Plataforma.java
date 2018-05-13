@@ -1,5 +1,7 @@
 import java.util.Map;
 import java.util.HashMap;
+import java.util.List;
+import java.util.*;
 
 class FailureOnLoginException extends Exception {
     FailureOnLoginException(String s) {
@@ -30,6 +32,8 @@ public class Plataforma
     private Map<Integer,Contribuinte> contribuintes;
     private Map<Integer,Fatura> faturas;
     private Map<String,AtividadeEconomica> atividadesEconomicas;
+    public TreeMap<Double,List<Fatura>> faturasPorValor;
+    public TreeMap<Date,List<Fatura>> faturasPorData;
 
     /**
      * Constructor for objects of class Plataforma
@@ -39,6 +43,8 @@ public class Plataforma
         contribuintes = new HashMap<Integer,Contribuinte>();
         faturas = new HashMap<Integer,Fatura>();
         atividadesEconomicas = new HashMap<String,AtividadeEconomica>();
+        faturasPorValor  = new TreeMap<Double,List<Fatura>>();
+        faturasPorData  = new TreeMap<Date,List<Fatura>>();
     }
 
     public void adicionarContribuinte(Contribuinte c) {
@@ -88,5 +94,43 @@ public class Plataforma
     public static Plataforma carregarPlataforma() {
         System.out.println("carregarPlataforma()");
         return new Plataforma();
+    }
+
+    /**
+     * Método que adiciona uma fatura a uma TreeMap em função do seu valor.
+     * @param Fatura.
+     * @return TreeMap com a fatura inserida.
+     */
+    public TreeMap inserirV(Fatura f){
+        Double key = f.getValor();
+
+        if (this.faturasPorValor.get(key) == null){
+            List<Fatura> faturasMesmoValor = new ArrayList<>();
+            faturasMesmoValor.add(f);
+            this.faturasPorValor.put(key, faturasMesmoValor);
+        } else {
+            this.faturasPorValor.get(key).add(f);
+        }
+
+        return this.faturasPorValor;
+    }
+
+    /**
+     * Método que adiciona uma fatura a uma TreeMap em função da sua Data.
+     * @param Fatura.
+     * @return TreeMap com a fatura inserida.
+     */
+    public TreeMap inserirD(Fatura f){
+        Date key = f.getData();
+
+        if (this.faturasPorData.get(key) == null){
+            List<Fatura> faturasMesmaData = new ArrayList<>();
+            faturasMesmaData.add(f);
+            this.faturasPorData.put(key, faturasMesmaData);
+        } else {
+            this.faturasPorData.get(key).add(f);
+        }
+
+        return this.faturasPorData;
     }
 }
