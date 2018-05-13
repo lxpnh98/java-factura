@@ -1,4 +1,5 @@
 import java.util.Set;
+import java.util.Date;
 
 /**
  * classe Fatura - Classe que representa uma fatura.
@@ -11,7 +12,7 @@ public class Fatura
     private int id;
     private int nifEmitente;
     private String emitente;
-    private String data;
+    private Date data;
     private int nifCliente;
     private String descrição;
     private String atividadeEconomica;
@@ -24,7 +25,7 @@ public class Fatura
         this.id = idCounter++;
         this.nifEmitente = 0;
         this.emitente = "";
-        this.data = "";
+        this.data = new Date();
         this.nifCliente = 0;
         this.descrição = "";
         this.atividadeEconomica = new AtividadeEconomica().getNome();
@@ -34,11 +35,11 @@ public class Fatura
     /**
      * Construtor parametrizado de Fatura.
      */
-    public Fatura(int nifEmitente, String emitente, String data, int nifCliente, String descrição, String atividade, double valor){
+    public Fatura(int nifEmitente, String emitente, Date data, int nifCliente, String descrição, String atividade, double valor){
         this.id = idCounter++;
         this.nifEmitente = nifEmitente;
         this.emitente = emitente;
-        this.data = data;
+        this.data.setDate(dateToInt(data));
         this.nifCliente = nifCliente;
         this.descrição = descrição;
         this.atividadeEconomica = atividade;
@@ -84,14 +85,6 @@ public class Fatura
     }
 
     /**
-     * Devolde a data da fatura.
-     * @return Data da fatura.
-     */
-    public String getData(){
-        return this.data;
-    }
-
-    /**
      * Devolde o nif do cliente da fatura.
      * @return Nif do cliente.
      */
@@ -105,6 +98,10 @@ public class Fatura
      */
     public String getDescrição(){
         return this.descrição;
+    }
+
+    public Date getData(){
+        return this.data;
     }
 
     /**
@@ -145,15 +142,7 @@ public class Fatura
 
     /**
      * Atualiza a Fatura.
-     * @param Nova data.
-     */
-    public void setData(String data){
-        this.data = data;
-    }
-
-    /**
-     * Atualiza a Fatura.
-     * @param Novo nif de cliente.
+     * @param Novo nif cliente.
      */
     public void setNifcliente(int nifcliente){
         this.nifCliente = nifcliente;
@@ -175,6 +164,11 @@ public class Fatura
         this.valor = valor;
     }
 
+    public int dateToInt(Date data){
+        int i = (int) (data.getTime()/1000);
+        return i;
+    }
+
     /**
     * Método que verifica se dois objetos são iguais, isto é, se são da mesma classe e se têm os mesmos valores.
     * @return Valor boleano da comparação.
@@ -184,7 +178,7 @@ public class Fatura
         if ((o == null) || (o.getClass()!= this.getClass())) return false;
         Fatura p = (Fatura)o;
         return (this.nifEmitente == p.getNifEmitente()) && (this.emitente == p.getEmitente()) &&
-               (this.data == p.getData()) && (this.nifCliente == p.getNifCliente()) && (this.descrição.equals(p.getDescrição())) &&
+               (this.data.equals(p.getData())) && (this.nifCliente == p.getNifCliente()) && (this.descrição.equals(p.getDescrição())) &&
                (this.valor == p.getValor()) && this.atividadeEconomica.equals(p.getAtividade());
     }
 
@@ -194,7 +188,7 @@ public class Fatura
      */
     public String toString(){
         return "Fatura: Nif do Emissor - " + this.nifEmitente + " Emissor - " + this.emitente +
-               " Data - " + this.data + " Nif do cliente - " + this.nifCliente + " Descrição da fatura - " +
+               " Data - " + this.data.toString() + " Nif do cliente - " + this.nifCliente + " Descrição da fatura - " +
                this.descrição + this.atividadeEconomica + " Valor da fatura - " + this.valor;
     }
 
