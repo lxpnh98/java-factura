@@ -1,5 +1,6 @@
 import java.util.Set;
 import java.util.Date;
+import java.util.*;
 
 /**
  * classe Fatura - Classe que representa uma fatura.
@@ -100,6 +101,10 @@ public class Fatura
         return this.descrição;
     }
 
+    /**
+     * Devolde a data da fatura.
+     * @return Data da fatura.
+     */
     public Date getData(){
         return (Date)this.data.clone();
     }
@@ -120,6 +125,10 @@ public class Fatura
         return this.atividadeEconomica;
     }
 
+    /**
+     * Atualiza a Fatura.
+     * @param Nova atividade económica.
+     */
     public String setAtividade(String a) {
         return this.atividadeEconomica = a;
     }
@@ -189,5 +198,63 @@ public class Fatura
 
     public Fatura clone() {
         return new Fatura(this);
+    }
+
+    public TreeMap<Double,Fatura> abFaturasV = new TreeMap<Double,Fatura>();
+
+    /**
+     * Método que adiciona uma fatura a uma TreeMap em função do seu valor, caso esta não exista.
+     * @param TreeMap.
+     * @param Fatura.
+     * @return TreeMap com a fatura inserida.
+     */
+    public TreeMap inserirV(TreeMap a, Fatura f){
+        Double key = f.getValor();
+
+        if (a == null){
+            a = new TreeMap<Double,Fatura>();
+            a.put(key, f);
+        }
+
+        if (a.get(key) == null){
+            a.put(key, f);
+        } else {
+            if (a.get(key).equals(f)){
+                return a;
+            } else {
+                a.put(key, f);
+            }
+        }
+
+        return a;
+    }
+
+    public TreeMap<Date,Fatura> abFaturasD = new TreeMap<Date,Fatura>();
+
+    /**
+     * Método que adiciona uma fatura a uma TreeMap em função da sua Data, caso esta não exista.
+     * @param TreeMap.
+     * @param Fatura.
+     * @return TreeMap com a fatura inserida.
+     */
+    public TreeMap inserirD(TreeMap a, Fatura f){
+        Date key = f.getData();
+
+        if (a == null){
+            a = new TreeMap<Double,Fatura>();
+            a.put(key, f);
+        }
+
+        if (a.get(key) == null){
+            a.put(key, f);
+        } else {
+            if (a.get(key).equals(f)){
+                return a;
+            } else {
+                a.put(key, f);
+            }
+        }
+
+        return a;
     }
 }
