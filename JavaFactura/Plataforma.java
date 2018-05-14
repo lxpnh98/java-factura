@@ -1,7 +1,6 @@
 import java.util.Map;
 import java.util.HashMap;
-import java.util.List;
-import java.util.*;
+import java.util.ArrayList;
 
 class FailureOnLoginException extends Exception {
     FailureOnLoginException(String s) {
@@ -38,8 +37,6 @@ public class Plataforma
     private Map<Integer,Contribuinte> contribuintes;
     private Map<Integer,Fatura> faturas;
     private Map<String,AtividadeEconomica> atividadesEconomicas;
-    public TreeMap<Double,List<Fatura>> faturasPorValor;
-    public TreeMap<Date,List<Fatura>> faturasPorData;
 
     /**
      * Constructor for objects of class Plataforma
@@ -49,8 +46,6 @@ public class Plataforma
         contribuintes = new HashMap<Integer,Contribuinte>();
         faturas = new HashMap<Integer,Fatura>();
         atividadesEconomicas = new HashMap<String,AtividadeEconomica>();
-        faturasPorValor  = new TreeMap<Double,List<Fatura>>();
-        faturasPorData  = new TreeMap<Date,List<Fatura>>();
     }
 
     public void adicionarContribuinte(Contribuinte c) {
@@ -73,8 +68,10 @@ public class Plataforma
             f.setAtividade(((Empresa)c).getDefaultAtividade());
             this.faturas.put(f.getId(), f.clone());
             ((ContribuinteIndividual)this.contribuintes.get(f.getNifCliente())).adicionarFatura(f);
+            ((Empresa)this.contribuintes.get(f.getNifEmitente())).inserirPorValor(f);
+            ((Empresa)this.contribuintes.get(f.getNifEmitente())).inserirPorData(f);
         } else {
-            throw new PermissionDeniedException("Nao e Empresa");
+            throw new PermissionDeniedException("Não é Empresa");
         }
     }
 
@@ -120,37 +117,35 @@ public class Plataforma
         return new Plataforma();
     }
 
-    /**
-     * Método que adiciona uma fatura a uma TreeMap em função do seu valor.
-     * @param Fatura.
-     * @return TreeMap com a fatura inserida.
-     */
-    public void inserirPorValor(Fatura f){
-        Double key = f.getValor();
-
-        if (this.faturasPorValor.get(key) == null){
-            List<Fatura> faturasMesmoValor = new ArrayList<>();
-            faturasMesmoValor.add(f);
-            this.faturasPorValor.put(key, faturasMesmoValor);
+    public ArrayList<Fatura> getFaturasPorValor(int nif, String password) throws FailureOnLoginException, 
+                                                                                 PermissionDeniedException {
+        Contribuinte c;
+        try {
+            c = this.login(nif, password);
+        } catch (FailureOnLoginException e) {
+            throw e;
+        }
+        if (c instanceof Empresa){
+            ArrayList<Fatura> faturas = new ArrayList<>(((Empresa)this.contribuintes.get(c.getNIF())).faturasPorValor());
+            return faturas;
         } else {
-            this.faturasPorValor.get(key).add(f);
+            throw new PermissionDeniedException("Não é Empresa");
         }
     }
 
-    /**
-     * Método que adiciona uma fatura a uma TreeMap em função da sua Data.
-     * @param Fatura.
-     * @return TreeMap com a fatura inserida.
-     */
-    public void inserirPorData(Fatura f){
-        Date key = f.getData();
-
-        if (this.faturasPorData.get(key) == null){
-            List<Fatura> faturasMesmaData = new ArrayList<>();
-            faturasMesmaData.add(f);
-            this.faturasPorData.put(key, faturasMesmaData);
+    public ArrayList<Fatura> getFaturasPorData(int nif, String password) throws FailureOnLoginException, 
+                                                                                PermissionDeniedException {
+        Contribuinte c;
+        try {
+            c = this.login(nif, password);
+        } catch (FailureOnLoginException e) {
+            throw e;
+        }
+        if (c instanceof Empresa){
+            ArrayList<Fatura> faturas = new ArrayList<>(((Empresa)this.contribuintes.get(c.getNIF())).faturasPorData());
+            return faturas;
         } else {
-            this.faturasPorData.get(key).add(f);
+            throw new PermissionDeniedException("Não é Empresa");
         }
     }
 }

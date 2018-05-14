@@ -1,5 +1,9 @@
 import java.util.Set;
 import java.util.HashSet;
+import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.*;
+
 /**
  * class Empresa - Classe que representa um contribuinte coletivo.
  *
@@ -8,6 +12,8 @@ import java.util.HashSet;
 public class Empresa extends Contribuinte
 {
     private Set<String> atividadesEconomicas;
+    public TreeMap<Double,List<Fatura>> faturasPorValor = new TreeMap<>();
+    public TreeMap<Date,List<Fatura>> faturasPorData = new TreeMap<>();
 
     /**
      * Construtor por omissão de Empresa.
@@ -30,7 +36,19 @@ public class Empresa extends Contribuinte
      */
     public Empresa(Empresa e){
         super(e);
+        this.faturasPorValor = e.getMapFaturasPorValor();
+        this.faturasPorData = e.getMapFaturasPorData();
         this.atividadesEconomicas = e.getAtividadesEconomicas();
+    }
+
+    public TreeMap<Double,List<Fatura>> getMapFaturasPorValor(){
+        TreeMap<Double,List<Fatura>> v = new TreeMap<>();
+        return v;
+    }
+
+    public TreeMap<Date,List<Fatura>> getMapFaturasPorData(){
+        TreeMap<Date,List<Fatura>> d = new TreeMap<>();
+        return d;
     }
 
     public Set<String> getAtividadesEconomicas() {
@@ -71,5 +89,66 @@ public class Empresa extends Contribuinte
         if ((emp == null) || (emp.getClass() != this.getClass())) return false;
         Empresa p = (Empresa) emp;
         return super.equals(p);
+    }
+
+    /**
+     * Método que adiciona uma fatura a uma TreeMap em função do seu valor.
+     * @param Fatura.
+     * @return TreeMap com a fatura inserida.
+     */
+    public void inserirPorValor(Fatura f){
+        Double key = f.getValor();
+
+        if (this.faturasPorValor.get(key) == null){
+            List<Fatura> faturasMesmoValor = new ArrayList<>();
+            faturasMesmoValor.add(f.clone());
+            this.faturasPorValor.put(key, faturasMesmoValor);
+        } else {
+            this.faturasPorValor.get(key).add(f.clone());
+        }
+    }
+
+    /**
+     * Método que adiciona uma fatura a uma TreeMap em função da sua Data.
+     * @param Fatura.
+     * @return TreeMap com a fatura inserida.
+     */
+    public void inserirPorData(Fatura f){
+        Date key = f.getData();
+
+        if (this.faturasPorData.get(key) == null){
+            List<Fatura> faturasMesmaData = new ArrayList<>();
+            faturasMesmaData.add(f.clone());
+            this.faturasPorData.put(key, faturasMesmaData);
+        } else {
+            this.faturasPorData.get(key).add(f.clone());
+        }
+    }
+
+    public ArrayList<Fatura> faturasPorValor(){
+        ArrayList<Fatura> listaPorValor = new ArrayList<>();
+
+        Iterator ittwo = this.faturasPorValor.keySet().iterator();
+        while (ittwo.hasNext()) {
+            for (Fatura f : this.faturasPorValor.get(ittwo.next())) {
+                listaPorValor.add(f.clone());
+            }
+            //ittwo.remove();
+        }
+        return listaPorValor;
+    }
+
+    public ArrayList<Fatura> faturasPorData(){
+        ArrayList<Fatura> listaPorData = new ArrayList<>();
+
+        Iterator ittwo = this.faturasPorData.entrySet().iterator();
+        while (ittwo.hasNext()) {
+            Map.Entry pairs = (Map.Entry)ittwo.next();
+            for (Fatura f : this.faturasPorData.get(pairs.getKey())) {
+                listaPorData.add(f.clone());
+            }
+            // ittwo.remove();
+        }
+        return listaPorData;
     }
 }
