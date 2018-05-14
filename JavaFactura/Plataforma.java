@@ -2,6 +2,13 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
 import java.util.*;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.FileOutputStream;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import java.io.Serializable;
 
 class FailureOnLoginException extends Exception {
     FailureOnLoginException(String s) {
@@ -33,8 +40,7 @@ class NonExistentBillException extends Exception {
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Plataforma
-{
+public class Plataforma implements Serializable {
     private Map<Integer,Contribuinte> contribuintes;
     private Map<Integer,Fatura> faturas;
     private Map<String,AtividadeEconomica> atividadesEconomicas;
@@ -44,7 +50,7 @@ public class Plataforma
     /**
      * Constructor for objects of class Plataforma
      */
-    private Plataforma()
+    public Plataforma()
     {
         contribuintes = new HashMap<Integer,Contribuinte>();
         faturas = new HashMap<Integer,Fatura>();
@@ -79,6 +85,12 @@ public class Plataforma
     }
 
     public Contribuinte login(int nif, String password) throws FailureOnLoginException {
+        Iterator it = this.contribuintes.keySet().iterator();
+        while (it.hasNext()) {
+            Integer i = (Integer)it.next();
+            System.out.println(i + "/n" + this.contribuintes.get(i).toString());
+            //it.remove();
+        }
         Contribuinte c = this.contribuintes.get(nif);
         if (c != null && c.getPassword().equals(password))
             return c.clone();
@@ -115,11 +127,6 @@ public class Plataforma
         return new HashMap(this.atividadesEconomicas);
     }
 
-    public static Plataforma carregarPlataforma() {
-        System.out.println("carregarPlataforma()");
-        return new Plataforma();
-    }
-
     /**
      * Método que adiciona uma fatura a uma TreeMap em função do seu valor.
      * @param Fatura.
@@ -152,5 +159,46 @@ public class Plataforma
         } else {
             this.faturasPorData.get(key).add(f);
         }
+    }
+
+    /**
+     * Método que guarda em ficheiro de objetos o objeto que recebe a mensagem.
+     */
+    public void guardaEstado(String nomeFicheiro) throws FileNotFoundException, IOException {
+        FileOutputStream guardaFicheiro = new FileOutputStream(nomeFicheiro);
+        if (guardaFicheiro == null) { 
+            throw new FileNotFoundException("");
+        } else { 
+            ObjectOutputStream objeto = new ObjectOutputStream(guardaFicheiro);
+            if (objeto == null) {
+                throw new IOException("");
+            } else {
+                objeto.writeObject(this);
+                objeto.flush();
+                objeto.close();
+            }
+        }
+    }
+    
+    
+    public static Plataforma carregarPlataforma(String nomeFicheiro) throws FileNotFoundException,
+                                                            IOException, ClassNotFoundException {
+       FileInputStream carregaFicheiro = new FileInputStream(nomeFicheiro);
+       if (carregaFicheiro == null) { 
+            throw new FileNotFoundException("");
+       } else {
+            ObjectInputStream obj = new ObjectInputStream(carregaFicheiro);
+            if (obj == null) {
+                throw new IOException("");
+            } else {
+                Plataforma p = (Plataforma) obj.readObject();
+                if (p == null) {
+                    throw new ClassNotFoundException("");
+                } else {
+                    obj.close();
+                    return p;
+                }
+            }
+       }
     }
 }

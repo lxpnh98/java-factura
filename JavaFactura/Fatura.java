@@ -1,12 +1,13 @@
 import java.util.Set;
 import java.util.Date;
+import java.io.Serializable;
 
 /**
  * classe Fatura - Classe que representa uma fatura.
  *
  * @author Alexandre Pinho (a82441); Joel Gama (a82202); Tiago Pinheiro (a82491).
  */
-public class Fatura
+public class Fatura implements Serializable
 {
     private static int idCounter = 0;
     private int id;
