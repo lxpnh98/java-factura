@@ -36,10 +36,9 @@ class NonExistentBillException extends Exception {
 }
 
 /**
- * Write a description of class Plataforma here.
+ * class Plataforma
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Alexandre Pinho (a82441); Joel Gama (a82202); Tiago Pinheiro (a82491).
  */
 public class Plataforma implements Serializable {
     private Map<Integer,Contribuinte> contribuintes;
@@ -153,7 +152,8 @@ public class Plataforma implements Serializable {
     }
 
     /**
-     * Método que guarda em ficheiro de objetos o objeto que recebe a mensagem.
+     * Método que guarda num ficheiro de objetos o estado atual da aplicação.
+     * @param String nomeFicheiro.
      */
     public void guardaEstado(String nomeFicheiro) throws FileNotFoundException, IOException {
         FileOutputStream guardaFicheiro = new FileOutputStream(nomeFicheiro);
@@ -171,7 +171,11 @@ public class Plataforma implements Serializable {
         }
     }
     
-    
+    /**
+     * Método que carrega um estado apartir de um ficheiro de objetos;
+     * @param String nomeFicheiro;
+     * @return Plataforma p.
+     */
     public static Plataforma carregarPlataforma(String nomeFicheiro) throws FileNotFoundException,
                                                             IOException, ClassNotFoundException {
        FileInputStream carregaFicheiro = new FileInputStream(nomeFicheiro);
