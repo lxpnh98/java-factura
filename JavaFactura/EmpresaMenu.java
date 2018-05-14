@@ -43,22 +43,6 @@ public class EmpresaMenu extends EstadoMenu {
         return this;
     }
 
-    public EstadoMenu interact() {
-        System.out.println("(1) - Criar fatura\n(2) - Logout\n(3) - Listar faturas por valor\n(4) - Listar faturas por data");
-        int decisao = this.scanner.nextInt();
-        switch (decisao) {
-            case 1:
-                return this.criarFatura();
-            case 2:
-                return new MainMenu(this.scanner, this.plataforma);
-            case 3:
-                return this.listarFaturasPorValor();
-            case 4:
-                return this.listarFaturasPorData();
-            }
-        return this;
-    }
-
     public EstadoMenu listarFaturasPorValor(){
         try {
             for(Fatura f : this.plataforma.getFaturasPorValor(this.nif, this.password)){
@@ -82,6 +66,22 @@ public class EmpresaMenu extends EstadoMenu {
         } catch (PermissionDeniedException e){
             System.out.println("Sem permissão.");
         }
+        return this;
+    }
+
+    public EstadoMenu interact() {
+        System.out.println("(1) - Criar fatura\n(2) - Listar faturas por valor\n(3) - Listar faturas por data\n(4) - Logout");
+        int decisao = this.scanner.nextInt();
+        switch (decisao) {
+            case 1:
+                return this.criarFatura();
+            case 2:
+                return this.listarFaturasPorValor();
+            case 3:
+                return this.listarFaturasPorData();
+            case 4:
+                return new MainMenu(this.scanner, this.plataforma);
+            }
         return this;
     }
 }
