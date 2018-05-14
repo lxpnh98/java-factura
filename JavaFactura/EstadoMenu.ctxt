@@ -5,4 +5,6 @@ comment1.params=s\ p
 comment1.target=EstadoMenu(java.util.Scanner,\ Plataforma)
 comment2.params=
 comment2.target=EstadoMenu\ interact()
-numComments=3
+comment3.params=s
+comment3.target=void\ guardaEstado(java.lang.String)
+numComments=4

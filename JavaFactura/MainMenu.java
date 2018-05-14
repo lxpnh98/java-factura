@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.HashSet;
+import java.io.*;
 
 /**
  * Write a description of class MainInterface here.
@@ -34,7 +35,7 @@ public class MainMenu extends EstadoMenu
     }
 
     private EstadoMenu sair() {
-        System.out.println("sair()");
+        this.guardaEstado("estado");
         return null;
     }
 
@@ -58,8 +59,23 @@ public class MainMenu extends EstadoMenu
         return this;
     }
     
+    private EstadoMenu carregarEstado(){
+        try {
+            Plataforma p = Plataforma.carregarPlataforma("estado");
+            return new MainMenu(this.scanner, p);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Não conseguiu carregar");
+        return this;
+    }
+    
     public EstadoMenu interact() {
-        System.out.print("(1) - Fazer login\n(2) - Registar novo contribuinte\n(3) - Sair\n> ");
+        System.out.print("(1) - Fazer login\n(2) - Registar novo contribuinte\n(3) - Carregar estado\n(4) - Sair\n> ");
         int decisao = this.scanner.nextInt();
         switch (decisao) {
             case 1:
@@ -67,6 +83,8 @@ public class MainMenu extends EstadoMenu
             case 2:
                 return this.registarContribuinte();
             case 3:
+                return this.carregarEstado();
+            case 4:
                 return this.sair();
             }
         return this;

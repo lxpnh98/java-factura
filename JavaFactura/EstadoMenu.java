@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.io.*;
 
 /**
  * Write a description of interface EstadoInterface here.
@@ -17,4 +18,14 @@ public abstract class EstadoMenu
     }
 
     public abstract EstadoMenu interact();
+    
+    public void guardaEstado(String s) {
+        try {
+            this.plataforma.guardaEstado(s);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

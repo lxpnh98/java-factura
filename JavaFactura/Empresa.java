@@ -3,13 +3,14 @@ import java.util.HashSet;
 import java.util.stream.Collectors;
 import java.util.ArrayList;
 import java.util.*;
+import java.io.Serializable;
 
 /**
  * class Empresa - Classe que representa um contribuinte coletivo.
  *
  * @author Alexandre Pinho (a82441); Joel Gama (a82202); Tiago Pinheiro (a82491).
  */
-public class Empresa extends Contribuinte
+public class Empresa extends Contribuinte implements Serializable
 {
     private Set<String> atividadesEconomicas;
     public TreeMap<Double,List<Fatura>> faturasPorValor = new TreeMap<>();
