@@ -84,12 +84,6 @@ public class Plataforma implements Serializable {
     }
 
     public Contribuinte login(int nif, String password) throws FailureOnLoginException {
-        Iterator it = this.contribuintes.keySet().iterator();
-        while (it.hasNext()) {
-            Integer i = (Integer)it.next();
-            System.out.println(i + "/n" + this.contribuintes.get(i).toString());
-            //it.remove();
-        }
         Contribuinte c = this.contribuintes.get(nif);
         if (c != null && c.getPassword().equals(password))
             return c.clone();
