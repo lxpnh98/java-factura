@@ -1,11 +1,13 @@
 import java.util.Set;
 import java.util.HashSet;
+import java.io.*;
+
 /**
  * class Empresa - Classe que representa um contribuinte coletivo.
  *
  * @author Alexandre Pinho (a82441); Joel Gama (a82202); Tiago Pinheiro (a82491).
  */
-public class Empresa extends Contribuinte
+public class Empresa extends Contribuinte implements Serializable
 {
     private Set<String> atividadesEconomicas;
 

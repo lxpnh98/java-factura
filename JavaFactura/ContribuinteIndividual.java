@@ -1,12 +1,13 @@
 import java.util.Map;
 import java.util.HashMap;
+import java.io.*;
 
 /**
  * class ContribuinteIndividual - Classe que representa um contribuinte individual.
  *
  * @author Alexandre Pinho (a82441); Joel Gama (a82202); Tiago Pinheiro (a82491).
  */
-public class ContribuinteIndividual extends Contribuinte
+public class ContribuinteIndividual extends Contribuinte implements Serializable
 {
     private int numDependentes;
     private Map<Integer,Fatura> faturas;

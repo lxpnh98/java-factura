@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=MainMenu
-comment0.text=\n\ Write\ a\ description\ of\ class\ MainInterface\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ MainInterface\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=s\ p
 comment1.target=MainMenu(java.util.Scanner,\ Plataforma)
 comment2.params=
@@ -10,5 +10,7 @@ comment3.target=EstadoMenu\ sair()
 comment4.params=
 comment4.target=EstadoMenu\ registarContribuinte()
 comment5.params=
-comment5.target=EstadoMenu\ interact()
-numComments=6
+comment5.target=EstadoMenu\ carregarEstado()
+comment6.params=
+comment6.target=EstadoMenu\ interact()
+numComments=7
