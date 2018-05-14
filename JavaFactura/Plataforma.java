@@ -115,6 +115,24 @@ public class Plataforma implements Serializable {
         return f.clone();
     }
 
+    public void setFatura(int id, Fatura fatura, int nif, String password) throws NonExistentBillException,
+                                                                                  PermissionDeniedException,
+                                                                                  FailureOnLoginException {
+        Fatura f = this.faturas.get(id);
+        if (f == null) {
+            throw new NonExistentBillException("");
+        }
+        if (nif != f.getNifCliente()) {
+            throw new PermissionDeniedException("");
+        }
+        try {
+            this.login(nif, password);
+            this.faturas.put(id, fatura.clone());
+        } catch (FailureOnLoginException e) {
+            throw e;
+        }
+    }
+
     public Map<String,AtividadeEconomica> getAtividadesEconomicas() {
         return new HashMap(this.atividadesEconomicas);
     }
