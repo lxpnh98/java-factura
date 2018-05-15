@@ -37,10 +37,9 @@ class NonExistentBillException extends Exception {
 }
 
 /**
- * Write a description of class Plataforma here.
+ * class Plataforma
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Alexandre Pinho (a82441); Joel Gama (a82202); Tiago Pinheiro (a82491).
  */
 public class Plataforma implements Serializable {
     private Map<Integer,Contribuinte> contribuintes;
@@ -117,6 +116,24 @@ public class Plataforma implements Serializable {
         return f.clone();
     }
 
+    public void setFatura(int id, Fatura fatura, int nif, String password) throws NonExistentBillException,
+                                                                                  PermissionDeniedException,
+                                                                                  FailureOnLoginException {
+        Fatura f = this.faturas.get(id);
+        if (f == null) {
+            throw new NonExistentBillException("");
+        }
+        if (nif != f.getNifCliente()) {
+            throw new PermissionDeniedException("");
+        }
+        try {
+            this.login(nif, password);
+            this.faturas.put(id, fatura.clone());
+        } catch (FailureOnLoginException e) {
+            throw e;
+        }
+    }
+
     public Map<String,AtividadeEconomica> getAtividadesEconomicas() {
         return new HashMap(this.atividadesEconomicas);
     }
@@ -171,7 +188,8 @@ public class Plataforma implements Serializable {
     }
 
     /**
-     * Método que guarda em ficheiro de objetos o objeto que recebe a mensagem.
+     * Método que guarda num ficheiro de objetos o estado atual da aplicação.
+     * @param String nomeFicheiro.
      */
     public void guardaEstado(String nomeFicheiro) throws FileNotFoundException, IOException {
         FileOutputStream guardaFicheiro = new FileOutputStream(nomeFicheiro);
@@ -189,7 +207,11 @@ public class Plataforma implements Serializable {
         }
     }
     
-    
+    /**
+     * Método que carrega um estado apartir de um ficheiro de objetos;
+     * @param String nomeFicheiro;
+     * @return Plataforma p.
+     */
     public static Plataforma carregarPlataforma(String nomeFicheiro) throws FileNotFoundException,
                                                             IOException, ClassNotFoundException {
        FileInputStream carregaFicheiro = new FileInputStream(nomeFicheiro);
