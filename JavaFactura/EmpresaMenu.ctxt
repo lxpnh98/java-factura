@@ -5,20 +5,11 @@ comment1.target=EmpresaMenu(java.util.Scanner,\ Plataforma,\ int,\ java.lang.Str
 comment2.params=
 comment2.target=EstadoMenu\ criarFatura()
 comment3.params=
-<<<<<<< HEAD
 comment3.target=EstadoMenu\ criarTotalAcumulado()
 comment4.params=
-comment4.target=EstadoMenu\ interact()
+comment4.target=EstadoMenu\ listarFaturasPorValor()
 comment5.params=
-comment5.target=EstadoMenu\ listarFaturasPorValor()
+comment5.target=EstadoMenu\ listarFaturasPorData()
 comment6.params=
-comment6.target=EstadoMenu\ listarFaturasPorData()
+comment6.target=EstadoMenu\ interact()
 numComments=7
-=======
-comment3.target=EstadoMenu\ listarFaturasPorValor()
-comment4.params=
-comment4.target=EstadoMenu\ listarFaturasPorData()
-comment5.params=
-comment5.target=EstadoMenu\ interact()
-numComments=6
->>>>>>> b2810103ccce457773f922b1868d2eaf6dad2477

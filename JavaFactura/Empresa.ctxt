@@ -38,10 +38,5 @@ comment8.target=Empresa\ clone()
 comment8.text=\r\n\ Cria\ uma\ c\u00F3pia\ do\ objecto\ Empresa.\r\n\ @return\r\n
 comment9.params=
 comment9.target=java.lang.String\ toString()
-<<<<<<< HEAD
-comment9.text=\n\ M\u00E9todo\ que\ devolve\ a\ representa\u00E7\u00E3o\ em\ string\ da\ Empresa.\n\ @return\ String\ com\ as\ informa\u00E7\u00F5es\ da\ Empresa.\n
-numComments=16
-=======
 comment9.text=\r\n\ M\u00E9todo\ que\ devolve\ a\ representa\u00E7\u00E3o\ em\ string\ da\ Empresa.\r\n\ @return\ String\ com\ as\ informa\u00E7\u00F5es\ da\ Empresa.\r\n
-numComments=15
->>>>>>> b2810103ccce457773f922b1868d2eaf6dad2477
+numComments=16
