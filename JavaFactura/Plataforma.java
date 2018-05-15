@@ -10,6 +10,7 @@ import java.io.FileOutputStream;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
+import java.util.Date;
 
 class FailureOnLoginException extends Exception {
     FailureOnLoginException(String s) {
@@ -147,6 +148,23 @@ public class Plataforma implements Serializable {
         if (c instanceof Empresa){
             ArrayList<Fatura> faturas = new ArrayList<>(((Empresa)this.contribuintes.get(c.getNIF())).faturasPorData());
             return faturas;
+        } else {
+            throw new PermissionDeniedException("Não é Empresa");
+        }
+    }
+
+    public double getTotalAcumulado(int nif, String password, Date begin, Date end) throws FailureOnLoginException, 
+                                                                                           PermissionDeniedException {
+        Contribuinte c;
+        try {
+            c = this.login(nif, password);
+        } catch (FailureOnLoginException e) {
+            throw e;
+        }
+        if (c instanceof Empresa){
+            double v = 0;
+            v = ((Empresa)this.contribuintes.get(c.getNIF())).totalAcumulado(begin, end);
+            return v;
         } else {
             throw new PermissionDeniedException("Não é Empresa");
         }

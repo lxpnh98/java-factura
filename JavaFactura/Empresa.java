@@ -4,6 +4,7 @@ import java.util.stream.Collectors;
 import java.util.ArrayList;
 import java.util.*;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * class Empresa - Classe que representa um contribuinte coletivo.
@@ -151,5 +152,22 @@ public class Empresa extends Contribuinte implements Serializable
             // ittwo.remove();
         }
         return listaPorData;
+    }
+
+    public double totalAcumulado(Date begin, Date end){
+        double totalAcumulado = 0;
+
+            Iterator ittwo = this.faturasPorData.entrySet().iterator();
+            while (ittwo.hasNext()) {
+                Map.Entry pairs = (Map.Entry)ittwo.next();
+                if (((Date)pairs.getKey()).after(begin)) {
+                    if (((Date)pairs.getKey()).before(end)) {
+                        for (Fatura f : this.faturasPorData.get(pairs.getKey())) {
+                            totalAcumulado += f.getValor();
+                        }
+                    }
+                }
+            }
+        return totalAcumulado;
     }
 }
