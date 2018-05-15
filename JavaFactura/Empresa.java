@@ -143,10 +143,9 @@ public class Empresa extends Contribuinte implements Serializable
     public ArrayList<Fatura> faturasPorData(){
         ArrayList<Fatura> listaPorData = new ArrayList<>();
 
-        Iterator ittwo = this.faturasPorData.entrySet().iterator();
+        Iterator ittwo = this.faturasPorData.keySet().iterator();
         while (ittwo.hasNext()) {
-            Map.Entry pairs = (Map.Entry)ittwo.next();
-            for (Fatura f : this.faturasPorData.get(pairs.getKey())) {
+            for (Fatura f : this.faturasPorData.get(ittwo.next())) {
                 listaPorData.add(f.clone());
             }
             // ittwo.remove();
@@ -154,7 +153,7 @@ public class Empresa extends Contribuinte implements Serializable
         return listaPorData;
     }
 
-    public double totalAcumulado(Date begin, Date end){
+    public double totalFaturado(Date begin, Date end){
         double totalAcumulado = 0;
 
             Iterator ittwo = this.faturasPorData.entrySet().iterator();
@@ -169,5 +168,27 @@ public class Empresa extends Contribuinte implements Serializable
                 }
             }
         return totalAcumulado;
+    }
+
+    public ArrayList<Fatura> faturasPorValorContribuinte(){
+        int size, nif;
+        ArrayList<Fatura> aux = new ArrayList<Fatura>(faturasPorValor());
+        ArrayList<Fatura> faturas = new ArrayList<Fatura>();
+
+        while(!(aux.isEmpty())){
+            nif = aux.get(0).getNifCliente();
+            faturas.add(aux.get(0));
+            aux.remove(0);
+            size = aux.size();
+            for (int i = 0; i < size; i++){
+                if (aux.get(i).getNifCliente() == nif){
+                    faturas.add(aux.get(i));
+                    aux.remove(i);
+                    size--;
+                    i--;
+                }
+            }
+        }
+        return faturas;
     }
 }

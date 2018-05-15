@@ -71,7 +71,7 @@ public class EmpresaMenu extends EstadoMenu {
         System.out.print("Data final: " + end + "\n\n");
 
         try {
-            System.out.println("Total acumulado: " + this.plataforma.getTotalAcumulado(this.nif, this.password, begin, end));
+            System.out.println("Total acumulado: " + this.plataforma.getTotalFaturado(this.nif, this.password, begin, end));
         } catch (FailureOnLoginException e){
             System.out.println("Informação de login incorreta.");
         } catch (PermissionDeniedException e){
@@ -106,8 +106,21 @@ public class EmpresaMenu extends EstadoMenu {
         return this;
     }
 
+    public EstadoMenu listarFaturasPorValorContribuinte(){
+        try {
+            for(Fatura f : this.plataforma.getFaturasPorValorContribuinte(this.nif, this.password)){
+                System.out.println(f.toString());
+            }
+        } catch (FailureOnLoginException e){
+            System.out.println("Informação de login incorreta.");
+        } catch (PermissionDeniedException e){
+            System.out.println("Sem permissão.");
+        }
+        return this;
+    }
+
     public EstadoMenu interact() {
-        System.out.println("(1) - Criar fatura\n(2) - Logout\n(3) - Listar faturas por valor\n(4) - Listar faturas por data\n(5) - Calcular total acumulado da empresa");
+        System.out.println("(1) - Criar fatura\n(2) - Logout\n(3) - Listar faturas por valor\n(4) - Listar faturas por data\n(5) - Calcular total acumulado da empresa\n(6) - Listar faturas por contribuinte e valor");
         int decisao = this.scanner.nextInt();
         switch (decisao) {
             case 1:
@@ -120,6 +133,8 @@ public class EmpresaMenu extends EstadoMenu {
                 return this.listarFaturasPorData();
             case 5:
                 return this.criarTotalAcumulado();
+            case 6:
+                return this.listarFaturasPorValorContribuinte();
             }
         return this;
     }
