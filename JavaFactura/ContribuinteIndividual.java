@@ -1,6 +1,6 @@
 import java.util.Map;
-import java.util.HashMap;
-import java.io.*;
+import java.util.HashSet;
+import java.io.Serializable;
 
 /**
  * class ContribuinteIndividual - Classe que representa um contribuinte individual.
@@ -10,7 +10,7 @@ import java.io.*;
 public class ContribuinteIndividual extends Contribuinte implements Serializable
 {
     private int numDependentes;
-    private Map<Integer,Fatura> faturas;
+    private HashSet<Integer> idFaturas;
 
     /**
      * Construtor por omissão do contribuiente individual.
@@ -18,7 +18,7 @@ public class ContribuinteIndividual extends Contribuinte implements Serializable
     public ContribuinteIndividual(){
         super();
         this.numDependentes = 0;
-        this.faturas = new HashMap<>();
+        this.idFaturas = new HashSet<Integer>();
     }
 
     /**
@@ -27,7 +27,7 @@ public class ContribuinteIndividual extends Contribuinte implements Serializable
     public ContribuinteIndividual(int nif, String nome, String email, String morada, String password, int numDep){
         super(nif, nome, email, morada, password);
         this.numDependentes = numDependentes;
-        this.faturas = new HashMap<>();
+        this.idFaturas = new HashSet<Integer>();
     }
 
     /**
@@ -36,7 +36,7 @@ public class ContribuinteIndividual extends Contribuinte implements Serializable
     public ContribuinteIndividual(ContribuinteIndividual c){
         super(c);
         this.numDependentes = c.getNumDependentes();
-        this.faturas = new HashMap<>(); // clone
+        this.idFaturas = new HashSet<Integer>(); // clone
     }
 
     /**
@@ -56,7 +56,7 @@ public class ContribuinteIndividual extends Contribuinte implements Serializable
     }
 
     public void adicionarFatura(Fatura f) {
-        this.faturas.put(f.getId(), f.clone());
+        this.idFaturas.add(f.getId());
     }
 
     /**
