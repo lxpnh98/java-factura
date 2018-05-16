@@ -187,8 +187,8 @@ public class Plataforma implements Serializable {
         }
     }
 
-    public ArrayList<Fatura> getFaturasPorValorContribuinte(int nif, String password) throws FailureOnLoginException, 
-                                                                                PermissionDeniedException {
+    public ArrayList<Fatura> getFaturasPorValorContribuinte(int nif, String password) throws FailureOnLoginException,
+                                                                                             PermissionDeniedException {
         Contribuinte c;
         try {
             c = this.login(nif, password);
@@ -197,6 +197,22 @@ public class Plataforma implements Serializable {
         }
         if (c instanceof Empresa){
             ArrayList<Fatura> faturas = new ArrayList<>(((Empresa)this.contribuintes.get(c.getNIF())).faturasPorValorContribuinte());
+            return faturas;
+        } else {
+            throw new PermissionDeniedException("Não é Empresa");
+        }
+    }
+
+    public ArrayList<Fatura> getFaturasPorDataContribuinte(int nif, String password, Date begin, Date end) throws FailureOnLoginException,
+                                                                                                                  PermissionDeniedException {
+        Contribuinte c; 
+        try {
+            c = this.login(nif, password);
+        } catch (FailureOnLoginException e) {
+            throw e;
+        }
+        if (c instanceof Empresa){
+            ArrayList<Fatura> faturas = new ArrayList<>(((Empresa)this.contribuintes.get(c.getNIF())).faturasPorDataContribuinte(begin, end));
             return faturas;
         } else {
             throw new PermissionDeniedException("Não é Empresa");

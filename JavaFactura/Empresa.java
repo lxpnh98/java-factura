@@ -191,4 +191,33 @@ public class Empresa extends Contribuinte implements Serializable
         }
         return faturas;
     }
+
+    public ArrayList<Fatura> faturasPorDataContribuinte(Date begin, Date end){
+        int size, nif;
+        ArrayList<Fatura> aux = new ArrayList<Fatura>(faturasPorData());
+        ArrayList<Fatura> faturas = new ArrayList<Fatura>();
+
+        for (int i = 0; i < aux.size(); i++){
+            if ((aux.get(i).getData().before(begin)) || (aux.get(i).getData().after(end))){
+                aux.remove(i);
+                i--;
+            }
+        }
+
+        while(!(aux.isEmpty())){
+            nif = aux.get(0).getNifCliente();
+            faturas.add(aux.get(0));
+            aux.remove(0);
+            size = aux.size();
+            for (int i = 0; i < size; i++){
+                if (aux.get(i).getNifCliente() == nif){
+                    faturas.add(aux.get(i));
+                    aux.remove(i);
+                    size--;
+                    i--;
+                }
+            }
+        }
+        return faturas;
+    }
 }

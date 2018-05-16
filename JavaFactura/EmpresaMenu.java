@@ -119,8 +119,46 @@ public class EmpresaMenu extends EstadoMenu {
         return this;
     }
 
+    private EstadoMenu listarFaturasPorDataContribuinte(){
+        Calendar data1 = Calendar.getInstance();
+        Calendar data2 = Calendar.getInstance();
+
+        System.out.print("Dia da data inicial:");
+        int dia1 = this.scanner.nextInt();
+        System.out.print("Mês da data inicial:");
+        int mes1 = this.scanner.nextInt();
+        System.out.print("Ano da data inicial:");
+        int ano1 = this.scanner.nextInt();
+
+        data1.set(ano1, (mes1 - 1), dia1, 0, 0, 0);
+        Date begin = data1.getTime();
+        System.out.print("Data inicial: " + begin + "\n\n");
+
+        System.out.print("Dia da data final:");
+        int dia2 = this.scanner.nextInt();
+        System.out.print("Mês da data final:");
+        int mes2 = this.scanner.nextInt();
+        System.out.print("Ano da data final:");
+        int ano2 = this.scanner.nextInt();
+
+        data2.set(ano2, (mes2 - 1), dia2, 0, 0, 0);
+        Date end = data2.getTime();
+        System.out.print("Data final: " + end + "\n\n");
+
+        try {
+            for(Fatura f : this.plataforma.getFaturasPorDataContribuinte(this.nif, this.password, begin, end)) {
+                System.out.println(f.toString());
+            }
+        } catch (FailureOnLoginException e){
+            System.out.println("Informação de login incorreta.");
+        } catch (PermissionDeniedException e){
+            System.out.println("Sem permissão.");
+        }
+        return this;
+    }
+
     public EstadoMenu interact() {
-        System.out.println("(1) - Criar fatura\n(2) - Logout\n(3) - Listar faturas por valor\n(4) - Listar faturas por data\n(5) - Calcular total acumulado da empresa\n(6) - Listar faturas por contribuinte e valor");
+        System.out.println("(1) - Criar fatura\n(2) - Logout\n(3) - Listar faturas por valor\n(4) - Listar faturas por data\n(5) - Calcular total acumulado da empresa\n(6) - Listar faturas por contribuinte e valor\n(7) - Listar faturas por contribuinte e data");
         int decisao = this.scanner.nextInt();
         switch (decisao) {
             case 1:
@@ -135,6 +173,8 @@ public class EmpresaMenu extends EstadoMenu {
                 return this.criarTotalAcumulado();
             case 6:
                 return this.listarFaturasPorValorContribuinte();
+            case 7: 
+                return this.listarFaturasPorDataContribuinte();
             }
         return this;
     }
