@@ -1,26 +1,26 @@
+import java.util.Set;
+import java.io.Serializable;
+
 /**
  * class AtividadeEconomica - Classe que representa uma atividade economica.
  *
  * @author Alexandre Pinho (a82441); Joel Gama (a82202); Tiago Pinheiro (a82491).
  */
-public class AtividadeEconomica {
+public class AtividadeEconomica implements Serializable {
     private String nome;
-    private double coeficiente;
 
     /**
      * Construtor por omissão de AtividadeEconomica.
      */
     public AtividadeEconomica(){
         this.nome = "";
-        this.coeficiente = 0.0;
     }
 
     /**
      * Construtor parametrizado de AtividadeEconomica.
      */
-    public AtividadeEconomica(String nome, double coef){
+    public AtividadeEconomica(String nome){
         this.nome = nome;
-        this.coeficiente = coef;
     }
 
     /**
@@ -28,7 +28,6 @@ public class AtividadeEconomica {
      */
     public AtividadeEconomica(AtividadeEconomica a){
         this.nome = a.getNome();
-        this.coeficiente = a.getCoeficiente();
     }
 
     /**
@@ -39,8 +38,8 @@ public class AtividadeEconomica {
         return this.nome;
     }
 
-    public double getCoeficiente() {
-        return this.coeficiente;
+    public Double calcularDeducao(Double valor, Set propriedades) {
+        return 0.0;
     }
 
     /**
@@ -48,7 +47,7 @@ public class AtividadeEconomica {
      * @return String com as informações da AtividadeEconomica.
      */
     public String toString(){
-        return "A atividade econômica é: " + this.nome;
+        return this.nome;
     }
 
     /**

@@ -29,7 +29,7 @@ public class Fatura implements Serializable
         this.data = new Date();
         this.nifCliente = 0;
         this.descrição = "";
-        this.atividadeEconomica = new AtividadeEconomica().getNome();
+        this.atividadeEconomica = "";
         this.valor = 0;
     }
 

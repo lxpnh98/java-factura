@@ -1,5 +1,6 @@
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Collection;
 import java.io.*;
 
 /**
@@ -57,6 +58,10 @@ public class ContribuinteIndividual extends Contribuinte implements Serializable
 
     public void adicionarFatura(Fatura f) {
         this.faturas.put(f.getId(), f.clone());
+    }
+
+    public Collection<Fatura> getFaturas() {
+        return this.faturas.values();
     }
 
     /**

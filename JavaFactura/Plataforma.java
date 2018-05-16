@@ -1,8 +1,8 @@
 import java.util.Map;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -53,6 +53,7 @@ public class Plataforma implements Serializable {
         contribuintes = new HashMap<Integer,Contribuinte>();
         faturas = new HashMap<Integer,Fatura>();
         atividadesEconomicas = new HashMap<String,AtividadeEconomica>();
+        this.atividadesEconomicas.put("", new AtividadeEconomica());
     }
 
     public void adicionarContribuinte(Contribuinte c) {
@@ -166,6 +167,24 @@ public class Plataforma implements Serializable {
             return faturas;
         } else {
             throw new PermissionDeniedException("Não é Empresa");
+        }
+    }
+
+    public double calcularDeducaoTotal(int nif, String password) throws FailureOnLoginException,
+                                                                        PermissionDeniedException {
+        Contribuinte c;
+        try {
+            c = this.login(nif, password);
+        } catch (FailureOnLoginException e) {
+            throw e;
+        }
+        if (c instanceof ContribuinteIndividual){
+            return ((ContribuinteIndividual)this.contribuintes.get(nif)).getFaturas().stream()
+                .mapToDouble(f -> this.atividadesEconomicas.get(f.getAtividade()).calcularDeducao(f.getValor(), new HashSet()))
+                    .sum();
+            
+        } else {
+            throw new PermissionDeniedException("Não é contribuinte individual");
         }
     }
 
