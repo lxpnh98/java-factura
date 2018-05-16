@@ -4,6 +4,7 @@ import java.util.stream.Collectors;
 import java.util.ArrayList;
 import java.util.*;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * class Empresa - Classe que representa um contribuinte coletivo.
@@ -142,14 +143,81 @@ public class Empresa extends Contribuinte implements Serializable
     public ArrayList<Fatura> faturasPorData(){
         ArrayList<Fatura> listaPorData = new ArrayList<>();
 
-        Iterator ittwo = this.faturasPorData.entrySet().iterator();
+        Iterator ittwo = this.faturasPorData.keySet().iterator();
         while (ittwo.hasNext()) {
-            Map.Entry pairs = (Map.Entry)ittwo.next();
-            for (Fatura f : this.faturasPorData.get(pairs.getKey())) {
+            for (Fatura f : this.faturasPorData.get(ittwo.next())) {
                 listaPorData.add(f.clone());
             }
             // ittwo.remove();
         }
         return listaPorData;
+    }
+
+    public double totalFaturado(Date begin, Date end){
+        double totalAcumulado = 0;
+
+            Iterator ittwo = this.faturasPorData.entrySet().iterator();
+            while (ittwo.hasNext()) {
+                Map.Entry pairs = (Map.Entry)ittwo.next();
+                if (((Date)pairs.getKey()).after(begin)) {
+                    if (((Date)pairs.getKey()).before(end)) {
+                        for (Fatura f : this.faturasPorData.get(pairs.getKey())) {
+                            totalAcumulado += f.getValor();
+                        }
+                    }
+                }
+            }
+        return totalAcumulado;
+    }
+
+    public ArrayList<Fatura> faturasPorValorContribuinte(){
+        int size, nif;
+        ArrayList<Fatura> aux = new ArrayList<Fatura>(faturasPorValor());
+        ArrayList<Fatura> faturas = new ArrayList<Fatura>();
+
+        while(!(aux.isEmpty())){
+            nif = aux.get(0).getNifCliente();
+            faturas.add(aux.get(0));
+            aux.remove(0);
+            size = aux.size();
+            for (int i = 0; i < size; i++){
+                if (aux.get(i).getNifCliente() == nif){
+                    faturas.add(aux.get(i));
+                    aux.remove(i);
+                    size--;
+                    i--;
+                }
+            }
+        }
+        return faturas;
+    }
+
+    public ArrayList<Fatura> faturasPorDataContribuinte(Date begin, Date end){
+        int size, nif;
+        ArrayList<Fatura> aux = new ArrayList<Fatura>(faturasPorData());
+        ArrayList<Fatura> faturas = new ArrayList<Fatura>();
+
+        for (int i = 0; i < aux.size(); i++){
+            if ((aux.get(i).getData().before(begin)) || (aux.get(i).getData().after(end))){
+                aux.remove(i);
+                i--;
+            }
+        }
+
+        while(!(aux.isEmpty())){
+            nif = aux.get(0).getNifCliente();
+            faturas.add(aux.get(0));
+            aux.remove(0);
+            size = aux.size();
+            for (int i = 0; i < size; i++){
+                if (aux.get(i).getNifCliente() == nif){
+                    faturas.add(aux.get(i));
+                    aux.remove(i);
+                    size--;
+                    i--;
+                }
+            }
+        }
+        return faturas;
     }
 }

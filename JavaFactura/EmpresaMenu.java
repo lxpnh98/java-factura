@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.Iterator;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.ArrayList;
 
@@ -43,6 +44,42 @@ public class EmpresaMenu extends EstadoMenu {
         return this;
     }
 
+    private EstadoMenu criarTotalAcumulado(){
+        Calendar data1 = Calendar.getInstance();
+        Calendar data2 = Calendar.getInstance();
+
+        System.out.print("Dia da data inicial:");
+        int dia1 = this.scanner.nextInt();
+        System.out.print("Mês da data inicial:");
+        int mes1 = this.scanner.nextInt();
+        System.out.print("Ano da data inicial:");
+        int ano1 = this.scanner.nextInt();
+
+        data1.set(ano1, (mes1 - 1), dia1, 0, 0, 0);
+        Date begin = data1.getTime();
+        System.out.print("Data inicial: " + begin + "\n\n");
+
+        System.out.print("Dia da data final:");
+        int dia2 = this.scanner.nextInt();
+        System.out.print("Mês da data final:");
+        int mes2 = this.scanner.nextInt();
+        System.out.print("Ano da data final:");
+        int ano2 = this.scanner.nextInt();
+
+        data2.set(ano2, (mes2 - 1), dia2, 0, 0, 0);
+        Date end = data2.getTime();
+        System.out.print("Data final: " + end + "\n\n");
+
+        try {
+            System.out.println("Total acumulado: " + this.plataforma.getTotalFaturado(this.nif, this.password, begin, end));
+        } catch (FailureOnLoginException e){
+            System.out.println("Informação de login incorreta.");
+        } catch (PermissionDeniedException e){
+            System.out.println("Sem permissão.");
+        }
+        return this;
+    }
+
     public EstadoMenu listarFaturasPorValor(){
         try {
             for(Fatura f : this.plataforma.getFaturasPorValor(this.nif, this.password)){
@@ -69,18 +106,75 @@ public class EmpresaMenu extends EstadoMenu {
         return this;
     }
 
+    public EstadoMenu listarFaturasPorValorContribuinte(){
+        try {
+            for(Fatura f : this.plataforma.getFaturasPorValorContribuinte(this.nif, this.password)){
+                System.out.println(f.toString());
+            }
+        } catch (FailureOnLoginException e){
+            System.out.println("Informação de login incorreta.");
+        } catch (PermissionDeniedException e){
+            System.out.println("Sem permissão.");
+        }
+        return this;
+    }
+
+    private EstadoMenu listarFaturasPorDataContribuinte(){
+        Calendar data1 = Calendar.getInstance();
+        Calendar data2 = Calendar.getInstance();
+
+        System.out.print("Dia da data inicial:");
+        int dia1 = this.scanner.nextInt();
+        System.out.print("Mês da data inicial:");
+        int mes1 = this.scanner.nextInt();
+        System.out.print("Ano da data inicial:");
+        int ano1 = this.scanner.nextInt();
+
+        data1.set(ano1, (mes1 - 1), dia1, 0, 0, 0);
+        Date begin = data1.getTime();
+        System.out.print("Data inicial: " + begin + "\n\n");
+
+        System.out.print("Dia da data final:");
+        int dia2 = this.scanner.nextInt();
+        System.out.print("Mês da data final:");
+        int mes2 = this.scanner.nextInt();
+        System.out.print("Ano da data final:");
+        int ano2 = this.scanner.nextInt();
+
+        data2.set(ano2, (mes2 - 1), dia2, 0, 0, 0);
+        Date end = data2.getTime();
+        System.out.print("Data final: " + end + "\n\n");
+
+        try {
+            for(Fatura f : this.plataforma.getFaturasPorDataContribuinte(this.nif, this.password, begin, end)) {
+                System.out.println(f.toString());
+            }
+        } catch (FailureOnLoginException e){
+            System.out.println("Informação de login incorreta.");
+        } catch (PermissionDeniedException e){
+            System.out.println("Sem permissão.");
+        }
+        return this;
+    }
+
     public EstadoMenu interact() {
-        System.out.println("(1) - Criar fatura\n(2) - Listar faturas por valor\n(3) - Listar faturas por data\n(4) - Logout");
+        System.out.println("(1) - Criar fatura\n(2) - Logout\n(3) - Listar faturas por valor\n(4) - Listar faturas por data\n(5) - Calcular total acumulado da empresa\n(6) - Listar faturas por contribuinte e valor\n(7) - Listar faturas por contribuinte e data");
         int decisao = this.scanner.nextInt();
         switch (decisao) {
             case 1:
                 return this.criarFatura();
             case 2:
-                return this.listarFaturasPorValor();
-            case 3:
-                return this.listarFaturasPorData();
-            case 4:
                 return new MainMenu(this.scanner, this.plataforma);
+            case 3:
+                return this.listarFaturasPorValor();
+            case 4:
+                return this.listarFaturasPorData();
+            case 5:
+                return this.criarTotalAcumulado();
+            case 6:
+                return this.listarFaturasPorValorContribuinte();
+            case 7: 
+                return this.listarFaturasPorDataContribuinte();
             }
         return this;
     }
