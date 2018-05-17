@@ -22,8 +22,22 @@ public class IndividuoMenu extends EstadoMenu
                 int decisao = this.scanner.nextInt();
                 switch (decisao) {
                     case 1:
-                        System.out.print("> ");
-                        f.setAtividade(this.scanner.next()); // TODO: falta registar todas as alteracoes
+                        System.out.print("(1) - Habitacao\n(2) - Educacao\n(3) - Saude\n(4) - DespesasGerais\n");
+                        decisao = this.scanner.nextInt();
+                        switch (decisao) {
+                            case 1:
+                                f.setAtividade("Habitacao"); // TODO: falta registar todas as alteracoes
+                                break;
+                            case 2:
+                                f.setAtividade("Educacao"); // TODO: falta registar todas as alteracoes
+                                break;
+                            case 3:
+                                f.setAtividade("Saude"); // TODO: falta registar todas as alteracoes
+                                break;
+                            case 4:
+                                f.setAtividade("DespesasGerais"); // TODO: falta registar todas as alteracoes
+                                break;
+                        }
                         this.plataforma.setFatura(id, f, this.nif, this.password);
                         break;
                     case 2:
@@ -36,10 +50,23 @@ public class IndividuoMenu extends EstadoMenu
                     case 1:
                         break;
                     case 2:
-                        System.out.print("> ");
-                        f.setAtividade(this.scanner.next());
+                        System.out.print("(1) - Habitacao\n(2) - Educacao\n(3) - Saude\n(4) - DespesasGerais\n");
+                        decisao = this.scanner.nextInt();
+                        switch (decisao) {
+                            case 1:
+                                f.setAtividade("Habitacao"); // TODO: falta registar todas as alteracoes
+                                break;
+                            case 2:
+                                f.setAtividade("Educacao"); // TODO: falta registar todas as alteracoes
+                                break;
+                            case 3:
+                                f.setAtividade("Saude"); // TODO: falta registar todas as alteracoes
+                                break;
+                            case 4:
+                                f.setAtividade("DespesasGerais"); // TODO: falta registar todas as alteracoes
+                                break;
+                        }
                         this.plataforma.setFatura(id, f, this.nif, this.password);
-                        break;
                 }
             }
         } catch (NonExistentBillException e) {

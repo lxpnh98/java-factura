@@ -1,3 +1,5 @@
+import java.util.Set;
+
 /**
  * classe Educacao
  *
@@ -15,7 +17,7 @@ public class Educacao extends AtividadeEconomica {
      * Construtor parametrizado de Educacao.
      */
     public Educacao(String nome) {
-        super(nome);
+        super("Educacao");
     }
 
     /**
@@ -41,7 +43,7 @@ public class Educacao extends AtividadeEconomica {
      * @return String com as informações da Educacao.
      */
     public String toString(){
-        return this.nome;
+        return super.toString();
     }
 
     /**
@@ -52,7 +54,7 @@ public class Educacao extends AtividadeEconomica {
         if (o == this) return true;
         if ((o == null) || (o.getClass()!= this.getClass())) return false;
         Educacao p = (Educacao) o;
-        return (this.nome == p.getNome());
+        return super.equals(o);
     }
 
     /**

@@ -1,3 +1,5 @@
+import java.util.Set;
+
 /**
  * classe Saude
  * 
@@ -15,7 +17,7 @@ public class Saude extends AtividadeEconomica {
      * Construtor parametrizado de Saude.
      */
     public Saude(String nome) {
-        super(nome);
+        super("Saude");
     }
 
     /**
@@ -41,7 +43,7 @@ public class Saude extends AtividadeEconomica {
      * @return String com as informações da Saude.
      */
     public String toString(){
-        return this.nome;
+        return super.toString();
     }
 
     /**
@@ -52,7 +54,7 @@ public class Saude extends AtividadeEconomica {
         if (o == this) return true;
         if ((o == null) || (o.getClass()!= this.getClass())) return false;
         Saude p = (Saude) o;
-        return (this.nome == p.getNome());
+        return super.equals(o);
     }
 
     /**

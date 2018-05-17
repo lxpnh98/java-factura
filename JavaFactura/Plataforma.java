@@ -12,6 +12,7 @@ import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.Date;
 
+
 class FailureOnLoginException extends Exception {
     FailureOnLoginException(String s) {
         super(s);
@@ -55,6 +56,10 @@ public class Plataforma implements Serializable {
         faturas = new HashMap<Integer,Fatura>();
         atividadesEconomicas = new HashMap<String,AtividadeEconomica>();
         this.atividadesEconomicas.put("", new AtividadeEconomica());
+        this.atividadesEconomicas.put("Habitacao", new AtividadeEconomica("Habitacao"));
+        this.atividadesEconomicas.put("Educacao", new AtividadeEconomica("Educacao"));
+        this.atividadesEconomicas.put("Saude", new AtividadeEconomica("Saude"));
+        this.atividadesEconomicas.put("DespesasGerais", new AtividadeEconomica("DespesasGerais"));
     }
 
     public void adicionarContribuinte(Contribuinte c) {
@@ -179,11 +184,12 @@ public class Plataforma implements Serializable {
         } catch (FailureOnLoginException e) {
             throw e;
         }
-        if (c instanceof ContribuinteIndividual){
+        if (c instanceof ContribuinteIndividual) {
             return ((ContribuinteIndividual)this.contribuintes.get(nif)).getFaturas().stream()
-                .map(i -> this.faturas.get(i))
-                .mapToDouble(f -> this.atividadesEconomicas.get(f.getAtividade()).calcularDeducao(f.getValor(), new HashSet()))
+               .map(i -> this.faturas.get(i))
+               .mapToDouble(f -> this.atividadesEconomicas.get(f.getAtividade()).calcularDeducao(f.getValor(), new HashSet()))
                     .sum();
+            
 
         } else {
             throw new PermissionDeniedException("Não é contribuinte individual");

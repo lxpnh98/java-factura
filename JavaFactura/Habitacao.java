@@ -1,3 +1,5 @@
+import java.util.Set;
+
 /**
  * classe Habitacao
  *
@@ -15,7 +17,7 @@ public class Habitacao extends AtividadeEconomica {
      * Construtor parametrizado de Habitacao.
      */
     public Habitacao(String nome) {
-        super(nome);
+        super("Habitacao");
     }
 
     /**
@@ -41,7 +43,7 @@ public class Habitacao extends AtividadeEconomica {
      * @return String com as informações da Habitacao.
      */
     public String toString(){
-        return this.nome;
+        return super.toString();
     }
 
     /**
@@ -52,7 +54,7 @@ public class Habitacao extends AtividadeEconomica {
         if (o == this) return true;
         if ((o == null) || (o.getClass()!= this.getClass())) return false;
         Habitacao p = (Habitacao) o;
-        return (this.nome == p.getNome());
+        return super.equals(o);
     }
 
     /**

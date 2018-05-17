@@ -1,3 +1,5 @@
+import java.util.Set;
+
 /**
  * classe DespesasGerais
  *
@@ -15,7 +17,7 @@ public class DespesasGerais extends AtividadeEconomica {
      * Construtor parametrizado de DespesasGerais.
      */
     public DespesasGerais(String nome) {
-        super(nome);
+        super("DespesasGerais");
     }
 
     /**
@@ -41,7 +43,7 @@ public class DespesasGerais extends AtividadeEconomica {
      * @return String com as informações da DespesasGerais.
      */
     public String toString(){
-        return this.nome;
+        return super.toString();
     }
 
     /**
@@ -52,7 +54,7 @@ public class DespesasGerais extends AtividadeEconomica {
         if (o == this) return true;
         if ((o == null) || (o.getClass()!= this.getClass())) return false;
         DespesasGerais p = (DespesasGerais) o;
-        return (this.nome == p.getNome());
+        return super.equals(o);
     }
 
     /**

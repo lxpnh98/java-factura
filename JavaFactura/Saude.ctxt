@@ -1,4 +1,25 @@
 #BlueJ class context
 comment0.target=Saude
 comment0.text=\r\n\ classe\ Saude\r\n\ \r\n\ @author\ Alexandre\ Pinho\ (a82441);\ Joel\ Gama\ (a82202);\ Tiago\ Pinheiro\ (a82491).\r\n
-numComments=1
+comment1.params=
+comment1.target=Saude()
+comment1.text=\r\n\ Construtor\ por\ omiss\u00E3o\ de\ Saude.\r\n
+comment2.params=nome
+comment2.target=Saude(java.lang.String)
+comment2.text=\r\n\ Construtor\ parametrizado\ de\ Saude.\r\n
+comment3.params=s
+comment3.target=Saude(Saude)
+comment3.text=\r\n\ Construtor\ de\ c\u00F3pia\ de\ Saude.\r\n
+comment4.params=valor\ propriedades
+comment4.target=java.lang.Double\ calcularDeducao(java.lang.Double,\ java.util.Set)
+comment4.text=\r\n\ M\u00E9todo\ que\ devolve\ o\ valor\ a\ deduzir.\r\n\ @param\ Double\ valor\r\n\ @param\ Set\ propriedades\r\n\ @return\ Double\ com\ o\ valor\ da\ dedu\u00E7\u00E3o.\r\n
+comment5.params=
+comment5.target=java.lang.String\ toString()
+comment5.text=\r\n\ M\u00E9todo\ que\ devolve\ a\ representa\u00E7\u00E3o\ em\ string\ da\ Saude.\r\n\ @return\ String\ com\ as\ informa\u00E7\u00F5es\ da\ Saude.\r\n
+comment6.params=o
+comment6.target=boolean\ equals(java.lang.Object)
+comment6.text=\r\n\ M\u00E9todo\ que\ verifica\ se\ dois\ objetos\ s\u00E3o\ iguais,\ isto\ \u00E9,\ se\ s\u00E3o\ da\ mesma\ classe\ e\ se\ t\u00EAm\ os\ mesmos\ valores.\r\n\ @return\ Valor\ boleano\ da\ compara\u00E7\u00E3o.\r\n
+comment7.params=
+comment7.target=Saude\ clone()
+comment7.text=\r\n\ Metodo\ que\ faz\ o\ clone\ de\ uma\ atividade\ economica\r\n
+numComments=8
