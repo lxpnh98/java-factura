@@ -10,21 +10,7 @@ public class Habitacao extends AtividadeEconomica {
      * Construtor por omissão de Habitacao.
      */
     public Habitacao() {
-        super();
-    }
-
-    /**
-     * Construtor parametrizado de Habitacao.
-     */
-    public Habitacao(String nome) {
         super("Habitacao");
-    }
-
-    /**
-     * Construtor de cópia de Habitacao.
-     */
-    public Habitacao(Habitacao h) {
-        super(h);
     }
 
     /**
@@ -34,16 +20,7 @@ public class Habitacao extends AtividadeEconomica {
      * @return Double com o valor da dedução.
      */
     public Double calcularDeducao(Double valor, Set propriedades) {
-        Double res = valor * 0.1;
-        return res;
-    }
-
-    /**
-     * Método que devolve a representação em string da Habitacao.
-     * @return String com as informações da Habitacao.
-     */
-    public String toString(){
-        return super.toString();
+        return valor * 0.1;
     }
 
     /**
@@ -54,13 +31,6 @@ public class Habitacao extends AtividadeEconomica {
         if (o == this) return true;
         if ((o == null) || (o.getClass()!= this.getClass())) return false;
         Habitacao p = (Habitacao) o;
-        return super.equals(o);
-    }
-
-    /**
-     * Metodo que faz o clone de uma atividade economica
-     */
-    public Habitacao clone() {
-        return new Habitacao(this);
+        return super.equals(p);
     }
 }

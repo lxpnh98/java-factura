@@ -10,21 +10,7 @@ public class Saude extends AtividadeEconomica {
      * Construtor por omissão de Saude.
      */
     public Saude() {
-        super();
-    }
-
-    /**
-     * Construtor parametrizado de Saude.
-     */
-    public Saude(String nome) {
         super("Saude");
-    }
-
-    /**
-     * Construtor de cópia de Saude.
-     */
-    public Saude(Saude s) {
-        super(s);
     }
 
     /**
@@ -34,16 +20,7 @@ public class Saude extends AtividadeEconomica {
      * @return Double com o valor da dedução.
      */
     public Double calcularDeducao(Double valor, Set propriedades) {
-        Double res = valor * 0.4;
-        return res;
-    }
-
-    /**
-     * Método que devolve a representação em string da Saude.
-     * @return String com as informações da Saude.
-     */
-    public String toString(){
-        return super.toString();
+        return valor * 0.4;
     }
 
     /**
@@ -54,13 +31,6 @@ public class Saude extends AtividadeEconomica {
         if (o == this) return true;
         if ((o == null) || (o.getClass()!= this.getClass())) return false;
         Saude p = (Saude) o;
-        return super.equals(o);
-    }
-
-    /**
-     * Metodo que faz o clone de uma atividade economica
-     */
-    public Saude clone() {
-        return new Saude(this);
+        return super.equals(p);
     }
 }

@@ -3,6 +3,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Collection;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -56,10 +57,14 @@ public class Plataforma implements Serializable {
         faturas = new HashMap<Integer,Fatura>();
         atividadesEconomicas = new HashMap<String,AtividadeEconomica>();
         this.atividadesEconomicas.put("", new AtividadeEconomica());
-        this.atividadesEconomicas.put("Habitacao", new AtividadeEconomica("Habitacao"));
-        this.atividadesEconomicas.put("Educacao", new AtividadeEconomica("Educacao"));
-        this.atividadesEconomicas.put("Saude", new AtividadeEconomica("Saude"));
-        this.atividadesEconomicas.put("DespesasGerais", new AtividadeEconomica("DespesasGerais"));
+        Habitacao h = new Habitacao();
+        this.atividadesEconomicas.put(h.getNome(), h);
+        Educacao e = new Educacao();
+        this.atividadesEconomicas.put(e.getNome(), e);
+        Saude s = new Saude();
+        this.atividadesEconomicas.put(s.getNome(), s);
+        DespesasGerais d = new DespesasGerais();
+        this.atividadesEconomicas.put(d.getNome(), d);
     }
 
     public void adicionarContribuinte(Contribuinte c) {
@@ -178,19 +183,35 @@ public class Plataforma implements Serializable {
 
     public double calcularDeducaoTotal(int nif, String password) throws FailureOnLoginException,
                                                                         PermissionDeniedException {
+        Double sum = 0.0;
         Contribuinte c;
         try {
             c = this.login(nif, password);
         } catch (FailureOnLoginException e) {
             throw e;
         }
-        if (c instanceof ContribuinteIndividual) {
-            return ((ContribuinteIndividual)this.contribuintes.get(nif)).getFaturas().stream()
-               .map(i -> this.faturas.get(i))
-               .mapToDouble(f -> this.atividadesEconomicas.get(f.getAtividade()).calcularDeducao(f.getValor(), new HashSet()))
-                    .sum();
-            
-
+        if (c instanceof ContribuinteIndividual) {            
+            Collection<Integer> faturas = ((ContribuinteIndividual)this.contribuintes.get(nif)).getFaturas();
+            for (Integer i : faturas) {
+                Fatura f = this.faturas.get(i);
+                AtividadeEconomica a = this.atividadesEconomicas.get(f.getAtividade());
+                switch (a.getNome()) {
+                    case "Habitacao":
+                        a = new Habitacao();
+                        break;
+                    case "Saude":
+                        a = new Saude();
+                        break;
+                    case "Educacao":
+                        a = new Educacao();
+                        break;
+                    case "DespesasGerais":
+                        a = new DespesasGerais();
+                        break;
+                }
+                sum += a.calcularDeducao(f.getValor(), new HashSet());
+            }
+            return sum;
         } else {
             throw new PermissionDeniedException("Não é contribuinte individual");
         }

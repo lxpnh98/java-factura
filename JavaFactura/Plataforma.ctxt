@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Plataforma
-comment0.text=\r\n\ class\ Plataforma\r\n\r\n\ @author\ Alexandre\ Pinho\ (a82441);\ Joel\ Gama\ (a82202);\ Tiago\ Pinheiro\ (a82491).\r\n
+comment0.text=\n\ class\ Plataforma\n\n\ @author\ Alexandre\ Pinho\ (a82441);\ Joel\ Gama\ (a82202);\ Tiago\ Pinheiro\ (a82491).\n
 comment1.params=s
 comment1.target=FailureOnLoginException(java.lang.String)
 comment10.params=nif\ password
@@ -17,13 +17,13 @@ comment15.params=nif\ password\ begin\ end
 comment15.target=java.util.ArrayList\ getFaturasPorDataContribuinte(int,\ java.lang.String,\ java.util.Date,\ java.util.Date)
 comment16.params=nomeFicheiro
 comment16.target=void\ guardaEstado(java.lang.String)
-comment16.text=\r\n\ M\u00E9todo\ que\ guarda\ num\ ficheiro\ de\ objetos\ o\ estado\ atual\ da\ aplica\u00E7\u00E3o.\r\n\ @param\ String\ nomeFicheiro.\r\n
+comment16.text=\n\ M\u00E9todo\ que\ guarda\ num\ ficheiro\ de\ objetos\ o\ estado\ atual\ da\ aplica\u00E7\u00E3o.\n\ @param\ String\ nomeFicheiro.\n
 comment17.params=nomeFicheiro
 comment17.target=Plataforma\ carregarPlataforma(java.lang.String)
-comment17.text=\r\n\ M\u00E9todo\ que\ carrega\ um\ estado\ apartir\ de\ um\ ficheiro\ de\ objetos;\r\n\ @param\ String\ nomeFicheiro;\r\n\ @return\ Plataforma\ p.\r\n
+comment17.text=\n\ M\u00E9todo\ que\ carrega\ um\ estado\ apartir\ de\ um\ ficheiro\ de\ objetos;\n\ @param\ String\ nomeFicheiro;\n\ @return\ Plataforma\ p.\n
 comment2.params=
 comment2.target=Plataforma()
-comment2.text=\r\n\ Constructor\ for\ objects\ of\ class\ Plataforma\r\n
+comment2.text=\n\ Constructor\ for\ objects\ of\ class\ Plataforma\n
 comment3.params=c
 comment3.target=void\ adicionarContribuinte(Contribuinte)
 comment4.params=f\ nif\ password

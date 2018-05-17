@@ -10,21 +10,7 @@ public class DespesasGerais extends AtividadeEconomica {
      * Construtor por omissão de DespesasGerais.
      */
     public DespesasGerais() {
-        super();
-    }
-
-    /**
-     * Construtor parametrizado de DespesasGerais.
-     */
-    public DespesasGerais(String nome) {
         super("DespesasGerais");
-    }
-
-    /**
-     * Construtor de cópia de DespesasGerais.
-     */
-    public DespesasGerais(DespesasGerais d) {
-        super(d);
     }
 
     /**
@@ -34,16 +20,7 @@ public class DespesasGerais extends AtividadeEconomica {
      * @return Double com o valor da dedução.
      */
     public Double calcularDeducao(Double valor, Set propriedades) {
-        Double res = valor * 0.3;
-        return res;
-    }
-
-    /**
-     * Método que devolve a representação em string da DespesasGerais.
-     * @return String com as informações da DespesasGerais.
-     */
-    public String toString(){
-        return super.toString();
+        return valor * 0.3;
     }
 
     /**
@@ -55,12 +32,5 @@ public class DespesasGerais extends AtividadeEconomica {
         if ((o == null) || (o.getClass()!= this.getClass())) return false;
         DespesasGerais p = (DespesasGerais) o;
         return super.equals(o);
-    }
-
-    /**
-     * Metodo que faz o clone de uma atividade economica
-     */
-    public DespesasGerais clone() {
-        return new DespesasGerais(this);
     }
 }

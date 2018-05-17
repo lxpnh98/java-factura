@@ -10,21 +10,7 @@ public class Educacao extends AtividadeEconomica {
      * Construtor por omissão de Educacao.
      */
     public Educacao() {
-        super();
-    }
-
-    /**
-     * Construtor parametrizado de Educacao.
-     */
-    public Educacao(String nome) {
         super("Educacao");
-    }
-
-    /**
-     * Construtor de cópia de Educacao.
-     */
-    public Educacao(Educacao e) {
-        super(e);
     }
 
     /**
@@ -34,16 +20,7 @@ public class Educacao extends AtividadeEconomica {
      * @return Double com o valor da dedução.
      */
     public Double calcularDeducao(Double valor, Set propriedades) {
-        Double res = valor * 0.2;
-        return res;
-    }
-
-    /**
-     * Método que devolve a representação em string da Educacao.
-     * @return String com as informações da Educacao.
-     */
-    public String toString(){
-        return super.toString();
+        return valor * 0.2;
     }
 
     /**
@@ -52,15 +29,8 @@ public class Educacao extends AtividadeEconomica {
     */
     public boolean equals(Object o){
         if (o == this) return true;
-        if ((o == null) || (o.getClass()!= this.getClass())) return false;
+        if ((o == null) || (o.getClass() != this.getClass())) return false;
         Educacao p = (Educacao) o;
-        return super.equals(o);
-    }
-
-    /**
-     * Metodo que faz o clone de uma atividade economica
-     */
-    public Educacao clone() {
-        return new Educacao(this);
+        return super.equals(p);
     }
 }
