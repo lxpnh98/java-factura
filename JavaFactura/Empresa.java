@@ -43,20 +43,37 @@ public class Empresa extends Contribuinte implements Serializable
         this.atividadesEconomicas = e.getAtividadesEconomicas();
     }
 
+    /**
+     * Devolde uma TreeMap.
+     * @return TreeMap.
+     */
     public TreeMap<Double,List<Fatura>> getMapFaturasPorValor(){
         TreeMap<Double,List<Fatura>> v = new TreeMap<>();
         return v;
     }
 
+    /**
+     * Devolde uma TreeMap.
+     * @return TreeMap.
+     */
     public TreeMap<Date,List<Fatura>> getMapFaturasPorData(){
         TreeMap<Date,List<Fatura>> d = new TreeMap<>();
         return d;
     }
 
+    /**
+     * Devolde um Set.
+     * @return Set.
+     */
     public Set<String> getAtividadesEconomicas() {
         return new HashSet<String>(this.atividadesEconomicas);
     }
 
+
+    /**
+     * Devolde uma String da atividade económica escolhida default.
+     * @return String.
+     */
     public String getDefaultAtividade() {
         if (this.atividadesEconomicas.size() == 1) {
             return this.atividadesEconomicas.iterator().next();
@@ -127,6 +144,10 @@ public class Empresa extends Contribuinte implements Serializable
         }
     }
 
+    /**
+     * Método que devolve um ArrayList das faturas ordenadas em função do seu valor.
+     * @return ArrayList.
+     */
     public ArrayList<Fatura> faturasPorValor(){
         ArrayList<Fatura> listaPorValor = new ArrayList<>();
 
@@ -135,11 +156,14 @@ public class Empresa extends Contribuinte implements Serializable
             for (Fatura f : this.faturasPorValor.get(ittwo.next())) {
                 listaPorValor.add(f.clone());
             }
-            //ittwo.remove();
         }
         return listaPorValor;
     }
 
+    /**
+     * Método que devolve um ArrayList das faturas ordenadas em função da sua Data.
+     * @return ArrayList.
+     */
     public ArrayList<Fatura> faturasPorData(){
         ArrayList<Fatura> listaPorData = new ArrayList<>();
 
@@ -148,11 +172,16 @@ public class Empresa extends Contribuinte implements Serializable
             for (Fatura f : this.faturasPorData.get(ittwo.next())) {
                 listaPorData.add(f.clone());
             }
-            // ittwo.remove();
         }
         return listaPorData;
     }
 
+    /**
+     * Método que calcula o total faturado por uma empresa num dado intervalo de tempo.
+     * @param Date.
+     * @param Date.
+     * @return Double.
+     */
     public double totalFaturado(Date begin, Date end){
         double totalAcumulado = 0;
 
@@ -170,6 +199,10 @@ public class Empresa extends Contribuinte implements Serializable
         return totalAcumulado;
     }
 
+    /**
+     * Método que devolve um ArrayList das faturas ordenadas em função do nif do cliente e por Valor.
+     * @return ArrayList.
+     */
     public ArrayList<Fatura> faturasPorValorContribuinte(){
         int size, nif;
         ArrayList<Fatura> aux = new ArrayList<Fatura>(faturasPorValor());
@@ -192,6 +225,12 @@ public class Empresa extends Contribuinte implements Serializable
         return faturas;
     }
 
+    /**
+     * Método que devolve um ArrayList das faturas ordenadas em função da sua Data.
+     * @param Date.
+     * @param Date.
+     * @return ArrayList.
+     */
     public ArrayList<Fatura> faturasPorDataContribuinte(Date begin, Date end){
         int size, nif;
         ArrayList<Fatura> aux = new ArrayList<Fatura>(faturasPorData());

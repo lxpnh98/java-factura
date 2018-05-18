@@ -38,6 +38,10 @@ public class AtividadeEconomica implements Serializable {
         return this.nome;
     }
 
+    /**
+     * Calcula a dedução.
+     * @return Double.
+     */
     public Double calcularDeducao(Double valor, Set propriedades) {
         return 0.0;
     }

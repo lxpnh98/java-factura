@@ -58,10 +58,18 @@ public class ContribuinteIndividual extends Contribuinte implements Serializable
         this.numDependentes = numDep;
     }
 
+    /**
+     * Adiciona uma fatura à lista de faturas.
+     * @param Fatura.
+     */
     public void adicionarFatura(Fatura f) {
         this.idFaturas.add(f.getId());
     }
 
+    /**
+     * Devolde uma collection com as faturas.
+     * @return Collection.
+     */
     public Collection<Integer> getFaturas() {
         return this.idFaturas;
     }
