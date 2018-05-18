@@ -200,6 +200,25 @@ public class Empresa extends Contribuinte implements Serializable
     }
 
     /**
+     * Método que calcula o total faturado por uma empresa.
+     * @param Date.
+     * @param Date.
+     * @return Double.
+     */
+    public double totalFaturadoDesdeSempre(){
+        double totalAcumulado = 0;
+
+            Iterator ittwo = this.faturasPorData.entrySet().iterator();
+            while (ittwo.hasNext()) {
+                Map.Entry pairs = (Map.Entry)ittwo.next();
+                for (Fatura f : this.faturasPorData.get(pairs.getKey())) {
+                    totalAcumulado += f.getValor();
+                }
+            }
+        return totalAcumulado;
+    }
+
+    /**
      * Método que devolve um ArrayList das faturas ordenadas em função do nif do cliente e por Valor.
      * @return ArrayList.
      */

@@ -311,4 +311,20 @@ public class Plataforma implements Serializable {
             }
        }
     }
+
+    public ArrayList<Empresa> getEmpresasPorFaturacao(int nif, String password, int x) throws FailureOnLoginException, 
+                                                                                              PermissionDeniedException {
+        Contribuinte c;
+        try {
+            c = this.login(nif, password);
+        } catch (FailureOnLoginException e) {
+            throw e;
+        }
+        if (c instanceof Administrador){
+            ArrayList<Empresa> listaempresas = new ArrayList<>(((Administrador)this.contribuintes.get(c.getNIF())).empresasPorFaturacao(x));
+            return listaempresas;
+        } else {
+            throw new PermissionDeniedException("Não é Administrador");
+        }
+    }
 }

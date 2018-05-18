@@ -27,6 +27,8 @@ public class MainMenu extends EstadoMenu
                 return new IndividuoMenu(this.scanner, this.plataforma, nif, pw);
             } else if (c instanceof Empresa) {
                 return new EmpresaMenu(this.scanner, this.plataforma, nif, pw);
+            } else if (c instanceof Administrador) {
+                return new AdministradorMenu(this.scanner, this.plataforma, nif, pw);
             }
         } catch (FailureOnLoginException e) {
             System.out.println("NIF ou password incorretos.");

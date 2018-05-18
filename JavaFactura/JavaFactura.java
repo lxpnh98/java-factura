@@ -18,7 +18,6 @@ public class JavaFactura {
 
     public static void main(String[] args) {
         JavaFactura j = new JavaFactura();
-        while ((j.estado = j.estado.interact()) != null)
-            ;
+        while ((j.estado = j.estado.interact()) != null);
     }
 }
