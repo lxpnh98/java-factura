@@ -146,6 +146,9 @@ public class EmpresaMenu extends EstadoMenu {
         System.out.print("Data final: " + end + "\n\n");
 
         try {
+            if(this.plataforma.getFaturasPorDataContribuinte(this.nif, this.password, begin, end).isEmpty()) {
+                System.out.println("Não existem faturas entre as datas introduzidas.");
+            }
             for(Fatura f : this.plataforma.getFaturasPorDataContribuinte(this.nif, this.password, begin, end)) {
                 System.out.println(f.toString());
             }
