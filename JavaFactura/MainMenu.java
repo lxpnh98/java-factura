@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.HashSet;
+import java.util.ArrayList;
 import java.io.*;
 
 /**
@@ -49,10 +50,30 @@ public class MainMenu extends EstadoMenu
         String pw = this.scanner.next();
         switch (tipo) {
             case 1:
-                c = new ContribuinteIndividual(nif, "", "", "", pw, 0);
+                System.out.print("Nome: ");
+                String name = this.scanner.next();
+                System.out.print("Email: ");
+                String email = this.scanner.next();
+                System.out.print("Morada: ");
+                String address = this.scanner.next();
+                System.out.print("Número de dependentes no agregado familiar: ");
+                int numDep = this.scanner.nextInt();
+                ArrayList<Integer> nifsDep = new ArrayList<Integer>(numDep);
+                for(int i = 0; i < numDep; i++) {
+                    System.out.print("Nif de um dependente do agregado familiar: ");
+                    int nifDep = this.scanner.nextInt();
+                    nifsDep.add(nifDep);
+                }
+                c = new ContribuinteIndividual(nif, name, email, address, pw, numDep, nifsDep);
                 break;
             case 2:
-                c = new Empresa(nif, "", "", "", pw, new HashSet<String>());
+                System.out.print("Nome: ");
+                String nome = this.scanner.next();
+                System.out.print("Email: ");
+                String Email = this.scanner.next();
+                System.out.print("Morada: ");
+                String morada = this.scanner.next();
+                c = new Empresa(nif, nome, Email, morada, pw, new HashSet<String>());
                 break;
         }
         this.plataforma.adicionarContribuinte(c);

@@ -1,8 +1,8 @@
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Collection;
-import java.io.*;
 import java.util.HashSet;
+import java.util.ArrayList;
 import java.io.Serializable;
 
 /**
@@ -13,6 +13,7 @@ import java.io.Serializable;
 public class ContribuinteIndividual extends Contribuinte implements Serializable
 {
     private int numDependentes;
+    private ArrayList<Integer> nifsDependentes;
     private HashSet<Integer> idFaturas;
 
     /**
@@ -21,15 +22,17 @@ public class ContribuinteIndividual extends Contribuinte implements Serializable
     public ContribuinteIndividual(){
         super();
         this.numDependentes = 0;
+        this.nifsDependentes = new ArrayList<Integer>();
         this.idFaturas = new HashSet<Integer>();
     }
 
     /**
      * Construtor parametrizado do contribuiente individual.
      */
-    public ContribuinteIndividual(int nif, String nome, String email, String morada, String password, int numDep){
+    public ContribuinteIndividual(int nif, String nome, String email, String morada, String password, int numDep, ArrayList<Integer> nifsDep){
         super(nif, nome, email, morada, password);
-        this.numDependentes = numDependentes;
+        this.numDependentes = numDep;
+        this.setNifsDep(nifsDep);
         this.idFaturas = new HashSet<Integer>();
     }
 
@@ -39,6 +42,7 @@ public class ContribuinteIndividual extends Contribuinte implements Serializable
     public ContribuinteIndividual(ContribuinteIndividual c){
         super(c);
         this.numDependentes = c.getNumDependentes();
+        this.nifsDependentes = c.getNifsDep();
         this.idFaturas = new HashSet<Integer>(); // clone
     }
 
@@ -48,6 +52,19 @@ public class ContribuinteIndividual extends Contribuinte implements Serializable
      */
     public int getNumDependentes(){
         return this.numDependentes;
+    }
+
+    public ArrayList<Integer> getNifsDep() {
+       ArrayList<Integer> res = new ArrayList<>();
+       for(Integer n : nifsDependentes) {
+           res.add(n);
+       }
+       return res;
+    }
+
+    public void setNifsDep(ArrayList<Integer> nifsDep) {
+        this.nifsDependentes = new ArrayList<>(nifsDep.size());
+        nifsDependentes.forEach(n -> {this.nifsDependentes.add(n);});
     }
 
     /**
