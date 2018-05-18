@@ -15,7 +15,11 @@ comment4.target=java.lang.String\ getNome()
 comment4.text=\r\n\ Devolde\ a\ string\ do\ nome\ da\ AtividadeEconomica.\r\n\ @return\ Nome\ da\ AtividadeEconomica.\r\n
 comment5.params=valor\ propriedades
 comment5.target=java.lang.Double\ calcularDeducao(java.lang.Double,\ java.util.Set)
+<<<<<<< HEAD
 comment5.text=\r\n\ Calcula\ a\ dedu\u00E7\u00E3o.\r\n\ @return\ Double.\r\n
+=======
+comment5.text=\n\ Calcula\ a\ dedu\u00E7\u00E3o.\n\ @return\ Double.\n
+>>>>>>> 513ee9b142e46d42731f6d3c844b3b7eb11f4591
 comment6.params=
 comment6.target=java.lang.String\ toString()
 comment6.text=\r\n\ M\u00E9todo\ que\ devolve\ a\ representa\u00E7\u00E3o\ em\ string\ da\ AtividadeEconomica.\r\n\ @return\ String\ com\ as\ informa\u00E7\u00F5es\ da\ AtividadeEconomica.\r\n

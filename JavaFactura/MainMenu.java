@@ -36,8 +36,14 @@ public class MainMenu extends EstadoMenu
     }
 
     private EstadoMenu sair() {
-        this.guardaEstado("estado");
         return null;
+    }
+
+    private EstadoMenu guardarEstado() {
+        System.out.print("Nome do ficheiro: ");
+        String nome = this.scanner.next();
+        this.guardaEstado(nome);
+        return this;
     }
 
     private EstadoMenu registarContribuinte() {
@@ -82,7 +88,9 @@ public class MainMenu extends EstadoMenu
     
     private EstadoMenu carregarEstado(){
         try {
-            Plataforma p = Plataforma.carregarPlataforma("estado");
+            System.out.print("Nome do ficheiro: ");
+            String nome = this.scanner.next();
+            Plataforma p = Plataforma.carregarPlataforma(nome);
             return new MainMenu(this.scanner, p);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -96,7 +104,7 @@ public class MainMenu extends EstadoMenu
     }
     
     public EstadoMenu interact() {
-        System.out.print("(1) - Fazer login\n(2) - Registar novo contribuinte\n(3) - Carregar estado\n(4) - Sair\n> ");
+        System.out.print("(1) - Fazer login\n(2) - Registar novo contribuinte\n(3) - Carregar estado\n(4) - Guardar estado\n(5) - Sair\n> ");
         int decisao = this.scanner.nextInt();
         switch (decisao) {
             case 1:
@@ -106,6 +114,8 @@ public class MainMenu extends EstadoMenu
             case 3:
                 return this.carregarEstado();
             case 4:
+                return this.guardarEstado();
+            case 5:
                 return this.sair();
             }
         return this;
