@@ -14,6 +14,25 @@ dependency12.type=UsesDependency
 dependency13.from=Plataforma
 dependency13.to=ContribuinteIndividual
 dependency13.type=UsesDependency
+<<<<<<< HEAD
+dependency14.from=EmpresaMenu
+dependency14.to=Plataforma
+dependency14.type=UsesDependency
+dependency15.from=EmpresaMenu
+dependency15.to=Fatura
+dependency15.type=UsesDependency
+dependency16.from=EmpresaMenu
+dependency16.to=MainMenu
+dependency16.type=UsesDependency
+dependency17.from=JavaFactura
+dependency17.to=EstadoMenu
+dependency17.type=UsesDependency
+dependency18.from=JavaFactura
+dependency18.to=MainMenu
+dependency18.type=UsesDependency
+dependency19.from=JavaFactura
+dependency19.to=Plataforma
+=======
 dependency14.from=JavaFactura
 dependency14.to=EstadoMenu
 dependency14.type=UsesDependency
@@ -31,15 +50,24 @@ dependency18.to=Fatura
 dependency18.type=UsesDependency
 dependency19.from=EmpresaMenu
 dependency19.to=MainMenu
+>>>>>>> 513ee9b142e46d42731f6d3c844b3b7eb11f4591
 dependency19.type=UsesDependency
 dependency2.from=IndividuoMenu
 dependency2.to=Fatura
 dependency2.type=UsesDependency
+<<<<<<< HEAD
+dependency20.from=EstadoMenu
+dependency20.to=Plataforma
+dependency20.type=UsesDependency
+dependency21.from=ContribuinteIndividual
+dependency21.to=Fatura
+=======
 dependency20.from=ContribuinteIndividual
 dependency20.to=Fatura
 dependency20.type=UsesDependency
 dependency21.from=EstadoMenu
 dependency21.to=Plataforma
+>>>>>>> 513ee9b142e46d42731f6d3c844b3b7eb11f4591
 dependency21.type=UsesDependency
 dependency22.from=MainMenu
 dependency22.to=Plataforma
@@ -80,6 +108,19 @@ dependency8.type=UsesDependency
 dependency9.from=Plataforma
 dependency9.to=Educacao
 dependency9.type=UsesDependency
+<<<<<<< HEAD
+editor.fx.0.height=1047
+editor.fx.0.width=974
+editor.fx.0.x=-7
+editor.fx.0.y=0
+objectbench.height=89
+objectbench.width=934
+package.divider.horizontal=0.6
+package.divider.vertical=0.8986272439281943
+package.editor.height=831
+package.editor.width=825
+package.editor.x=-7
+=======
 editor.fx.0.height=741
 editor.fx.0.width=1366
 editor.fx.0.x=0
@@ -91,9 +132,10 @@ package.divider.vertical=0.8204334365325078
 package.editor.height=523
 package.editor.width=1220
 package.editor.x=0
+>>>>>>> 513ee9b142e46d42731f6d3c844b3b7eb11f4591
 package.editor.y=0
-package.frame.height=738
-package.frame.width=1366
+package.frame.height=1047
+package.frame.width=974
 package.numDependencies=27
 package.numTargets=19
 package.showExtends=true
@@ -108,35 +150,35 @@ target1.height=50
 target1.name=Variavel
 target1.showInterface=false
 target1.type=ClassTarget
-target1.width=90
+target1.width=80
 target1.x=1100
 target1.y=250
 target10.height=50
 target10.name=MainMenu
 target10.showInterface=false
 target10.type=ClassTarget
-target10.width=100
+target10.width=90
 target10.x=490
 target10.y=180
 target11.height=50
-target11.name=Habitacao
+target11.name=ContribuinteIndividual
 target11.showInterface=false
 target11.type=ClassTarget
-target11.width=100
-target11.x=480
-target11.y=590
+target11.width=170
+target11.x=20
+target11.y=310
 target12.height=50
-target12.name=ContribuinteIndividual
+target12.name=Habitacao
 target12.showInterface=false
 target12.type=ClassTarget
-target12.width=190
-target12.x=20
-target12.y=310
+target12.width=90
+target12.x=480
+target12.y=590
 target13.height=50
 target13.name=EstadoMenu
 target13.showInterface=false
 target13.type=AbstractTarget
-target13.width=120
+target13.width=100
 target13.x=620
 target13.y=20
 target14.height=50
@@ -149,57 +191,95 @@ target14.y=590
 target15.height=50
 target15.name=Expressao
 target15.showInterface=false
+<<<<<<< HEAD
+target15.type=ClassTarget
+target15.width=150
+target15.x=580
+target15.y=510
+=======
 target15.type=InterfaceTarget
 target15.width=100
 target15.x=990
 target15.y=160
+>>>>>>> 513ee9b142e46d42731f6d3c844b3b7eb11f4591
 target16.height=50
 target16.name=Contribuinte
 target16.showInterface=false
 target16.type=AbstractTarget
-target16.width=120
+target16.width=100
 target16.x=120
 target16.y=230
 target17.height=50
 target17.name=AtividadeEconomica
 target17.showInterface=false
+<<<<<<< HEAD
+target17.type=InterfaceTarget
+target17.width=90
+target17.x=990
+target17.y=160
+=======
 target17.type=ClassTarget
 target17.width=180
 target17.x=580
 target17.y=510
+>>>>>>> 513ee9b142e46d42731f6d3c844b3b7eb11f4591
 target18.height=50
 target18.name=Operacao
 target18.showInterface=false
 target18.type=ClassTarget
+<<<<<<< HEAD
+target18.width=80
+target18.x=680
+target18.y=590
+=======
 target18.width=100
 target18.x=990
 target18.y=250
+>>>>>>> 513ee9b142e46d42731f6d3c844b3b7eb11f4591
 target19.height=50
 target19.name=Educacao
 target19.showInterface=false
 target19.type=ClassTarget
+<<<<<<< HEAD
+target19.width=80
+target19.x=990
+target19.y=250
+=======
 target19.width=100
 target19.x=680
 target19.y=590
+>>>>>>> 513ee9b142e46d42731f6d3c844b3b7eb11f4591
 target2.height=50
 target2.name=IndividuoMenu
 target2.showInterface=false
 target2.type=ClassTarget
+<<<<<<< HEAD
+target2.width=80
+target2.x=230
+target2.y=350
+=======
 target2.width=140
 target2.x=700
 target2.y=110
+>>>>>>> 513ee9b142e46d42731f6d3c844b3b7eb11f4591
 target3.height=50
 target3.name=Empresa
 target3.showInterface=false
 target3.type=ClassTarget
+<<<<<<< HEAD
+target3.width=120
+target3.x=700
+target3.y=110
+=======
 target3.width=90
 target3.x=230
 target3.y=350
+>>>>>>> 513ee9b142e46d42731f6d3c844b3b7eb11f4591
 target4.height=120
 target4.name=Plataforma
 target4.showInterface=false
 target4.type=ClassTarget
-target4.width=110
+target4.width=90
 target4.x=420
 target4.y=400
 target5.height=110
@@ -207,6 +287,17 @@ target5.name=JavaFactura
 target5.showInterface=false
 target5.type=ClassTarget
 target5.width=110
+<<<<<<< HEAD
+target5.x=850
+target5.y=70
+target6.height=110
+target6.name=JavaFactura
+target6.showInterface=false
+target6.type=ClassTarget
+target6.width=100
+target6.x=250
+target6.y=20
+=======
 target5.x=250
 target5.y=20
 target6.height=50
@@ -216,11 +307,12 @@ target6.type=ClassTarget
 target6.width=130
 target6.x=850
 target6.y=70
+>>>>>>> 513ee9b142e46d42731f6d3c844b3b7eb11f4591
 target7.height=50
 target7.name=Constante
 target7.showInterface=false
 target7.type=ClassTarget
-target7.width=100
+target7.width=90
 target7.x=880
 target7.y=250
 target8.height=60
@@ -234,6 +326,6 @@ target9.height=50
 target9.name=DespesasGerais
 target9.showInterface=false
 target9.type=ClassTarget
-target9.width=140
+target9.width=120
 target9.x=790
 target9.y=590
