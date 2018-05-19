@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=FaturaMenu
+comment0.text=\n\ Write\ a\ description\ of\ class\ FaturaMenu\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=s\ p\ nif\ password\ id
+comment1.target=FaturaMenu(java.util.Scanner,\ Plataforma,\ int,\ java.lang.String,\ int)
+comment2.params=
+comment2.target=EstadoMenu\ imprimirInformacao()
+comment3.params=
+comment3.target=EstadoMenu\ alterarAtividade()
+comment4.params=
+comment4.target=EstadoMenu\ interact()
+numComments=5
