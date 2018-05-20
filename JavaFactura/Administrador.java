@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class Administrador extends Contribuinte implements Serializable
 {
-    public TreeMap<Double,Empresa> empresasComMaisFaturas = new TreeMap<>();
+    public TreeMap<Double,Empresa> empresasComMaisFaturacao = new TreeMap<>();
 
     /**
      * Construtor por omissão de Administrador.
@@ -34,14 +34,14 @@ public class Administrador extends Contribuinte implements Serializable
      */
     public Administrador(Administrador a){
         super(a);
-        this.empresasComMaisFaturas = a.getMapEmpresasComMaisFaturas();
+        this.empresasComMaisFaturacao = a.getMapEmpresasComMaisFaturacao();
     }
 
      /**
      * Devolde uma TreeMap.
      * @return TreeMap.
      */
-    public TreeMap<Double,Empresa> getMapEmpresasComMaisFaturas(){
+    public TreeMap<Double,Empresa> getMapEmpresasComMaisFaturacao(){
         TreeMap<Double,Empresa> a = new TreeMap<>();
         return a;
     }
@@ -77,14 +77,14 @@ public class Administrador extends Contribuinte implements Serializable
     public void inserirPorFaturacao(Empresa e){
         Double key = e.totalFaturadoDesdeSempre();
 
-        this.empresasComMaisFaturas.put(key, e.clone());
+        this.empresasComMaisFaturacao.put(key, e.clone());
     }
 
     public ArrayList<Empresa> empresasPorFaturacao(int x){
         int i = 0;
         ArrayList<Empresa> listaempresas = new ArrayList<>();
 
-        Iterator ittwo = this.empresasComMaisFaturas.keySet().iterator();
+        Iterator ittwo = this.empresasComMaisFaturacao.keySet().iterator();
         while (ittwo.hasNext() && i < x) {
             listaempresas.add(((Empresa)(ittwo.next())).clone());
             i++;
