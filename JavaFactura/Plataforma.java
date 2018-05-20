@@ -1,6 +1,7 @@
 import java.util.Map;
 import java.util.HashMap;
 import java.util.TreeMap;
+import java.util.Set;
 import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +52,7 @@ public class Plataforma implements Serializable {
     private Map<Integer,Fatura> faturas;
     private Map<String,AtividadeEconomica> atividadesEconomicas;
     private TreeMap<Integer,List<Integer>> empresasComMaisFaturas;
+    private TreeMap<Double,Set<Integer>> contribuintesQueMaisGastam;
 
     /**
      * Constructor for objects of class Plataforma
@@ -61,6 +63,7 @@ public class Plataforma implements Serializable {
         this.faturas = new HashMap<Integer,Fatura>();
         this.atividadesEconomicas = new HashMap<String,AtividadeEconomica>();
         this.empresasComMaisFaturas = new TreeMap<Integer,List<Integer>>();
+        this.contribuintesQueMaisGastam = new TreeMap<Double,Set<Integer>>();
         this.atividadesEconomicas.put("", new AtividadeEconomica());
         Habitacao h = new Habitacao();
         this.atividadesEconomicas.put(h.getNome(), h);
@@ -83,6 +86,12 @@ public class Plataforma implements Serializable {
             }
             l.add(c.getNIF());
             this.empresasComMaisFaturas.put(key, l);
+        } else if (c instanceof ContribuinteIndividual) {
+            Double totalFaturado = ((ContribuinteIndividual)c).getTotalFaturado();
+            Set<Integer> l = new HashSet();
+            l.add(((ContribuinteIndividual)c).getNIF());
+            System.out.println(""+totalFaturado);
+            this.contribuintesQueMaisGastam.put(totalFaturado, l);
         }
     }
 
@@ -97,6 +106,18 @@ public class Plataforma implements Serializable {
         }
         l.add(nif);
         this.empresasComMaisFaturas.put(numFaturas, l);
+    }
+
+    private void updateContribuintesQueMaisGastam(Fatura f) {
+        ContribuinteIndividual c = (ContribuinteIndividual)this.contribuintes.get(f.getNifCliente());
+        Set<Integer> s = this.contribuintesQueMaisGastam.get(c.getTotalFaturado());
+        s.remove(c.getNIF());
+        Set<Integer> s2 = this.contribuintesQueMaisGastam.get(c.getTotalFaturado() + f.getValor());
+        if (s2 == null) {
+            s2 = new HashSet();
+        }
+        s2.add(c.getNIF());
+        this.contribuintesQueMaisGastam.put(c.getTotalFaturado() + f.getValor(), s2);
     }
 
     public void adicionarFatura(Fatura f, int nif, String password) throws FailureOnLoginException,
@@ -114,6 +135,7 @@ public class Plataforma implements Serializable {
         if (c instanceof Empresa) {
             f.setAtividade(((Empresa)c).getDefaultAtividade());
             this.faturas.put(f.getId(), f.clone());
+            this.updateContribuintesQueMaisGastam(f);
             ((ContribuinteIndividual)this.contribuintes.get(f.getNifCliente())).adicionarFatura(f);
             ((Empresa)this.contribuintes.get(f.getNifEmitente())).inserirPorValor(f);
             ((Empresa)this.contribuintes.get(f.getNifEmitente())).inserirPorData(f);
@@ -296,6 +318,31 @@ public class Plataforma implements Serializable {
         }
     }
 
+    public Collection<ContribuinteIndividual> getTop10Contribuintes(int nif, String password) throws FailureOnLoginException,
+                                                                                                  PermissionDeniedException {
+        Contribuinte c;
+        try {
+            c = this.login(nif, password);
+        } catch (FailureOnLoginException e) {
+            throw e;
+        }
+        if (c instanceof Administrador) {
+            List<Integer> r = new ArrayList(10);
+            Iterator<Double> it = this.contribuintesQueMaisGastam.navigableKeySet().descendingIterator();
+            while (true) {
+                if (it.hasNext() == false) break;
+                for (Integer i : this.contribuintesQueMaisGastam.get(it.next())) {
+                    r.add(i);
+                    if (r.size() == 10) break;
+                }
+                if (r.size() == 10) break;
+            }
+            return r.stream().map(i -> ((ContribuinteIndividual)this.contribuintes.get(i)).clone()).collect(Collectors.toList());
+        } else {
+            throw new PermissionDeniedException("Não é Administrador");
+        }
+    }
+
     public Collection<Empresa> getXEmpresasComMaisFaturas(int X, int nif, String password) throws FailureOnLoginException,
                                                                                                   PermissionDeniedException {
         Contribuinte c;
@@ -307,7 +354,6 @@ public class Plataforma implements Serializable {
         if (c instanceof Administrador) {
             List<Integer> r = new ArrayList(X);
             Iterator<Integer> it = this.empresasComMaisFaturas.navigableKeySet().descendingIterator();
-            int n;
             while (true) {
                 if (it.hasNext() == false) break;
                 for (Integer i : this.empresasComMaisFaturas.get(it.next())) {
