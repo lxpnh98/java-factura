@@ -1,4 +1,6 @@
 import java.util.Set;
+import java.util.List;
+import java.util.ArrayList;
 import java.util.Date;
 import java.io.Serializable;
 
@@ -16,7 +18,8 @@ public class Fatura implements Serializable
     private Date data;
     private int nifCliente;
     private String descrição;
-    private String atividadeEconomica;
+    private List<Date> registoData;
+    private List<String> atividadeEconomica;
     private double valor;
 
     /**
@@ -29,7 +32,9 @@ public class Fatura implements Serializable
         this.data = new Date();
         this.nifCliente = 0;
         this.descrição = "";
-        this.atividadeEconomica = "";
+        this.registoData = new ArrayList<Date>();
+        this.atividadeEconomica = new ArrayList<String>();
+        this.setAtividade("");
         this.valor = 0;
     }
 
@@ -43,7 +48,9 @@ public class Fatura implements Serializable
         this.data = (Date)data.clone();
         this.nifCliente = nifCliente;
         this.descrição = descrição;
-        this.atividadeEconomica = atividade;
+        this.registoData = new ArrayList<Date>();
+        this.atividadeEconomica = new ArrayList<String>();
+        this.setAtividade(atividade);
         this.valor = valor;
     }
 
@@ -57,7 +64,8 @@ public class Fatura implements Serializable
         this.data = f.getData();
         this.nifCliente = f.getNifCliente();
         this.descrição = f.getDescrição();
-        this.atividadeEconomica = f.getAtividade();
+        this.registoData = f.getRegistoData();
+        this.atividadeEconomica = f.getRegistoAtividade();
         this.valor = f.getValor();
     }
 
@@ -122,15 +130,28 @@ public class Fatura implements Serializable
      * @return Atividade economica.
      */
     public String getAtividade() {
-        return this.atividadeEconomica;
+        return this.atividadeEconomica.get(this.atividadeEconomica.size() - 1);
+    }
+
+    public List<String> getRegistoAtividade() {
+        return new ArrayList(this.atividadeEconomica);
+    }
+
+    public List<Date> getRegistoData() {
+        ArrayList<Date> r = new ArrayList<Date>();
+        for (Date d : this.registoData) {
+            r.add((Date)d.clone());
+        }
+        return r; 
     }
 
     /**
      * Atualiza a Fatura.
      * @param Nova atividade económica.
      */
-    public String setAtividade(String a) {
-        return this.atividadeEconomica = a;
+    public void setAtividade(String a) {
+        this.registoData.add(new Date());
+        this.atividadeEconomica.add(a);
     }
 
     /**
@@ -191,9 +212,10 @@ public class Fatura implements Serializable
      * @return String com as informações da Fatura.
      */
     public String toString(){
-        return "Fatura: Nif do Emissor - " + this.nifEmitente + " Emissor - " + this.emitente +
-               " Data - " + this.data + " Nif do cliente - " + this.nifCliente + " Descrição da fatura - " +
-               this.descrição + "Atividade economica - " + this.atividadeEconomica + " Valor da fatura - " + this.valor;
+        return "Fatura:\nNif do Emissor - " + this.nifEmitente + "\nEmissor - " + this.emitente +
+               "\nData de criacao - " + this.data + "\nNif do cliente - " + this.nifCliente + "\nDescrição da fatura - " +
+               this.descrição + "\nAtividade economica - " + this.atividadeEconomica + "\n(" + this.registoData + ")" +
+               "\nValor da fatura - " + this.valor;
     }
 
     public Fatura clone() {
