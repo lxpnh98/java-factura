@@ -22,13 +22,13 @@
 \tab Neste projeto é-nos proposto o desenvolvimento de uma plataforma onde contribuintes possam gerir a informação das faturas que foram emitidas em seu nome. Os contribuintes podem ser do tipo individual ou do tipo empresa e cada um com especificações diferentes, quer a nível de características quer a nível de gestão das faturas.
 
 \chapter{Arquitetura de classes utilizada}
-\label{sec:resumo}
+\label{sec:arquitetura}
 
 \chapter{Descrição da aplicação}
-\label{sec:resumo}
+\label{sec:descricao}
 \tab Nesta plataforma temos várias funcionalidades disponíveis, funcionalidades essas que estão divididas em diferentes menus.
 
-\subsection{Menu Principal - \textit{MainMenu}}
+\section{Menu Principal - \textit{MainMenu}}
 \tab No menu principal o utilizador tem cinco opções: \textit{fazer login, registar um novo contribuinte, carregar um estado, guardar um estado e sair}.
 
 Escolhendo a opção \textit{Fazer login} e introduzindo em seguida um NIF e uma password, caso o login seja feito com sucesso, (isto é, o contribuinte já está registado no sistema) o utilizador é encaminhado ou para o menu de indivíduo ou para o menu de empresa, dependendo do tipo de contribuinte que fez login.
@@ -39,14 +39,14 @@ A opção \textit{Carregar estado} é usada para carregar para o sistema informa
 
 Por fim, o utilizador pode sair escolhendo a opção \textit{Sair}.
 
-\subsection{Menu de Administrador - \textit{AdministradorMenu}}
+\section{Menu de Administrador - \textit{AdministradorMenu}}
 \tab No menu de administrador, apenas acessível pelo administrador do sistema, existem três opções: \textit{listar empresas com maior faturação, listar os dez contribuintes que mais gastam em todo o sistema, e logout}.
 
 A opção \textit{listar os dez contribuintes que mais gastam em todo o sistema} permite ao administrador saber quais os dez contribuintes que gastam. Já a opção \textit{listar empresas com maior faturação} permite ao administrador ver as X (número introduzido pelo administrador) empresas que mais faturam e quais as deduções fiscais associadas a essas fatuas.
 
 A opção \textit{logout} faz o administrador voltar ao menu principal.
 
-\subsection{Menu de Indivíduo - \textit{IndividuoMenu}}
+\section{Menu de Indivíduo - \textit{IndividuoMenu}}
 \tab No menu de indivíduo existem também três opções: \textit{verificar fatura, calcular valor de dedução total e logout}.
 
 A opção \textit{Verificar fatura} abre o menu de fatura para uma fatura especificada pelo utilizador (através do Id da fatura).
@@ -55,7 +55,7 @@ A opção \textit{Calcular valor de dedução total} permite ao utilizador verif
 
 A opção \textit{logout} faz o utilizador voltar ao menu principal.
 
-\subsection{Menu de Empresa - \textit{EmpresaMenu}}
+\section{Menu de Empresa - \textit{EmpresaMenu}}
 \tab O menu de empresa dispõe de várias opções: \textit{criar fatura, logout, listar faturas por valor, listar faturas por data, calcular total acumulado da empresa, listar faturas por contribuinte e valor e listar faturas por contribuinte e data}.
 
 A opção \textit{criar fatura} permite à empresa criar uma fatura, associada a um contribuinte individual a partir do NIF (do indivíduo).
@@ -67,7 +67,7 @@ A opção \textit{listar por valor e listar por data} listam todas as faturas a 
 A opção \textit{calcular total acumulado da empresa} calcula o total faturado por uma empresa entre duas datas escolhidas pelo utilizador.
 
 A opção \textit{listar faturas por contribuinte e valor e listar faturas por contribuinte e data} listam todas as faturas a que a empresa está associada, mas desta vez, primeiro as faturas são ordenadas por contribuinte e só depois ordenadas em ordem crescente de valor e ordem crescente de datas (também entre duas datas escolhidas pelo utilizador).
-\subsection{Menu de Fatura - \textit{FaturaMenu}}
+\section{Menu de Fatura - \textit{FaturaMenu}}
 \tab No menu de fatura existem três opções: \textit{imprimir fatura, alterar atividade econónica e voltar}.
 
 A opção \textit{imprimir fatura} permite ao utilizador imprimir a informação referente à fatura escolhida.
@@ -77,6 +77,6 @@ A opção \textit{alterar atividade económica} permite ao utilizador alterar a 
 A opção \textit{voltar} faz o utulizador voltar para o menu de indivíduo.
 
 \chapter{Conclusão}
-\label{sec:resumo}
+\label{sec:conclusao}
 
 \end{document}
