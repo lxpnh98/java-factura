@@ -24,11 +24,11 @@ public class FaturaMenu extends EstadoMenu
             Fatura f = this.plataforma.getFatura(id, this.nif, this.password);
             System.out.println(f.toString());
         } catch (NonExistentBillException e) {
-            System.out.println("Fatura nao existente.");
+            System.out.println("Fatura não existente.");
         } catch (PermissionDeniedException e) {
-            System.out.println("Sem permissao.");
+            System.out.println("Sem permissão.");
         } catch (FailureOnLoginException e) {
-            System.out.println("Informacao de login incorreta.");
+            System.out.println("Informação de login incorreta.");
         }
         return this;
     }
@@ -37,17 +37,17 @@ public class FaturaMenu extends EstadoMenu
         Fatura f = null;
         try {
             f = this.plataforma.getFatura(id, this.nif, this.password);
-            System.out.print("(1) - Habitacao\n(2) - Educacao\n(3) - Saude\n(4) - DespesasGerais\n(5) - Cancelar\n>");
+            System.out.print("(1) - Habitação\n(2) - Educação\n(3) - Saúde\n(4) - DespesasGerais\n(5) - Cancelar\n>");
             int decisao = this.scanner.nextInt();
             switch (decisao) {
                 case 1:
-                    f.setAtividade("Habitacao");
+                    f.setAtividade("Habitação");
                     break;
                 case 2:
-                    f.setAtividade("Educacao");
+                    f.setAtividade("Educação");
                     break;
                 case 3:
-                    f.setAtividade("Saude");
+                    f.setAtividade("Saúde");
                     break;
                 case 4:
                     f.setAtividade("DespesasGerais");
@@ -57,17 +57,17 @@ public class FaturaMenu extends EstadoMenu
             }
             this.plataforma.setFatura(id, f, this.nif, this.password);
         } catch (NonExistentBillException e) {
-            System.out.println("Fatura nao existente.");
+            System.out.println("Fatura não existente.");
         } catch (PermissionDeniedException e) {
-            System.out.println("Sem permissao.");
+            System.out.println("Sem permissão.");
         } catch (FailureOnLoginException e) {
-            System.out.println("Informacao de login incorreta.");
+            System.out.println("Informação de login incorreta.");
         }
         return this;
     }
 
     public EstadoMenu interact() {
-        System.out.println("(1) - Imprimir informacao\n(2) - Alterar atividade economica\n(3) - Voltar");
+        System.out.println("(1) - Imprimir informação\n(2) - Alterar atividade económica\n(3) - Voltar");
         int decisao = this.scanner.nextInt();
         switch (decisao) {
             case 1:

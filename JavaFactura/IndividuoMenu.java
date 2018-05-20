@@ -21,15 +21,15 @@ public class IndividuoMenu extends EstadoMenu
         try {
             System.out.println(this.plataforma.calcularDeducaoTotal(this.nif, this.password));
         } catch (FailureOnLoginException e) {
-            System.out.println("Informacao de login incorreta.");
+            System.out.println("Informação de login incorreta.");
         } catch (PermissionDeniedException e) {
-            System.out.println("Sem permissao.");
+            System.out.println("Sem permissão.");
         }
         return this;
     }
 
     public EstadoMenu interact() {
-        System.out.println("(1) - Verificar fatura\n(2) - Calcular valor de deducao total\n(3) - Logout");
+        System.out.println("(1) - Verificar fatura\n(2) - Calcular valor de dedução total\n(3) - Logout");
         int decisao = this.scanner.nextInt();
         switch (decisao) {
             case 1:
