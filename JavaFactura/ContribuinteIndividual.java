@@ -15,6 +15,7 @@ public class ContribuinteIndividual extends Contribuinte implements Serializable
     private int numDependentes;
     private ArrayList<Integer> nifsDependentes;
     private HashSet<Integer> idFaturas;
+    private Double totalFaturado;
 
     /**
      * Construtor por omissão do contribuiente individual.
@@ -24,6 +25,7 @@ public class ContribuinteIndividual extends Contribuinte implements Serializable
         this.numDependentes = 0;
         this.nifsDependentes = new ArrayList<Integer>();
         this.idFaturas = new HashSet<Integer>();
+        this.totalFaturado = 0.0;
     }
 
     /**
@@ -34,6 +36,7 @@ public class ContribuinteIndividual extends Contribuinte implements Serializable
         this.numDependentes = numDep;
         this.setNifsDep(nifsDep);
         this.idFaturas = new HashSet<Integer>();
+        this.totalFaturado = 0.0;
     }
 
     /**
@@ -43,7 +46,8 @@ public class ContribuinteIndividual extends Contribuinte implements Serializable
         super(c);
         this.numDependentes = c.getNumDependentes();
         this.nifsDependentes = c.getNifsDep();
-        this.idFaturas = new HashSet<Integer>(); // clone
+        this.idFaturas = new HashSet<Integer>();
+        this.totalFaturado = c.getTotalFaturado();
     }
 
     /**
@@ -75,12 +79,17 @@ public class ContribuinteIndividual extends Contribuinte implements Serializable
         this.numDependentes = numDep;
     }
 
+    public Double getTotalFaturado() {
+        return this.totalFaturado;
+    }
+
     /**
      * Adiciona uma fatura à lista de faturas.
      * @param Fatura.
      */
     public void adicionarFatura(Fatura f) {
         this.idFaturas.add(f.getId());
+        this.totalFaturado += f.getValor();
     }
 
     /**
@@ -116,6 +125,6 @@ public class ContribuinteIndividual extends Contribuinte implements Serializable
      * @return String com as informações do contribuiente individual.
      */
     public String toString(){
-        return super.toString() + "\nNúmero de dependentes: " + this.numDependentes;
+        return super.toString() + "\nNúmero de dependentes: " + this.numDependentes + "\nTotal faturado: " + this.totalFaturado;
     }
 }

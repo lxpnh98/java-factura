@@ -28,13 +28,28 @@ public class AdministradorMenu extends EstadoMenu {
         return this;
     }
 
+    public EstadoMenu contribuintesQueMaisGastam() {
+        try {
+            for(ContribuinteIndividual c : this.plataforma.getTop10Contribuintes(this.nif, this.password)){
+                System.out.println(c.toString());
+            }
+        } catch (FailureOnLoginException e){
+            System.out.println("Informação de login incorreta.");
+        } catch (PermissionDeniedException e){
+            System.out.println("Sem permissão.");
+        }
+        return this;
+    }
+
     public EstadoMenu interact() {
-        System.out.println("(1) - Listar empresas com maior faturação\n(2) - Logout");
+        System.out.println("(1) - Listar empresas com maior faturação\n(2) - Listar os 10 contribuintes que mais gastam\n(3) - Logout");
         int decisao = this.scanner.nextInt();
         switch (decisao) {
             case 1:
                 return this.listarEmpresasPorFaturacao();
             case 2:
+                return this.contribuintesQueMaisGastam();
+            case 3:
                 return new MainMenu(this.scanner, this.plataforma);
             }
         return this;
