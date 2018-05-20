@@ -1,5 +1,6 @@
 import java.util.Set;
 import java.util.HashSet;
+import java.util.Map.Entry;
 import java.util.stream.Collectors;
 import java.util.ArrayList;
 import java.util.*;
@@ -43,12 +44,19 @@ public class Empresa extends Contribuinte implements Serializable
         this.atividadesEconomicas = e.getAtividadesEconomicas();
     }
 
+    public Integer getNumFaturas() {
+        return ((Long)this.faturasPorValor.values().stream().count()).intValue();
+    }
+
     /**
      * Devolde uma TreeMap.
      * @return TreeMap.
      */
     public TreeMap<Double,List<Fatura>> getMapFaturasPorValor(){
         TreeMap<Double,List<Fatura>> v = new TreeMap<>();
+        for (Entry<Double,List<Fatura>> e : this.faturasPorValor.entrySet()) {
+            v.put(e.getKey(), e.getValue().stream().map(f -> f.clone()).collect(Collectors.toList()));
+        }
         return v;
     }
 
@@ -58,7 +66,28 @@ public class Empresa extends Contribuinte implements Serializable
      */
     public TreeMap<Date,List<Fatura>> getMapFaturasPorData(){
         TreeMap<Date,List<Fatura>> d = new TreeMap<>();
+        for (Entry<Date,List<Fatura>> e : this.faturasPorData.entrySet()) {
+            d.put(e.getKey(), e.getValue().stream().map(f -> f.clone()).collect(Collectors.toList()));
+        }
         return d;
+    }
+
+    public void atualizarFatura(Fatura f) {
+        List<Fatura> l = this.faturasPorValor.get(f.getValor());
+        for (Fatura f2 : l) {
+            if (f.getId() == f2.getId()) {
+                f2.setAtividade(f.getAtividade());
+                break;
+            }
+        }
+
+        List<Fatura> l2 = this.faturasPorData.get(f.getData());
+        for (Fatura f2 : l2) {
+            if (f.getId() == f2.getId()) {
+                f2.setAtividade(f.getAtividade());
+                break;
+            }
+        }
     }
 
     /**
@@ -69,6 +98,30 @@ public class Empresa extends Contribuinte implements Serializable
         return new HashSet<String>(this.atividadesEconomicas);
     }
 
+    public Double getDeducaoTotal() {
+        double sum = 0.0;
+        for (Double d : this.faturasPorValor.keySet()) {
+            for (Fatura f : this.faturasPorValor.get(d)) {
+                AtividadeEconomica a = new AtividadeEconomica();
+                switch (f.getAtividade()) {
+                    case "Habitacao":
+                        a = new Habitacao();
+                        break;
+                    case "Saude":
+                        a = new Saude();
+                        break;
+                    case "Educacao":
+                        a = new Educacao();
+                        break;
+                    case "DespesasGerais":
+                        a = new DespesasGerais();
+                        break;
+                }
+                sum += a.calcularDeducao(f.getValor(), new HashSet());
+            }
+        }
+        return sum;
+    }
 
     /**
      * Devolde uma String da atividade económica escolhida default.

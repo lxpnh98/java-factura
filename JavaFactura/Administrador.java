@@ -12,9 +12,7 @@ import java.util.Date;
  * @author Alexandre Pinho (a82441); Joel Gama (a82202); Tiago Pinheiro (a82491).
  */
 public class Administrador extends Contribuinte implements Serializable
-{
-    public TreeMap<Double,Empresa> empresasComMaisFaturacao = new TreeMap<>();
-
+{    
     /**
      * Construtor por omissão de Administrador.
      */
@@ -34,16 +32,6 @@ public class Administrador extends Contribuinte implements Serializable
      */
     public Administrador(Administrador a){
         super(a);
-        this.empresasComMaisFaturacao = a.getMapEmpresasComMaisFaturacao();
-    }
-
-     /**
-     * Devolde uma TreeMap.
-     * @return TreeMap.
-     */
-    public TreeMap<Double,Empresa> getMapEmpresasComMaisFaturacao(){
-        TreeMap<Double,Empresa> a = new TreeMap<>();
-        return a;
     }
 
     /**
@@ -52,14 +40,6 @@ public class Administrador extends Contribuinte implements Serializable
      */
     public Administrador clone() {
         return new Administrador(this);
-    }
-
-    /**
-     * Método que devolve a representação em string da Administrador.
-     * @return String com as informações da Administrador.
-     */
-    public String toString(){
-        return super.toString();
     }
 
     /**
@@ -72,23 +52,5 @@ public class Administrador extends Contribuinte implements Serializable
         if ((emp == null) || (emp.getClass() != this.getClass())) return false;
         Administrador p = (Administrador) emp;
         return super.equals(p);
-    }
-
-    public void inserirPorFaturacao(Empresa e){
-        Double key = e.totalFaturadoDesdeSempre();
-
-        this.empresasComMaisFaturacao.put(key, e.clone());
-    }
-
-    public ArrayList<Empresa> empresasPorFaturacao(int x){
-        int i = 0;
-        ArrayList<Empresa> listaempresas = new ArrayList<>();
-
-        Iterator ittwo = this.empresasComMaisFaturacao.keySet().iterator();
-        while (ittwo.hasNext() && i < x) {
-            listaempresas.add(((Empresa)(ittwo.next())).clone());
-            i++;
-        }
-        return listaempresas;
     }
 }

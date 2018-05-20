@@ -17,8 +17,8 @@ public class AdministradorMenu extends EstadoMenu {
         int x = this.scanner.nextInt();
 
         try {
-            for(Empresa e : this.plataforma.getEmpresasPorFaturacao(this.nif, this.password, x)){
-                System.out.println("A empresa é: " + e.toString() + "\nCom a dedução fiscal de:" ); //TODO: calcular dedução fiscal total.
+            for(Empresa e : this.plataforma.getXEmpresasComMaisFaturas(x, this.nif, this.password)){
+                System.out.println("A empresa é: " + e.toString() + "\nCom a dedução fiscal de:" + e.getDeducaoTotal());
             }
         } catch (FailureOnLoginException e){
             System.out.println("Informação de login incorreta.");
@@ -29,7 +29,7 @@ public class AdministradorMenu extends EstadoMenu {
     }
 
     public EstadoMenu interact() {
-        System.out.println("(1) - Listar empresas com maior faturação");
+        System.out.println("(1) - Listar empresas com maior faturação\n(2) - Logout");
         int decisao = this.scanner.nextInt();
         switch (decisao) {
             case 1:
