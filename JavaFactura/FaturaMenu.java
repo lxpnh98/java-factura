@@ -37,17 +37,17 @@ public class FaturaMenu extends EstadoMenu
         Fatura f = null;
         try {
             f = this.plataforma.getFatura(id, this.nif, this.password);
-            System.out.print("(1) - Habitação\n(2) - Educação\n(3) - Saúde\n(4) - DespesasGerais\n(5) - Cancelar\n>");
+            System.out.println("\n (1) - Habitação\n (2) - Educação\n (3) - Saúde\n (4) - DespesasGerais\n (5) - Cancelar\n>");
             int decisao = this.scanner.nextInt();
             switch (decisao) {
                 case 1:
-                    f.setAtividade("Habitação");
+                    f.setAtividade("Habitacao");
                     break;
                 case 2:
-                    f.setAtividade("Educação");
+                    f.setAtividade("Educacao");
                     break;
                 case 3:
-                    f.setAtividade("Saúde");
+                    f.setAtividade("Saude");
                     break;
                 case 4:
                     f.setAtividade("DespesasGerais");
@@ -67,7 +67,7 @@ public class FaturaMenu extends EstadoMenu
     }
 
     public EstadoMenu interact() {
-        System.out.println("(1) - Imprimir informação\n(2) - Alterar atividade económica\n(3) - Voltar");
+        System.out.println("\n (1) - Imprimir informação\n (2) - Alterar atividade económica\n (3) - Voltar");
         int decisao = this.scanner.nextInt();
         switch (decisao) {
             case 1:

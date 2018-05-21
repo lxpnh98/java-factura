@@ -15,23 +15,57 @@ public class EmpresaMenu extends EstadoMenu {
     }
 
     private EstadoMenu criarFatura() {
-        System.out.print("NIF do cliente: ");
+        System.out.println("NIF do cliente:");
         int nifCliente = this.scanner.nextInt();
-        System.out.print("Valor da despesa: ");
+        System.out.println("Valor da despesa:");
         double valor = this.scanner.nextDouble();
-
-        /* Codigo para confirmacao do utilizador
-        System.out.println("Tipo de despesa (opcoes):");
-        Iterator<String> it = this.plataforma.getAtividadesEconomicas().keySet().iterator();
-        while (it.hasNext()) {
-            System.out.println(it.next());
-            it.remove();
+        System.out.println("Data da Fatura:\n (1) - Data atual\n (2) - Outra");
+        int decisao = this.scanner.nextInt();
+        Date data = new Date();
+        switch(decisao) {
+            case 1:
+                break;
+            case 2:
+                System.out.println("Dia:");
+                int dia = this.scanner.nextInt();
+                System.out.println("Mês:");
+                int mes = this.scanner.nextInt();
+                System.out.println("Ano:");
+                int ano = this.scanner.nextInt();
+                Calendar data1 = Calendar.getInstance();
+                data1.set(ano, (mes - 1), dia, 0, 0, 0);
+                data = data1.getTime();
+                break;
         }
-        System.out.print("> ");
-        String atividade = this.scanner.nextLine();
-        */
-
-        Fatura f = new Fatura(this.nif, "", new Date(), nifCliente, "", "", valor);
+        System.out.println("Descrição:\n (1) - Sim\n (2) - Não");
+        decisao = this.scanner.nextInt();
+        String descricao = "";
+        switch(decisao) {
+            case 1:
+                System.out.println("Escreva aqui:");
+                descricao = this.scanner.next();
+                break;
+            case 2:
+                break;
+        }
+        System.out.println("Qual é a atividade económica: \n (1) - Habitação\n (2) - Educação\n (3) - Saúde\n (4) - DespesasGerais");
+        decisao = this.scanner.nextInt();
+        String atividade = "";
+        switch(decisao) {
+            case 1:
+                atividade = "Habitacao";
+                break;
+            case 2:
+                atividade = "Educacao";
+                break;
+            case 3:
+                atividade = "Saude";
+                break;
+            case 4:
+                atividade = "DespesasGerais";
+                break;
+        }
+        Fatura f = new Fatura(this.nif, plataforma.getNomeEmpresa(this.nif), data, nifCliente, descricao, atividade, valor);
         try {
             this.plataforma.adicionarFatura(f, this.nif, this.password);
         } catch (FailureOnLoginException e) {

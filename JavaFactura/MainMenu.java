@@ -51,19 +51,19 @@ public class MainMenu extends EstadoMenu
     private EstadoMenu registarContribuinte() {
         Contribuinte c = null;
         System.out.print("(1) - Contribuinte individual\n(2) - Empresa\n> ");
-        int tipo = this.scanner.nextInt();
+        int type = this.scanner.nextInt();
         System.out.print("NIF: ");
         int nif = this.scanner.nextInt();
         System.out.print("Password: ");
         String pw = this.scanner.next();
-        switch (tipo) {
+        System.out.print("Nome: ");
+        String name = this.scanner.next();
+        System.out.print("Email: ");
+        String email = this.scanner.next();
+        System.out.print("Morada: ");
+        String address = this.scanner.next();
+        switch (type) {
             case 1:
-                System.out.print("Nome: ");
-                String name = this.scanner.next();
-                System.out.print("Email: ");
-                String email = this.scanner.next();
-                System.out.print("Morada: ");
-                String address = this.scanner.next();
                 System.out.print("Número de dependentes no agregado familiar: ");
                 int numDep = this.scanner.nextInt();
                 ArrayList<Integer> nifsDep = new ArrayList<Integer>(numDep);
@@ -75,13 +75,32 @@ public class MainMenu extends EstadoMenu
                 c = new ContribuinteIndividual(nif, name, email, address, pw, numDep, nifsDep);
                 break;
             case 2:
-                System.out.print("Nome: ");
-                String nome = this.scanner.next();
-                System.out.print("Email: ");
-                String Email = this.scanner.next();
-                System.out.print("Morada: ");
-                String morada = this.scanner.next();
-                c = new Empresa(nif, nome, Email, morada, pw, new HashSet<String>());
+                System.out.println("Número de atividades económicas: ");
+                int numAtividades = this.scanner.nextInt();
+                HashSet<String> atividades = new HashSet<String>(numAtividades);
+                for(int i = 0; i < numAtividades; i++) {
+                    System.out.print("(1) - Habitação\n(2) - Educação\n(3) - Saúde\n(4) - DespesasGerais\n>");
+                    int decisao = this.scanner.nextInt();
+                    String atividade = "";
+                    switch (decisao) {
+                        case 1:
+                            atividade = "Habitacao";
+                            break;
+                        case 2:
+                            atividade = "Educacao";
+                            break;
+                        case 3:
+                            atividade = "Saude";
+                            break;
+                        case 4:
+                            atividade = "DespesasGerais";
+                            break;
+                    }
+                    if (!atividade.equals("")) {
+                        atividades.add(atividade);
+                    }
+                }
+                c = new Empresa(nif, name, email, address, pw, atividades);
                 break;
         }
         this.plataforma.adicionarContribuinte(c);

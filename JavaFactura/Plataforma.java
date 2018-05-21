@@ -178,6 +178,13 @@ public class Plataforma implements Serializable {
         return true;
     }
 
+    public String getNomeEmpresa(int nif) {
+        if (this.contribuintes.containsKey(nif) == false)
+            return "";
+        String nome = this.contribuintes.get(nif).getNome();
+        return nome;
+    }
+
     public Fatura getFatura(int id, int nif, String password) throws NonExistentBillException,
                                                                      PermissionDeniedException,
                                                                      FailureOnLoginException {
