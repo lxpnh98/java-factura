@@ -107,9 +107,15 @@ public class EmpresaMenu extends EstadoMenu {
     }
 
     public EstadoMenu listarFaturasPorValorContribuinte(){
+        System.out.print("Nif do cliente que pretende listar:");
+        int nif = this.scanner.nextInt();
+
         try {
-            for(Fatura f : this.plataforma.getFaturasPorValorContribuinte(this.nif, this.password)){
-                System.out.println(f.toString());
+            if(this.plataforma.getFaturasPorValorContribuinte(this.nif, this.password, nif).isEmpty()) {
+                System.out.println("Esse contribuinte não está registado no sistema.");
+                for(Fatura f : this.plataforma.getFaturasPorValorContribuinte(this.nif, this.password, nif)){
+                    System.out.println(f.toString());
+                }
             }
         } catch (FailureOnLoginException e){
             System.out.println("Informação de login incorreta.");
@@ -145,11 +151,13 @@ public class EmpresaMenu extends EstadoMenu {
         Date end = data2.getTime();
         System.out.print("Data final: " + end + "\n\n");
 
+        System.out.print("Nif do cliente que pretende listar:");
+        int nif = this.scanner.nextInt();
         try {
-            if(this.plataforma.getFaturasPorDataContribuinte(this.nif, this.password, begin, end).isEmpty()) {
+            if(this.plataforma.getFaturasPorDataContribuinte(this.nif, this.password, begin, end, nif).isEmpty()) {
                 System.out.println("Não existem faturas entre as datas introduzidas.");
             }
-            for(Fatura f : this.plataforma.getFaturasPorDataContribuinte(this.nif, this.password, begin, end)) {
+            for(Fatura f : this.plataforma.getFaturasPorDataContribuinte(this.nif, this.password, begin, end, nif)) {
                 System.out.println(f.toString());
             }
         } catch (FailureOnLoginException e){
@@ -161,23 +169,23 @@ public class EmpresaMenu extends EstadoMenu {
     }
 
     public EstadoMenu interact() {
-        System.out.println("(1) - Criar fatura\n(2) - Logout\n(3) - Listar faturas por valor\n(4) - Listar faturas por data\n(5) - Calcular total acumulado da empresa\n(6) - Listar faturas por contribuinte e valor\n(7) - Listar faturas por contribuinte e data");
+        System.out.println("(1) - Criar fatura\n(2) - Listar faturas por valor\n(3) - Listar faturas por data\n(4) - Calcular total acumulado da empresa\n(5) - Listar faturas por contribuinte e valor\n(6) - Listar faturas por contribuinte e data\n(7) - Logout");
         int decisao = this.scanner.nextInt();
         switch (decisao) {
             case 1:
                 return this.criarFatura();
             case 2:
-                return new MainMenu(this.scanner, this.plataforma);
-            case 3:
                 return this.listarFaturasPorValor();
-            case 4:
+            case 3:
                 return this.listarFaturasPorData();
-            case 5:
+            case 4:
                 return this.criarTotalAcumulado();
-            case 6:
+            case 5:
                 return this.listarFaturasPorValorContribuinte();
-            case 7: 
+            case 6: 
                 return this.listarFaturasPorDataContribuinte();
+            case 7:
+                return new MainMenu(this.scanner, this.plataforma);
             }
         return this;
     }
