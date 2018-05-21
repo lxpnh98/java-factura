@@ -275,23 +275,11 @@ public class Empresa extends Contribuinte implements Serializable
      * Método que devolve um ArrayList das faturas ordenadas em função do nif do cliente e por Valor.
      * @return ArrayList.
      */
-    public ArrayList<Fatura> faturasPorValorContribuinte(){
-        int size, nif;
-        ArrayList<Fatura> aux = new ArrayList<Fatura>(faturasPorValor());
+    public ArrayList<Fatura> faturasPorValorContribuinte(int nif){
         ArrayList<Fatura> faturas = new ArrayList<Fatura>();
-
-        while(!(aux.isEmpty())){
-            nif = aux.get(0).getNifCliente();
-            faturas.add(aux.get(0));
-            aux.remove(0);
-            size = aux.size();
-            for (int i = 0; i < size; i++){
-                if (aux.get(i).getNifCliente() == nif){
-                    faturas.add(aux.get(i));
-                    aux.remove(i);
-                    size--;
-                    i--;
-                }
+        for (Fatura f : this.faturasPorValor()){
+            if (f.getNifCliente() == nif){
+                faturas.add(f.clone());
             }
         }
         return faturas;
@@ -303,30 +291,11 @@ public class Empresa extends Contribuinte implements Serializable
      * @param Date.
      * @return ArrayList.
      */
-    public ArrayList<Fatura> faturasPorDataContribuinte(Date begin, Date end){
-        int size, nif;
-        ArrayList<Fatura> aux = new ArrayList<Fatura>(faturasPorData());
+    public ArrayList<Fatura> faturasPorDataContribuinte(Date begin, Date end, int nif){
         ArrayList<Fatura> faturas = new ArrayList<Fatura>();
-
-        for (int i = 0; i < aux.size(); i++){
-            if ((aux.get(i).getData().before(begin)) || (aux.get(i).getData().after(end))){
-                aux.remove(i);
-                i--;
-            }
-        }
-
-        while(!(aux.isEmpty())){
-            nif = aux.get(0).getNifCliente();
-            faturas.add(aux.get(0));
-            aux.remove(0);
-            size = aux.size();
-            for (int i = 0; i < size; i++){
-                if (aux.get(i).getNifCliente() == nif){
-                    faturas.add(aux.get(i));
-                    aux.remove(i);
-                    size--;
-                    i--;
-                }
+        for (Fatura f : this.faturasPorData()){
+            if ((f.getData().after(begin)) && (f.getData().before(end)) && (f.getNifCliente() == nif)){
+                faturas.add(f.clone());
             }
         }
         return faturas;
