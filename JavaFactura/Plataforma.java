@@ -115,7 +115,9 @@ public class Plataforma implements Serializable {
         int numFaturas = ((Empresa)this.contribuintes.get(nif)).getNumFaturas();
         System.out.println(numFaturas);
         List<Integer> antiga = this.empresasComMaisFaturas.get(numFaturas - 1);
-        antiga.remove(antiga.indexOf(nif));
+        if (antiga.indexOf(nif) != -1){
+            antiga.remove(antiga.indexOf(nif));
+        }
         List<Integer> l = this.empresasComMaisFaturas.get(numFaturas);
         if (l == null) {
             l = new ArrayList<Integer>();        
@@ -303,12 +305,16 @@ public class Plataforma implements Serializable {
     }
 
     public ArrayList<Fatura> getFaturasPorValorContribuinte(int nif, String password, int nifc) throws FailureOnLoginException,
-                                                                                             PermissionDeniedException {
+                                                                                                       PermissionDeniedException,
+                                                                                                       NonExistentClientException {
         Contribuinte c;
         try {
             c = this.login(nif, password);
         } catch (FailureOnLoginException e) {
             throw e;
+        }
+        if (this.existsIndividuo(nifc) == false) {
+            throw new NonExistentClientException(""+nifc);
         }
         if (c instanceof Empresa){
             ArrayList<Fatura> faturas = new ArrayList<>(((Empresa)this.contribuintes.get(c.getNIF())).faturasPorValorContribuinte(nifc));
@@ -319,12 +325,16 @@ public class Plataforma implements Serializable {
     }
 
     public ArrayList<Fatura> getFaturasPorDataContribuinte(int nif, String password, Date begin, Date end, int nifc) throws FailureOnLoginException,
-                                                                                                                            PermissionDeniedException {
+                                                                                                                            PermissionDeniedException,
+                                                                                                                            NonExistentClientException {
         Contribuinte c;
         try {
             c = this.login(nif, password);
         } catch (FailureOnLoginException e) {
             throw e;
+        }
+         if (this.existsIndividuo(nifc) == false) {
+            throw new NonExistentClientException(""+nifc);
         }
         if (c instanceof Empresa){
             ArrayList<Fatura> faturas = new ArrayList<>(((Empresa)this.contribuintes.get(c.getNIF())).faturasPorDataContribuinte(begin, end, nifc));

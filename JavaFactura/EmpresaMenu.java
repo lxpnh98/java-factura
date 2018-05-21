@@ -111,16 +111,15 @@ public class EmpresaMenu extends EstadoMenu {
         int nif = this.scanner.nextInt();
 
         try {
-            if(this.plataforma.getFaturasPorValorContribuinte(this.nif, this.password, nif).isEmpty()) {
-                System.out.println("Esse contribuinte não está registado no sistema.");
-                for(Fatura f : this.plataforma.getFaturasPorValorContribuinte(this.nif, this.password, nif)){
-                    System.out.println(f.toString());
-                }
+            for(Fatura f : this.plataforma.getFaturasPorValorContribuinte(this.nif, this.password, nif)){
+                System.out.println(f.toString());
             }
         } catch (FailureOnLoginException e){
             System.out.println("Informação de login incorreta.");
         } catch (PermissionDeniedException e){
             System.out.println("Sem permissão.");
+        } catch (NonExistentClientException e){
+            System.out.println("Contribuinte não existente.");
         }
         return this;
     }
@@ -164,6 +163,8 @@ public class EmpresaMenu extends EstadoMenu {
             System.out.println("Informação de login incorreta.");
         } catch (PermissionDeniedException e){
             System.out.println("Sem permissão.");
+        } catch (NonExistentClientException e){
+            System.out.println("Contribuinte não existente.");
         }
         return this;
     }
