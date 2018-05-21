@@ -41,13 +41,13 @@ public class FaturaMenu extends EstadoMenu
             int decisao = this.scanner.nextInt();
             switch (decisao) {
                 case 1:
-                    f.setAtividade("Habitação");
+                    f.setAtividade("Habitacao");
                     break;
                 case 2:
-                    f.setAtividade("Educação");
+                    f.setAtividade("Educacao");
                     break;
                 case 3:
-                    f.setAtividade("Saúde");
+                    f.setAtividade("Saude");
                     break;
                 case 4:
                     f.setAtividade("DespesasGerais");
