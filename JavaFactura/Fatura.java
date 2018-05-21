@@ -212,10 +212,10 @@ public class Fatura implements Serializable
      * @return String com as informações da Fatura.
      */
     public String toString(){
-        return "Fatura:\nNif do Emissor - " + this.nifEmitente + "\nEmissor - " + this.emitente +
-               "\nData de criacao - " + this.data + "\nNif do cliente - " + this.nifCliente + "\nDescrição da fatura - " +
-               this.descrição + "\nAtividade economica - " + this.atividadeEconomica + "\n(" + this.registoData + ")" +
-               "\nValor da fatura - " + this.valor;
+        return "\nFatura:\n Nif do Emissor - " + this.nifEmitente + "\n Emissor - " + this.emitente +
+               "\n Data de criacao - " + this.data + "\n Nif do cliente - " + this.nifCliente + 
+               "\n Descrição da fatura - " + this.descrição + "\n Valor da fatura - " + this.valor +
+               "\n Atividade economica - " + this.atividadeEconomica + "\n (" + this.registoData + ")";
     }
 
     public Fatura clone() {
