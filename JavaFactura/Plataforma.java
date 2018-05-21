@@ -19,24 +19,40 @@ import java.util.Date;
 
 
 class FailureOnLoginException extends Exception {
+    FailureOnLoginException() {
+        super();
+    }
+
     FailureOnLoginException(String s) {
         super(s);
     }
 }
 
 class PermissionDeniedException extends Exception {
+    PermissionDeniedException() {
+        super();
+    }
+
     PermissionDeniedException(String s) {
         super(s);
     }
 }
 
 class NonExistentClientException extends Exception {
+    NonExistentClientException() {
+        super();
+    }
+
     NonExistentClientException(String s) {
         super(s);
     }
 }
 
 class NonExistentBillException extends Exception {
+    NonExistentBillException() {
+        super();
+    }
+
     NonExistentBillException(String s) {
         super(s);
     }
