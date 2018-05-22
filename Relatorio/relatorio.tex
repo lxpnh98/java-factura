@@ -23,6 +23,17 @@
 
 \chapter{Arquitetura de classes utilizada}
 \label{sec:arquitetura}
+\tab Para o desenvolvimento deste projeto utilizamos seis classes principais: \textit{EstadoMenu, Plataforma, Contribuinte, AtividadeEconomica, Fatura e JavaFatura}.
+
+A classe \textit{EstadoMenu} é uma classe abstrata, isto porque n se trata de um menu genérico. Esta classe está ligada a outras cinco classes (responsáveis pela criação de menus), isto é, essas classe fazem "extends" desta classe.
+
+A classe \textit{Plataforma} é onde estão definidos métodos que fazem as opções dos menus funcionarem.
+
+A classe \textit{Contribuinte} é, também, abstrata pois não existe um contribuinte genérico real, ou é um indivíduo ou empresa ou administrador. Esta classe tem ligada a ela três outras classes (cada uma especifica um tipo de contribuinte diferente).
+
+A classe \textit{AtividadeEconomica} é utilizada para especificar a(s) atividade(s) económica(s) a que uma fatura está associada. Cada atividade económica tem um valor de dedução fiscal diferente e existem cinco possíveis atividades económicas na plataforma.
+
+Por fim, existem as classes \textit{Fatura} e \textit{JavaFatura}, a primeira para representar um objeto do tipo fatura e a segunda é responsável por chamar o método main.
 
 \chapter{Descrição da aplicação}
 \label{sec:descricao}
@@ -76,7 +87,16 @@ A opção \textit{alterar atividade económica} permite ao utilizador alterar a 
 
 A opção \textit{voltar} faz o utulizador voltar para o menu de indivíduo.
 
+\chapter{Intrudução de novos tipos}
+\label{sec:intro}
+\tab A introdução de novos tipos de despesas na plataforma pode ser feita de forma "simples" adicionando a classe respetiva da despesa e criando uma opção num menu associado a esse tipo de despesa. Já os algoritmos de cálculo de deduções fiscais teriam de ser adicionados como parametro na classe \textit{AtividadeEconomica}, para poderem ser aplicados posteriormente.
+
 \chapter{Conclusão}
 \label{sec:conclusao}
+
+
+
+
+
 
 \end{document}

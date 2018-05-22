@@ -116,12 +116,21 @@ dependency8.type=UsesDependency
 dependency9.from=Plataforma
 dependency9.to=Fatura
 dependency9.type=UsesDependency
+<<<<<<< HEAD
 editor.fx.0.height=739
 editor.fx.0.width=816
 editor.fx.0.x=552
 editor.fx.0.y=100
 objectbench.height=94
 objectbench.width=1896
+=======
+editor.fx.0.height=0
+editor.fx.0.width=0
+editor.fx.0.x=0
+editor.fx.0.y=0
+objectbench.height=97
+objectbench.width=1342
+>>>>>>> 5bd1bce3b403ca3333587b4b9885bf3e36d19139
 package.divider.horizontal=0.6
 package.divider.vertical=0.8932346723044398
 package.editor.height=838
