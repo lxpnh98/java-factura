@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.io.Serializable;
 
 /**
- * class ContribuinteIndividual - Classe que representa um contribuinte individual.
+ * Classe ContribuinteIndividual - Classe que representa um contribuinte individual.
  *
  * @author Alexandre Pinho (a82441); Joel Gama (a82202); Tiago Pinheiro (a82491).
  */

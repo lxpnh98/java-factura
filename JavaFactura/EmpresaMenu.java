@@ -4,16 +4,28 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.ArrayList;
 
+/**
+ * Classe EmpresaMenu.
+ *
+ * @author Alexandre Pinho (a82441); Joel Gama (a82202); Tiago Pinheiro (a82491).
+ */
 public class EmpresaMenu extends EstadoMenu {
     private int nif;
     private String password;
 
+    /**
+     * Construtor parametrizado de EmpresaMenu.
+     */
     public EmpresaMenu(Scanner s, Plataforma p, int nif, String password) {
         super(s, p);
         this.nif = nif;
         this.password = password;
     }
 
+    /**
+     * Método que cria uma fatura.
+     * @return EstadoMenu
+     */
     private EstadoMenu criarFatura() {
         System.out.print("NIF do cliente:");
         int nifCliente = this.scanner.nextInt();
@@ -62,6 +74,10 @@ public class EmpresaMenu extends EstadoMenu {
         return this;
     }
 
+    /**
+     * Método que calcula o total acumulado por uma empresa entre duas datas.
+     * @return EstadoMenu
+     */
     private EstadoMenu criarTotalAcumulado(){
         Calendar data1 = Calendar.getInstance();
         Calendar data2 = Calendar.getInstance();
@@ -98,6 +114,10 @@ public class EmpresaMenu extends EstadoMenu {
         return this;
     }
 
+    /**
+     * Método que lista as faturas de uma empresa por valor crescente.
+     * @return EstadoMenu
+     */
     public EstadoMenu listarFaturasPorValor(){
         try {
             for(Fatura f : this.plataforma.getFaturasPorValor(this.nif, this.password)){
@@ -111,6 +131,10 @@ public class EmpresaMenu extends EstadoMenu {
         return this;
     }
 
+    /**
+     * Método que lista as faturas de uma empresa por data crescente.
+     * @return EstadoMenu
+     */
     public EstadoMenu listarFaturasPorData(){
         try {
             for(Fatura f : this.plataforma.getFaturasPorData(this.nif, this.password)){
@@ -124,6 +148,10 @@ public class EmpresaMenu extends EstadoMenu {
         return this;
     }
 
+    /**
+     * Método que lista as faturas de um dado contribuinte por valor crescente.
+     * @return EstadoMenu
+     */
     public EstadoMenu listarFaturasPorValorContribuinte(){
         System.out.print("Nif do cliente que pretende listar:");
         int nif = this.scanner.nextInt();
@@ -142,6 +170,10 @@ public class EmpresaMenu extends EstadoMenu {
         return this;
     }
 
+    /**
+     * Método que lista as faturas de um dado contribuinte por data crescente entre duas datas.
+     * @return EstadoMenu
+     */
     private EstadoMenu listarFaturasPorDataContribuinte(){
         Calendar data1 = Calendar.getInstance();
         Calendar data2 = Calendar.getInstance();
@@ -187,6 +219,10 @@ public class EmpresaMenu extends EstadoMenu {
         return this;
     }
 
+    /**
+     * Método que permite ao utilizador interagir com o programa.
+     * @return EstadoMenu
+     */
     public EstadoMenu interact() {
         System.out.println("(1) - Criar fatura\n(2) - Listar faturas por valor\n(3) - Listar faturas por data\n(4) - Calcular total acumulado da empresa\n(5) - Listar faturas por contribuinte e valor\n(6) - Listar faturas por contribuinte e data\n(7) - Logout");
         int decisao = this.scanner.nextInt();

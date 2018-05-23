@@ -2,23 +2,33 @@ import java.util.Scanner;
 import java.io.*;
 
 /**
- * Write a description of interface EstadoInterface here.
+ * Classe abstrata EstadoMenu.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Alexandre Pinho (a82441); Joel Gama (a82202); Tiago Pinheiro (a82491).
  */
 public abstract class EstadoMenu
 {
     protected Scanner scanner;
     protected Plataforma plataforma;
 
+    /**
+     * Construtor parametrizado de EstadoMenu.
+     */
     public EstadoMenu(Scanner s, Plataforma p) {
         this.scanner = s;
         this.plataforma = p;
     }
 
+    /**
+     * Método que permite ao utilizador interagir com o programa.
+     * @return EstadoMenu
+     */
     public abstract EstadoMenu interact();
     
+    /**
+     * Método que guarda o estado do sistema.
+     * @param String
+     */
     public void guardaEstado(String s) {
         try {
             this.plataforma.guardaEstado(s);

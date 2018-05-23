@@ -25,15 +25,17 @@
 \label{sec:arquitetura}
 \tab Para o desenvolvimento deste projeto utilizamos seis classes principais: \textit{EstadoMenu, Plataforma, Contribuinte, AtividadeEconomica, Fatura e JavaFatura}.
 
-A classe \textit{EstadoMenu} é uma classe abstrata, isto porque n se trata de um menu genérico. Esta classe está ligada a outras cinco classes (responsáveis pela criação de menus), isto é, essas classe fazem "extends" desta classe.
+A classe \textit{EstadoMenu} e as suas subclasses representam os diferentes estados do menu, que permite a interação do programa com o utilizador.
 
-A classe \textit{Plataforma} é onde estão definidos métodos que fazem as opções dos menus funcionarem.
+A classe \textit{Plataforma} representa o sistema em si, isto é, a base de dados onde está guardada toda a informação.
 
-A classe \textit{Contribuinte} é, também, abstrata pois não existe um contribuinte genérico real, ou é um indivíduo ou empresa ou administrador. Esta classe tem ligada a ela três outras classes (cada uma especifica um tipo de contribuinte diferente).
+A classe \textit{Contribuinte} representa o contribuinte e guarda a informação associada a este. É uma classe abstrata pois não existe um contribuinte genérico real, ou é um indivíduo ou empresa ou administrador.
 
-A classe \textit{AtividadeEconomica} é utilizada para especificar a(s) atividade(s) económica(s) a que uma fatura está associada. Cada atividade económica tem um valor de dedução fiscal diferente e existem cinco possíveis atividades económicas na plataforma.
+A classe \textit{AtividadeEconomica} e as suas subclasses representam atividades económicas. Cada atividade económica implementa um algoritmo de cálculo do valor da dedução fiscal. Existem cinco possíveis atividades económicas disponíveis na plataforma.
 
-Por fim, existem as classes \textit{Fatura} e \textit{JavaFatura}, a primeira para representar um objeto do tipo fatura e a segunda é responsável por chamar o método main.
+A classe \textit{Fatura} representa um objeto do tipo fatura.
+
+Por fim, a classe \textit{JavaFatura} é onde está presente o ponto de entrada do programa.
 
 \chapter{Descrição da aplicação}
 \label{sec:descricao}
@@ -89,14 +91,13 @@ A opção \textit{voltar} faz o utulizador voltar para o menu de indivíduo.
 
 \chapter{Intrudução de novos tipos}
 \label{sec:intro}
-\tab A introdução de novos tipos de despesas na plataforma pode ser feita de forma "simples" adicionando a classe respetiva da despesa e criando uma opção num menu associado a esse tipo de despesa. Já os algoritmos de cálculo de deduções fiscais teriam de ser adicionados como parametro na classe \textit{AtividadeEconomica}, para poderem ser aplicados posteriormente.
+\tab A introdução de novos tipos de despesas na plataforma pode ser feita de forma simples adicionando uma subclasse da classe \textit{AtividadeEconomica}, implementando o seu método de calculo da dedução fiscal, e adicionando uma opção nos menus onde for necessário.
 
 \chapter{Conclusão}
 \label{sec:conclusao}
 
+\tab Foi-nos proposto, como projeto de avaliação, criar uma plataforma onde contribuintes podem gerir a informação das faturas que foram emitidas em seu nome. A implementação foi feita na linguagem de programação Java, utilizando conceitos de programação por objetos e garantido a abstração e dados e o encapsulamento.
 
-
-
-
+Para melhorar a funcionalidade do projeto, pode ser implementado um sistema mais dinâmico de criação de tipos de atividade económica, guardando os diferentes tipos de atividades económicas respetivos e algoritmos de cálculo da dedução num ficheiro de texto à parte. Assim, é possível adicionar e alterar tipos de despesa sem recompilar o programa.
 
 \end{document}

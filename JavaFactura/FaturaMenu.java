@@ -1,10 +1,9 @@
 import java.util.Scanner;
 
 /**
- * Write a description of class FaturaMenu here.
+ * Classe FaturaMenu.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Alexandre Pinho (a82441); Joel Gama (a82202); Tiago Pinheiro (a82491).
  */
 public class FaturaMenu extends EstadoMenu
 {
@@ -12,6 +11,9 @@ public class FaturaMenu extends EstadoMenu
     private String password;
     private int id;
 
+    /**
+     * Construtor parametrizado de FaturaMenu.
+     */
     public FaturaMenu(Scanner s, Plataforma p, int nif, String password, int id) {
         super(s, p);
         this.nif = nif;
@@ -19,6 +21,10 @@ public class FaturaMenu extends EstadoMenu
         this.id = id;
     }
 
+    /**
+     * Método que imprime a informação de uma fatura.
+     * @return EstadoMenu
+     */
     private EstadoMenu imprimirInformacao() {
         try {
             Fatura f = this.plataforma.getFatura(id, this.nif, this.password);
@@ -33,6 +39,10 @@ public class FaturaMenu extends EstadoMenu
         return this;
     }
 
+    /**
+     * Método que altera a atividade económica de uma fatura.
+     * @return EstadoMenu
+     */
     private EstadoMenu alterarAtividade() {
         Fatura f = null;
         try {
@@ -66,6 +76,10 @@ public class FaturaMenu extends EstadoMenu
         return this;
     }
 
+    /**
+     * Método que permite ao utilizador interagir com o programa.
+     * @return EstadoMenu
+     */
     public EstadoMenu interact() {
         System.out.println("\n (1) - Imprimir informação\n (2) - Alterar atividade económica\n (3) - Voltar");
         int decisao = this.scanner.nextInt();

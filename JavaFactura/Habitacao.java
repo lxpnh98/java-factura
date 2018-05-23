@@ -1,7 +1,7 @@
 import java.util.Set;
 
 /**
- * classe Habitacao
+ * Classe Habitacao - Subclasse de AtividadeEconomica.
  *
  * @author Alexandre Pinho (a82441); Joel Gama (a82202); Tiago Pinheiro (a82491).
  */

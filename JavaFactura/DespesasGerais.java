@@ -1,11 +1,12 @@
 import java.util.Set;
 
 /**
- * classe DespesasGerais
+ * Classe DespesasGerais - Subclasse de AtividadeEconomica.
  *
  * @author Alexandre Pinho (a82441); Joel Gama (a82202); Tiago Pinheiro (a82491).
  */
 public class DespesasGerais extends AtividadeEconomica {
+    
     /**
      * Construtor por omissão de DespesasGerais.
      */

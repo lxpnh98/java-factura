@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * class Empresa - Classe que representa um contribuinte coletivo.
+ * Classe Empresa - Classe que representa um contribuinte coletivo.
  *
  * @author Alexandre Pinho (a82441); Joel Gama (a82202); Tiago Pinheiro (a82491).
  */
@@ -44,6 +44,10 @@ public class Empresa extends Contribuinte implements Serializable
         this.atividadesEconomicas = e.getAtividadesEconomicas();
     }
 
+    /**
+     * Devolde o número de faturas associadas a uma empresa.
+     * @return Integer.
+     */
     public Integer getNumFaturas() {
         return ((Long)this.faturasPorValor.values().stream().count()).intValue();
     }
@@ -72,6 +76,10 @@ public class Empresa extends Contribuinte implements Serializable
         return d;
     }
 
+    /**
+     * Atualiza uma fatura.
+     * @param Fatura.
+     */
     public void atualizarFatura(Fatura f) {
         List<Fatura> l = this.faturasPorValor.get(f.getValor());
         for (Fatura f2 : l) {
@@ -98,6 +106,10 @@ public class Empresa extends Contribuinte implements Serializable
         return new HashSet<String>(this.atividadesEconomicas);
     }
 
+    /**
+     * Calcula a dedução.
+     * @return Double.
+     */
     public Double getDeducaoTotal() {
         double sum = 0.0;
         for (Double d : this.faturasPorValor.keySet()) {
@@ -137,7 +149,7 @@ public class Empresa extends Contribuinte implements Serializable
 
     /**
      * Cria uma cópia do objecto Empresa.
-     * @return
+     * @return Empresa
      */
     public Empresa clone() {
         return new Empresa(this);

@@ -1,7 +1,7 @@
 import java.io.*;
 
 /**
- * Abstract class Contribuinte - Classe que representa um contribuinte.
+ * Classe abstrata Contribuinte - Classe que representa um contribuinte.
  *
  * @author Alexandre Pinho (a82441); Joel Gama (a82202); Tiago Pinheiro (a82491).
  */
