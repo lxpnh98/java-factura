@@ -21,7 +21,7 @@ public class IndividuoMenu extends EstadoMenu
     }
     /**
      * Método que verifica uma fatura.
-     * @return EstadoMenu
+     * @return EstadoMenu estado do sistema atualizado.
      */
     public EstadoMenu verificarFatura() {
         System.out.print("Id: ");
@@ -31,7 +31,7 @@ public class IndividuoMenu extends EstadoMenu
 
     /**
      * Método que lista as faturas associadas a um contribuinte.
-     * @return EstadoMenu
+     * @return EstadoMenu estado do sistema atualizado.
      */
     public EstadoMenu listarFaturas() {
         try {
@@ -49,7 +49,7 @@ public class IndividuoMenu extends EstadoMenu
 
     /**
      * Método que calcula a dedução total de um contribuinte.
-     * @return EstadoMenu
+     * @return EstadoMenu estado do sistema atualizado.
      */
     public EstadoMenu calcularDeducaoTotal() {
         try {
@@ -64,7 +64,7 @@ public class IndividuoMenu extends EstadoMenu
 
     /**
      * Método que permite ao utilizador interagir com o programa.
-     * @return EstadoMenu
+     * @return EstadoMenu estado do sistema atualizado.
      */
     public EstadoMenu interact() {
         System.out.println(" (1) - Verificar fatura\n (2) - Listar faturas\n (3) - Calcular valor de dedução total\n (4) - Logout");

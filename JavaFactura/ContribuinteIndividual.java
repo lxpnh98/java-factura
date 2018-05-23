@@ -80,7 +80,7 @@ public class ContribuinteIndividual extends Contribuinte implements Serializable
 
     /**
      * Atualiza número de dependentes do agregado familiar.
-     * @param Novo numDep.
+     * @param int novo numDep.
      */
     public void setNumDependentes(int numDep){
         this.numDependentes = numDep;
@@ -109,7 +109,7 @@ public class ContribuinteIndividual extends Contribuinte implements Serializable
 
     /**
      * Cria uma cópia do objecto contribuinte individual.
-     * @return 
+     * @return ContribuinteIndividual
      */
     public ContribuinteIndividual clone() {
         return new ContribuinteIndividual(this);

@@ -19,7 +19,7 @@ public class MainMenu extends EstadoMenu
 
     /**
      * Método que permite fazer login.
-     * @return EstadoMenu
+     * @return EstadoMenu estado do sistema atualizado.
      */
     private EstadoMenu login() {
         System.out.println("login()");
@@ -45,7 +45,7 @@ public class MainMenu extends EstadoMenu
 
     /**
      * Método que permite sair do sistema.
-     * @return EstadoMenu
+     * @return EstadoMenu estado do sistema atualizado.
      */
     private EstadoMenu sair() {
         return null;
@@ -64,7 +64,7 @@ public class MainMenu extends EstadoMenu
 
     /**
      * Método que regista um novo contribuinte no sistema.
-     * @return EstadoMenu
+     * @return EstadoMenu estado do sistema atualizado.
      */
     private EstadoMenu registarContribuinte() {
         Contribuinte c = null;
@@ -130,7 +130,7 @@ public class MainMenu extends EstadoMenu
     
     /**
      * Método que carrega o estado do sistema a partir de um ficheiro.
-     * @return EstadoMenu
+     * @return EstadoMenu estado do sistema atualizado.
      */
     private EstadoMenu carregarEstado(){
         try {
@@ -151,7 +151,7 @@ public class MainMenu extends EstadoMenu
 
     /**
      * Método que permite ao utilizador interagir com o programa.
-     * @return EstadoMenu
+     * @return EstadoMenu estado do sistema atualizado.
      */
     public EstadoMenu interact() {
         System.out.print("(1) - Fazer login\n(2) - Registar novo contribuinte\n(3) - Carregar estado\n(4) - Guardar estado\n(5) - Sair\n> ");

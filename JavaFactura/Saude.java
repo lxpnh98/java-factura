@@ -15,8 +15,8 @@ public class Saude extends AtividadeEconomica {
 
     /**
      * Método que devolve o valor a deduzir.
-     * @param Double valor
-     * @param Set propriedades
+     * @param Double valor.
+     * @param Set propriedades.
      * @return Double com o valor da dedução.
      */
     public Double calcularDeducao(Double valor, Set propriedades) {

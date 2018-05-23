@@ -128,7 +128,7 @@ public abstract class Contribuinte implements Serializable
 
     /**
      * Cria uma cópia do objecto contribuinte.
-     * @return
+     * @return Contribuinte
      */
     public abstract Contribuinte clone();
 

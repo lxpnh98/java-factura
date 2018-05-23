@@ -23,7 +23,7 @@ public class FaturaMenu extends EstadoMenu
 
     /**
      * Método que imprime a informação de uma fatura.
-     * @return EstadoMenu
+     * @return EstadoMenu estado do sistema atualizado.
      */
     private EstadoMenu imprimirInformacao() {
         try {
@@ -41,7 +41,7 @@ public class FaturaMenu extends EstadoMenu
 
     /**
      * Método que altera a atividade económica de uma fatura.
-     * @return EstadoMenu
+     * @return EstadoMenu estado do sistema atualizado.
      */
     private EstadoMenu alterarAtividade() {
         Fatura f = null;
@@ -78,7 +78,7 @@ public class FaturaMenu extends EstadoMenu
 
     /**
      * Método que permite ao utilizador interagir com o programa.
-     * @return EstadoMenu
+     * @return EstadoMenu estado do sistema atualizado.
      */
     public EstadoMenu interact() {
         System.out.println("\n (1) - Imprimir informação\n (2) - Alterar atividade económica\n (3) - Voltar");

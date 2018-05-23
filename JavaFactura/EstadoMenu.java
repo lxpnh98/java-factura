@@ -21,13 +21,13 @@ public abstract class EstadoMenu
 
     /**
      * Método que permite ao utilizador interagir com o programa.
-     * @return EstadoMenu
+     * @return EstadoMenu estado do sistema atualizado.
      */
     public abstract EstadoMenu interact();
     
     /**
      * Método que guarda o estado do sistema.
-     * @param String
+     * @param String nome do ficheiro onde o estado foi guardado
      */
     public void guardaEstado(String s) {
         try {

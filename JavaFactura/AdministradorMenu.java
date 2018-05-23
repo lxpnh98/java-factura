@@ -22,7 +22,7 @@ public class AdministradorMenu extends EstadoMenu {
 
     /**
      * Método que lista as empresas por ordem decrescente de total faturado.
-     * @return EstadoMenu
+     * @return EstadoMenu estado do sistema atualizado.
      */
     public EstadoMenu listarEmpresasPorFaturacao(){
         System.out.print("Número de empresas que pretende listar:");
@@ -42,7 +42,7 @@ public class AdministradorMenu extends EstadoMenu {
 
     /**
      * Método que lista os dez contribuintes que mais gastam no sistema.
-     * @return EstadoMenu
+     * @return EstadoMenu estado do sistema atualizado.
      */
     public EstadoMenu contribuintesQueMaisGastam() {
         try {
@@ -59,7 +59,7 @@ public class AdministradorMenu extends EstadoMenu {
 
     /**
      * Método que permite ao utilizador interagir com o programa.
-     * @return EstadoMenu
+     * @return EstadoMenu estado do sistema atualizado.
      */
     public EstadoMenu interact() {
         System.out.println("(1) - Listar empresas com maior faturação\n(2) - Listar os 10 contribuintes que mais gastam\n(3) - Logout");

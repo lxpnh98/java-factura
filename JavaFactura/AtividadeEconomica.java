@@ -40,7 +40,7 @@ public class AtividadeEconomica implements Serializable {
 
     /**
      * Calcula a dedução.
-     * @return Double.
+     * @return Double valor da dedução.
      */
     public Double calcularDeducao(Double valor, Set propriedades) {
         return 0.0;

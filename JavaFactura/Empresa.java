@@ -46,7 +46,7 @@ public class Empresa extends Contribuinte implements Serializable
 
     /**
      * Devolde o número de faturas associadas a uma empresa.
-     * @return Integer.
+     * @return Integer número de faturas.
      */
     public Integer getNumFaturas() {
         return ((Long)this.faturasPorValor.values().stream().count()).intValue();
@@ -54,7 +54,7 @@ public class Empresa extends Contribuinte implements Serializable
 
     /**
      * Devolde uma TreeMap.
-     * @return TreeMap.
+     * @return TreeMap ordenada por Valor.
      */
     public TreeMap<Double,List<Fatura>> getMapFaturasPorValor(){
         TreeMap<Double,List<Fatura>> v = new TreeMap<>();
@@ -66,7 +66,7 @@ public class Empresa extends Contribuinte implements Serializable
 
     /**
      * Devolde uma TreeMap.
-     * @return TreeMap.
+     * @return TreeMap ordenada por data.
      */
     public TreeMap<Date,List<Fatura>> getMapFaturasPorData(){
         TreeMap<Date,List<Fatura>> d = new TreeMap<>();
@@ -78,7 +78,7 @@ public class Empresa extends Contribuinte implements Serializable
 
     /**
      * Atualiza uma fatura.
-     * @param Fatura.
+     * @param Fatura fatura a atualizar.
      */
     public void atualizarFatura(Fatura f) {
         List<Fatura> l = this.faturasPorValor.get(f.getValor());
@@ -100,7 +100,7 @@ public class Empresa extends Contribuinte implements Serializable
 
     /**
      * Devolde um Set.
-     * @return Set.
+     * @return Set Atividades económicas.
      */
     public Set<String> getAtividadesEconomicas() {
         return new HashSet<String>(this.atividadesEconomicas);
@@ -108,7 +108,7 @@ public class Empresa extends Contribuinte implements Serializable
 
     /**
      * Calcula a dedução.
-     * @return Double.
+     * @return Double valor da dedução.
      */
     public Double getDeducaoTotal() {
         double sum = 0.0;
@@ -137,7 +137,7 @@ public class Empresa extends Contribuinte implements Serializable
 
     /**
      * Devolde uma String da atividade económica escolhida default.
-     * @return String.
+     * @return String atividade económica default.
      */
     public String getDefaultAtividade() {
         if (this.atividadesEconomicas.size() == 1) {
@@ -165,7 +165,7 @@ public class Empresa extends Contribuinte implements Serializable
 
     /**
      * Verifica a igualdade de dois objectos
-     * @param emp;
+     * @param emp.
      * @return Valor boleano da comparação.
      */
     public boolean equals(Object emp){
@@ -177,7 +177,7 @@ public class Empresa extends Contribuinte implements Serializable
 
     /**
      * Método que adiciona uma fatura a uma TreeMap em função do seu valor.
-     * @param Fatura.
+     * @param Fatura fatura a adicionar.
      * @return TreeMap com a fatura inserida.
      */
     public void inserirPorValor(Fatura f){
@@ -194,7 +194,7 @@ public class Empresa extends Contribuinte implements Serializable
 
     /**
      * Método que adiciona uma fatura a uma TreeMap em função da sua Data.
-     * @param Fatura.
+     * @param Fatura fatura a inserir.
      * @return TreeMap com a fatura inserida.
      */
     public void inserirPorData(Fatura f){
@@ -211,7 +211,7 @@ public class Empresa extends Contribuinte implements Serializable
 
     /**
      * Método que devolve um ArrayList das faturas ordenadas em função do seu valor.
-     * @return ArrayList.
+     * @return ArrayList array das faturas.
      */
     public ArrayList<Fatura> faturasPorValor(){
         ArrayList<Fatura> listaPorValor = new ArrayList<>();
@@ -227,7 +227,7 @@ public class Empresa extends Contribuinte implements Serializable
 
     /**
      * Método que devolve um ArrayList das faturas ordenadas em função da sua Data.
-     * @return ArrayList.
+     * @return ArrayList array das faturas.
      */
     public ArrayList<Fatura> faturasPorData(){
         ArrayList<Fatura> listaPorData = new ArrayList<>();
@@ -243,9 +243,9 @@ public class Empresa extends Contribuinte implements Serializable
 
     /**
      * Método que calcula o total faturado por uma empresa num dado intervalo de tempo.
-     * @param Date.
-     * @param Date.
-     * @return Double.
+     * @param Date data de início.
+     * @param Date data de fim.
+     * @return Double valor do total acumulado. 
      */
     public double totalFaturado(Date begin, Date end){
         double totalAcumulado = 0;
@@ -266,9 +266,9 @@ public class Empresa extends Contribuinte implements Serializable
 
     /**
      * Método que calcula o total faturado por uma empresa.
-     * @param Date.
-     * @param Date.
-     * @return Double.
+     * @param Date data de início.
+     * @param Date data de fim.
+     * @return Double valor do total faturado.
      */
     public double totalFaturadoDesdeSempre(){
         double totalAcumulado = 0;
@@ -285,7 +285,7 @@ public class Empresa extends Contribuinte implements Serializable
 
     /**
      * Método que devolve um ArrayList das faturas ordenadas em função do nif do cliente e por Valor.
-     * @return ArrayList.
+     * @return ArrayList array das faturas.
      */
     public ArrayList<Fatura> faturasPorValorContribuinte(int nif){
         ArrayList<Fatura> faturas = new ArrayList<Fatura>();
@@ -299,9 +299,9 @@ public class Empresa extends Contribuinte implements Serializable
 
     /**
      * Método que devolve um ArrayList das faturas ordenadas em função da sua Data.
-     * @param Date.
-     * @param Date.
-     * @return ArrayList.
+     * @param Date data de início.
+     * @param Date data de fim.
+     * @return ArrayList array de faturas.
      */
     public ArrayList<Fatura> faturasPorDataContribuinte(Date begin, Date end, int nif){
         ArrayList<Fatura> faturas = new ArrayList<Fatura>();

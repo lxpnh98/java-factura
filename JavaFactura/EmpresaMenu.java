@@ -24,7 +24,7 @@ public class EmpresaMenu extends EstadoMenu {
 
     /**
      * Método que cria uma fatura.
-     * @return EstadoMenu
+     * @return EstadoMenu estado do sistema atualizado.
      */
     private EstadoMenu criarFatura() {
         System.out.print("NIF do cliente:");
@@ -76,7 +76,7 @@ public class EmpresaMenu extends EstadoMenu {
 
     /**
      * Método que calcula o total acumulado por uma empresa entre duas datas.
-     * @return EstadoMenu
+     * @return EstadoMenu estado do sistema atualizado.
      */
     private EstadoMenu criarTotalAcumulado(){
         Calendar data1 = Calendar.getInstance();
@@ -116,7 +116,7 @@ public class EmpresaMenu extends EstadoMenu {
 
     /**
      * Método que lista as faturas de uma empresa por valor crescente.
-     * @return EstadoMenu
+     * @return EstadoMenu estado do sistema atualizado.
      */
     public EstadoMenu listarFaturasPorValor(){
         try {
@@ -133,7 +133,7 @@ public class EmpresaMenu extends EstadoMenu {
 
     /**
      * Método que lista as faturas de uma empresa por data crescente.
-     * @return EstadoMenu
+     * @return EstadoMenu estado do sistema atualizado.
      */
     public EstadoMenu listarFaturasPorData(){
         try {
@@ -150,7 +150,7 @@ public class EmpresaMenu extends EstadoMenu {
 
     /**
      * Método que lista as faturas de um dado contribuinte por valor crescente.
-     * @return EstadoMenu
+     * @return EstadoMenu estado do sistema atualizado.
      */
     public EstadoMenu listarFaturasPorValorContribuinte(){
         System.out.print("Nif do cliente que pretende listar:");
@@ -172,7 +172,7 @@ public class EmpresaMenu extends EstadoMenu {
 
     /**
      * Método que lista as faturas de um dado contribuinte por data crescente entre duas datas.
-     * @return EstadoMenu
+     * @return EstadoMenu estado do sistema atualizado.
      */
     private EstadoMenu listarFaturasPorDataContribuinte(){
         Calendar data1 = Calendar.getInstance();
@@ -221,7 +221,7 @@ public class EmpresaMenu extends EstadoMenu {
 
     /**
      * Método que permite ao utilizador interagir com o programa.
-     * @return EstadoMenu
+     * @return EstadoMenu estado do sistema atualizado.
      */
     public EstadoMenu interact() {
         System.out.println("(1) - Criar fatura\n(2) - Listar faturas por valor\n(3) - Listar faturas por data\n(4) - Calcular total acumulado da empresa\n(5) - Listar faturas por contribuinte e valor\n(6) - Listar faturas por contribuinte e data\n(7) - Logout");

@@ -36,7 +36,7 @@ public class Administrador extends Contribuinte implements Serializable
 
     /**
      * Cria uma cópia do objecto Administrador.
-     * @return
+     * @return Administrador
      */
     public Administrador clone() {
         return new Administrador(this);
@@ -44,7 +44,7 @@ public class Administrador extends Contribuinte implements Serializable
 
     /**
      * Verifica a igualdade de dois objectos
-     * @param emp;
+     * @param emp.
      * @return Valor boleano da comparação.
      */
     public boolean equals(Object emp){
