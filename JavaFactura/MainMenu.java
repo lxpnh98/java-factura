@@ -4,17 +4,23 @@ import java.util.ArrayList;
 import java.io.*;
 
 /**
- * Write a description of class MainInterface here.
+ * Classe MainMenu.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Alexandre Pinho (a82441); Joel Gama (a82202); Tiago Pinheiro (a82491).
  */
 public class MainMenu extends EstadoMenu
 {
+    /**
+     * Construtor parametrizado de MainMenu.
+     */
     public MainMenu(Scanner s, Plataforma p) {
         super(s, p);
     }
 
+    /**
+     * Método que permite fazer login.
+     * @return EstadoMenu
+     */
     private EstadoMenu login() {
         System.out.println("login()");
         System.out.print("NIF: ");
@@ -37,10 +43,18 @@ public class MainMenu extends EstadoMenu
         return this;
     }
 
+    /**
+     * Método que permite sair do sistema.
+     * @return EstadoMenu
+     */
     private EstadoMenu sair() {
         return null;
     }
 
+    /**
+     * Método que guarda o estado do sistema.
+     * @return EstadoMenu
+     */
     private EstadoMenu guardarEstado() {
         System.out.print("Nome do ficheiro: ");
         String nome = this.scanner.next();
@@ -48,6 +62,10 @@ public class MainMenu extends EstadoMenu
         return this;
     }
 
+    /**
+     * Método que regista um novo contribuinte no sistema.
+     * @return EstadoMenu
+     */
     private EstadoMenu registarContribuinte() {
         Contribuinte c = null;
         System.out.print("(1) - Contribuinte individual\n(2) - Empresa\n> ");
@@ -110,6 +128,10 @@ public class MainMenu extends EstadoMenu
         return this;
     }
     
+    /**
+     * Método que carrega o estado do sistema a partir de um ficheiro.
+     * @return EstadoMenu
+     */
     private EstadoMenu carregarEstado(){
         try {
             System.out.print("Nome do ficheiro: ");
@@ -126,7 +148,11 @@ public class MainMenu extends EstadoMenu
         System.out.println("Não conseguiu carregar");
         return this;
     }
-    
+
+    /**
+     * Método que permite ao utilizador interagir com o programa.
+     * @return EstadoMenu
+     */
     public EstadoMenu interact() {
         System.out.print("(1) - Fazer login\n(2) - Registar novo contribuinte\n(3) - Carregar estado\n(4) - Guardar estado\n(5) - Sair\n> ");
         int decisao = this.scanner.nextInt();

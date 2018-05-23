@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * class Administrador - Classe que representa um administrador.
+ * Classe Administrador - Classe que representa um administrador.
  *
  * @author Alexandre Pinho (a82441); Joel Gama (a82202); Tiago Pinheiro (a82491).
  */

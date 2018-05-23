@@ -2,7 +2,7 @@ import java.util.Set;
 import java.io.Serializable;
 
 /**
- * class AtividadeEconomica - Classe que representa uma atividade economica.
+ * Classe AtividadeEconomica - Classe que representa uma atividade económica.
  *
  * @author Alexandre Pinho (a82441); Joel Gama (a82202); Tiago Pinheiro (a82491).
  */

@@ -1,20 +1,23 @@
 import java.util.Scanner;
 
 /**
- * Write a description of class Interface here.
+ * Classe JavaFatura.
  *
- * @author (your name)
+ * @author Alexandre Pinho (a82441); Joel Gama (a82202); Tiago Pinheiro (a82491).
  */
 public class JavaFactura {
     private EstadoMenu estado;
 
     /**
-     * Constructor for objects of class Interface
+     * Constructor por omissão de JavaFatura.
      */
     public JavaFactura() {
         this.estado = new MainMenu(new Scanner(System.in), new Plataforma());
     }
 
+    /**
+     * Método main.
+     */
     public static void main(String[] args) {
         JavaFactura j = new JavaFactura();
         while ((j.estado = j.estado.interact()) != null);

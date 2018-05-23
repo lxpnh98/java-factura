@@ -5,7 +5,7 @@ import java.util.Date;
 import java.io.Serializable;
 
 /**
- * classe Fatura - Classe que representa uma fatura.
+ * Classe Fatura - Classe que representa uma fatura.
  *
  * @author Alexandre Pinho (a82441); Joel Gama (a82202); Tiago Pinheiro (a82491).
  */
@@ -133,10 +133,18 @@ public class Fatura implements Serializable
         return this.atividadeEconomica.get(this.atividadeEconomica.size() - 1);
     }
 
+    /**
+     * Devolde uma lista com as atividades.
+     * @return Lista de Strings.
+     */
     public List<String> getRegistoAtividade() {
         return new ArrayList(this.atividadeEconomica);
     }
 
+    /**
+     * Devolde uma lista com as datas.
+     * @return Lista de Dates.
+     */
     public List<Date> getRegistoData() {
         ArrayList<Date> r = new ArrayList<Date>();
         for (Date d : this.registoData) {
@@ -218,6 +226,10 @@ public class Fatura implements Serializable
                "\n Atividade economica - " + this.atividadeEconomica + "\n (" + this.registoData + ")";
     }
 
+    /**
+     * Cria uma cópia do objecto Fatura.
+     * @return Fatura
+     */
     public Fatura clone() {
         return new Fatura(this);
     }

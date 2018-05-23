@@ -17,7 +17,9 @@ import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.Date;
 
-
+/**
+ * Classe FailureOnLoginException - subclasse de Exception.
+ */
 class FailureOnLoginException extends Exception {
     FailureOnLoginException() {
         super();
@@ -28,6 +30,9 @@ class FailureOnLoginException extends Exception {
     }
 }
 
+/**
+ * Classe PermissionDeniedException - subclasse de Exception.
+ */
 class PermissionDeniedException extends Exception {
     PermissionDeniedException() {
         super();
@@ -38,6 +43,9 @@ class PermissionDeniedException extends Exception {
     }
 }
 
+/**
+ * Classe NonExistentClientException - subclasse de Exception.
+ */
 class NonExistentClientException extends Exception {
     NonExistentClientException() {
         super();
@@ -48,6 +56,9 @@ class NonExistentClientException extends Exception {
     }
 }
 
+/**
+ * Classe NonExistentBillException - subclasse de Exception.
+ */
 class NonExistentBillException extends Exception {
     NonExistentBillException() {
         super();
@@ -59,7 +70,7 @@ class NonExistentBillException extends Exception {
 }
 
 /**
- * class Plataforma
+ * Classe Plataforma
  *
  * @author Alexandre Pinho (a82441); Joel Gama (a82202); Tiago Pinheiro (a82491).
  */
@@ -71,7 +82,7 @@ public class Plataforma implements Serializable {
     private TreeMap<Double,Set<Integer>> contribuintesQueMaisGastam;
 
     /**
-     * Constructor for objects of class Plataforma
+     * Constructor por omissão de Plataforma.
      */
     public Plataforma()
     {
@@ -92,6 +103,10 @@ public class Plataforma implements Serializable {
         this.adicionarContribuinte(new Administrador(0, "", "", "", "admin"));
     }
 
+    /**
+     * Método que adiciona um contribuinte ao sistema.
+     * @param Contribuinte
+     */
     public void adicionarContribuinte(Contribuinte c) {
         this.contribuintes.put(c.getNIF(), c.clone());
         if (c instanceof Empresa) {
@@ -111,6 +126,10 @@ public class Plataforma implements Serializable {
         }
     }
 
+    /**
+     * Método que atualiza a lista das empresas que mais faturam.
+     * @param int
+     */
     private void updateEmpresasComMaisFaturas(int nif) {
         int numFaturas = ((Empresa)this.contribuintes.get(nif)).getNumFaturas();
         System.out.println(numFaturas);
@@ -126,6 +145,10 @@ public class Plataforma implements Serializable {
         this.empresasComMaisFaturas.put(numFaturas, l);
     }
 
+    /**
+     * Método que atualiza a lista dos contribuintes que mais gastam.
+     * @param Fatura
+     */
     private void updateContribuintesQueMaisGastam(Fatura f) {
         ContribuinteIndividual c = (ContribuinteIndividual)this.contribuintes.get(f.getNifCliente());
         Set<Integer> s = this.contribuintesQueMaisGastam.get(c.getTotalFaturado());
@@ -138,6 +161,12 @@ public class Plataforma implements Serializable {
         this.contribuintesQueMaisGastam.put(c.getTotalFaturado() + f.getValor(), s2);
     }
 
+    /**
+     * Método que adiciona uma fatura.
+     * @param Fatura
+     * @param int
+     * @param String
+     */
     public void adicionarFatura(Fatura f, int nif, String password) throws FailureOnLoginException,
                                                                            PermissionDeniedException,
                                                                            NonExistentClientException {
@@ -163,6 +192,12 @@ public class Plataforma implements Serializable {
         }
     }
 
+    /**
+     * Método que permite fazer login.
+     * @param int
+     * @param String
+     * @return Contribuinte
+     */
     public Contribuinte login(int nif, String password) throws FailureOnLoginException {
         Contribuinte c = this.contribuintes.get(nif);
         if (c != null && c.getPassword().equals(password))
@@ -170,6 +205,11 @@ public class Plataforma implements Serializable {
         throw new FailureOnLoginException("");
     }
 
+    /**
+     * Método que verifica se existe um individuo a partir do seu nif.
+     * @param int
+     * @return boolean
+     */
     public boolean existsIndividuo(int nif) {
         if (this.contribuintes.containsKey(nif) == false)
             return false;
@@ -178,6 +218,11 @@ public class Plataforma implements Serializable {
         return true;
     }
 
+    /**
+     * Método que devolve o nome de uma empresa a partir do seu nif.
+     * @param int
+     * @return String
+     */
     public String getNomeEmpresa(int nif) {
         if (this.contribuintes.containsKey(nif) == false)
             return "";
@@ -185,6 +230,13 @@ public class Plataforma implements Serializable {
         return nome;
     }
 
+    /**
+     * Método que devolve uma fatura.
+     * @param int
+     * @param int
+     * @param String
+     * @return Fatura
+     */
     public Fatura getFatura(int id, int nif, String password) throws NonExistentBillException,
                                                                      PermissionDeniedException,
                                                                      FailureOnLoginException {
@@ -203,6 +255,13 @@ public class Plataforma implements Serializable {
         return f.clone();
     }
 
+    /**
+     * Método que atualiza uma fatura.
+     * @param int
+     * @param Fatura
+     * @param int
+     * @param String
+     */
     public void setFatura(int id, Fatura fatura, int nif, String password) throws NonExistentBillException,
                                                                                   PermissionDeniedException,
                                                                                   FailureOnLoginException {
@@ -222,10 +281,20 @@ public class Plataforma implements Serializable {
         }
     }
 
+    /**
+     * Método que devolve as atividades económicas.
+     * @return Map
+     */
     public Map<String,AtividadeEconomica> getAtividadesEconomicas() {
         return new HashMap(this.atividadesEconomicas);
     }
 
+    /**
+     * Método que devolve as faturas ordenadas por valor crescente.
+     * @param int
+     * @param String
+     * @return ArrayList
+     */
     public ArrayList<Fatura> getFaturasPorValor(int nif, String password) throws FailureOnLoginException, 
                                                                                  PermissionDeniedException {
         Contribuinte c;
@@ -242,6 +311,12 @@ public class Plataforma implements Serializable {
         }
     }
 
+    /**
+     * Método que devolve as faturas ordenadas por data crescente.
+     * @param int
+     * @param String
+     * @return ArrayList
+     */
     public ArrayList<Fatura> getFaturasPorData(int nif, String password) throws FailureOnLoginException, 
                                                                                 PermissionDeniedException {
         Contribuinte c;
@@ -258,6 +333,12 @@ public class Plataforma implements Serializable {
         }
     }
 
+    /**
+     * Método que a dedução total associada a um contribuinte individual.
+     * @param int
+     * @param String
+     * @return double
+     */
     public double calcularDeducaoTotal(int nif, String password) throws FailureOnLoginException,
                                                                         PermissionDeniedException {
         Double sum = 0.0;
@@ -294,6 +375,14 @@ public class Plataforma implements Serializable {
         }
     }
 
+    /**
+     * Método que devolve o total faturado por uma empresa entre duas datas.
+     * @param int
+     * @param String
+     * @param Date
+     * @param Date
+     * @return double
+     */
     public double getTotalFaturado(int nif, String password, Date begin, Date end) throws FailureOnLoginException,
                                                                                            PermissionDeniedException {
         Contribuinte c;
@@ -311,6 +400,13 @@ public class Plataforma implements Serializable {
         }
     }
 
+    /**
+     * Método que devolve as faturas de um contribuinte ordenadas por valor crescente.
+     * @param int
+     * @param String
+     * @param int
+     * @return ArrayList
+     */
     public ArrayList<Fatura> getFaturasPorValorContribuinte(int nif, String password, int nifc) throws FailureOnLoginException,
                                                                                                        PermissionDeniedException,
                                                                                                        NonExistentClientException {
@@ -331,6 +427,15 @@ public class Plataforma implements Serializable {
         }
     }
 
+    /**
+     * Método que devolve as faturas de um contribuinte entre duas datas ordenadas por data crescente.
+     * @param int
+     * @param String
+     * @param Date
+     * @param Date
+     * @param int
+     * @return ArrayList
+     */
     public ArrayList<Fatura> getFaturasPorDataContribuinte(int nif, String password, Date begin, Date end, int nifc) throws FailureOnLoginException,
                                                                                                                             PermissionDeniedException,
                                                                                                                             NonExistentClientException {
@@ -351,6 +456,12 @@ public class Plataforma implements Serializable {
         }
     }
 
+    /**
+     * Método que devolve os dez contribuintes que mais gastam no sistema.
+     * @param int
+     * @param String
+     * @return Collection
+     */
     public Collection<ContribuinteIndividual> getTop10Contribuintes(int nif, String password) throws FailureOnLoginException,
                                                                                                      PermissionDeniedException {
         Contribuinte c;
@@ -376,6 +487,13 @@ public class Plataforma implements Serializable {
         }
     }
 
+    /**
+     * Método que devolve as X empresas com mais faturas.
+     * @param int
+     * @param int
+     * @param String
+     * @return Collection
+     */
     public Collection<Empresa> getXEmpresasComMaisFaturas(int X, int nif, String password) throws FailureOnLoginException,
                                                                                                   PermissionDeniedException {
         Contribuinte c;
