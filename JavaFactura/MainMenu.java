@@ -57,11 +57,14 @@ public class MainMenu extends EstadoMenu
         System.out.print("Password: ");
         String pw = this.scanner.next();
         System.out.print("Nome: ");
-        String name = this.scanner.next();
+        this.scanner.nextLine();
+        String name = this.scanner.nextLine();
         System.out.print("Email: ");
-        String email = this.scanner.next();
+        this.scanner.nextLine();
+        String email = this.scanner.nextLine();
         System.out.print("Morada: ");
-        String address = this.scanner.next();
+        this.scanner.nextLine();
+        String address = this.scanner.nextLine();
         switch (type) {
             case 1:
                 System.out.print("Número de dependentes no agregado familiar: ");
@@ -79,7 +82,7 @@ public class MainMenu extends EstadoMenu
                 int numAtividades = this.scanner.nextInt();
                 HashSet<String> atividades = new HashSet<String>(numAtividades);
                 for(int i = 0; i < numAtividades; i++) {
-                    System.out.print("(1) - Habitação\n(2) - Educação\n(3) - Saúde\n(4) - DespesasGerais\n>");
+                    System.out.println("(1) - Habitação\n(2) - Educação\n(3) - Saúde\n(4) - DespesasGerais\n>");
                     int decisao = this.scanner.nextInt();
                     String atividade = "";
                     switch (decisao) {

@@ -15,11 +15,11 @@ public class EmpresaMenu extends EstadoMenu {
     }
 
     private EstadoMenu criarFatura() {
-        System.out.println("NIF do cliente:");
+        System.out.print("NIF do cliente:");
         int nifCliente = this.scanner.nextInt();
-        System.out.println("Valor da despesa:");
+        System.out.print("Valor da despesa:");
         double valor = this.scanner.nextDouble();
-        System.out.println("Data da Fatura:\n (1) - Data atual\n (2) - Outra");
+        System.out.print("Data da Fatura:\n (1) - Data atual\n (2) - Outra");
         int decisao = this.scanner.nextInt();
         Date data = new Date();
         switch(decisao) {
@@ -43,29 +43,13 @@ public class EmpresaMenu extends EstadoMenu {
         switch(decisao) {
             case 1:
                 System.out.println("Escreva aqui:");
-                descricao = this.scanner.next();
+                this.scanner.nextLine();
+                descricao = this.scanner.nextLine();
                 break;
             case 2:
                 break;
         }
-        System.out.println("Qual é a atividade económica: \n (1) - Habitação\n (2) - Educação\n (3) - Saúde\n (4) - DespesasGerais");
-        decisao = this.scanner.nextInt();
-        String atividade = "";
-        switch(decisao) {
-            case 1:
-                atividade = "Habitacao";
-                break;
-            case 2:
-                atividade = "Educacao";
-                break;
-            case 3:
-                atividade = "Saude";
-                break;
-            case 4:
-                atividade = "DespesasGerais";
-                break;
-        }
-        Fatura f = new Fatura(this.nif, plataforma.getNomeEmpresa(this.nif), data, nifCliente, descricao, atividade, valor);
+        Fatura f = new Fatura(this.nif, this.plataforma.getNomeEmpresa(this.nif), data, nifCliente, descricao, "", valor);
         try {
             this.plataforma.adicionarFatura(f, this.nif, this.password);
         } catch (FailureOnLoginException e) {
