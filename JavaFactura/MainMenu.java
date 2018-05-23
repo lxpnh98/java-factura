@@ -23,9 +23,9 @@ public class MainMenu extends EstadoMenu
      */
     private EstadoMenu login() {
         System.out.println("login()");
-        System.out.print("NIF: ");
+        System.out.println("NIF: ");
         int nif = this.scanner.nextInt();
-        System.out.print("Password: ");
+        System.out.println("Password: ");
         String pw = this.scanner.next();
         try {
             Contribuinte c = this.plataforma.login(nif, pw);
@@ -48,7 +48,15 @@ public class MainMenu extends EstadoMenu
      * @return EstadoMenu
      */
     private EstadoMenu sair() {
-        return null;
+        System.out.println(" Deseja mesmo sair ?\n  (1) - Sim\n  (2) - Não");
+        int decisao = this.scanner.nextInt();
+        switch(decisao) {
+            case 1:
+                return null;
+            case 2:
+                this.interact();
+        }
+        return this;
     }
 
     /**
@@ -56,7 +64,7 @@ public class MainMenu extends EstadoMenu
      * @return EstadoMenu
      */
     private EstadoMenu guardarEstado() {
-        System.out.print("Nome do ficheiro: ");
+        System.out.println("Nome do ficheiro: ");
         String nome = this.scanner.next();
         this.guardaEstado(nome);
         return this;
@@ -68,24 +76,22 @@ public class MainMenu extends EstadoMenu
      */
     private EstadoMenu registarContribuinte() {
         Contribuinte c = null;
-        System.out.print("(1) - Contribuinte individual\n(2) - Empresa\n> ");
+        System.out.println("(1) - Contribuinte individual\n(2) - Empresa\n> ");
         int type = this.scanner.nextInt();
-        System.out.print("NIF: ");
+        System.out.println("NIF: ");
         int nif = this.scanner.nextInt();
-        System.out.print("Password: ");
+        System.out.println("Password: ");
         String pw = this.scanner.next();
-        System.out.print("Nome: ");
+        System.out.println("Nome: ");
         this.scanner.nextLine();
         String name = this.scanner.nextLine();
-        System.out.print("Email: ");
-        this.scanner.nextLine();
+        System.out.println("Email: ");
         String email = this.scanner.nextLine();
-        System.out.print("Morada: ");
-        this.scanner.nextLine();
+        System.out.println("Morada: ");
         String address = this.scanner.nextLine();
         switch (type) {
             case 1:
-                System.out.print("Número de dependentes no agregado familiar: ");
+                System.out.println("Número de dependentes no agregado familiar: ");
                 int numDep = this.scanner.nextInt();
                 ArrayList<Integer> nifsDep = new ArrayList<Integer>();
                 for(int i = 0; i < numDep; i++) {
@@ -127,14 +133,14 @@ public class MainMenu extends EstadoMenu
         this.plataforma.adicionarContribuinte(c);
         return this;
     }
-    
+
     /**
      * Método que carrega o estado do sistema a partir de um ficheiro.
      * @return EstadoMenu
      */
     private EstadoMenu carregarEstado(){
         try {
-            System.out.print("Nome do ficheiro: ");
+            System.out.println("Nome do ficheiro: ");
             String nome = this.scanner.next();
             Plataforma p = Plataforma.carregarPlataforma(nome);
             return new MainMenu(this.scanner, p);
@@ -154,7 +160,7 @@ public class MainMenu extends EstadoMenu
      * @return EstadoMenu
      */
     public EstadoMenu interact() {
-        System.out.print("(1) - Fazer login\n(2) - Registar novo contribuinte\n(3) - Carregar estado\n(4) - Guardar estado\n(5) - Sair\n> ");
+        System.out.println("\n (1) - Fazer login\n (2) - Registar novo contribuinte\n (3) - Carregar estado\n (4) - Guardar estado\n (5) - Sair\n> ");
         int decisao = this.scanner.nextInt();
         switch (decisao) {
             case 1:

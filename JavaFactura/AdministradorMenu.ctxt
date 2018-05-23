@@ -1,16 +1,16 @@
 #BlueJ class context
 comment0.target=AdministradorMenu
-comment0.text=\n\ Classe\ AdministradorMenu.\n\n\ @author\ Alexandre\ Pinho\ (a82441);\ Joel\ Gama\ (a82202);\ Tiago\ Pinheiro\ (a82491).\n
+comment0.text=\r\n\ Classe\ AdministradorMenu.\r\n\r\n\ @author\ Alexandre\ Pinho\ (a82441);\ Joel\ Gama\ (a82202);\ Tiago\ Pinheiro\ (a82491).\r\n
 comment1.params=s\ p\ nif\ password
 comment1.target=AdministradorMenu(java.util.Scanner,\ Plataforma,\ int,\ java.lang.String)
-comment1.text=\n\ Construtor\ parametrizado\ de\ AdministradorMenu.\n
+comment1.text=\r\n\ Construtor\ parametrizado\ de\ AdministradorMenu.\r\n
 comment2.params=
 comment2.target=EstadoMenu\ listarEmpresasPorFaturacao()
-comment2.text=\n\ M\u00E9todo\ que\ lista\ as\ empresas\ por\ ordem\ decrescente\ de\ total\ faturado.\n\ @return\ EstadoMenu\n
+comment2.text=\r\n\ M\u00E9todo\ que\ lista\ as\ empresas\ por\ ordem\ decrescente\ de\ total\ faturado.\r\n\ @return\ EstadoMenu\r\n
 comment3.params=
 comment3.target=EstadoMenu\ contribuintesQueMaisGastam()
-comment3.text=\n\ M\u00E9todo\ que\ lista\ os\ dez\ contribuintes\ que\ mais\ gastam\ no\ sistema.\n\ @return\ EstadoMenu\n
+comment3.text=\r\n\ M\u00E9todo\ que\ lista\ os\ dez\ contribuintes\ que\ mais\ gastam\ no\ sistema.\r\n\ @return\ EstadoMenu\r\n
 comment4.params=
 comment4.target=EstadoMenu\ interact()
-comment4.text=\n\ M\u00E9todo\ que\ permite\ ao\ utilizador\ interagir\ com\ o\ programa.\n\ @return\ EstadoMenu\n
+comment4.text=\r\n\ M\u00E9todo\ que\ permite\ ao\ utilizador\ interagir\ com\ o\ programa.\r\n\ @return\ EstadoMenu\r\n
 numComments=5
