@@ -46,7 +46,7 @@ public class ContribuinteIndividual extends Contribuinte implements Serializable
         super(c);
         this.numDependentes = c.getNumDependentes();
         this.nifsDependentes = c.getNifsDep();
-        this.idFaturas = new HashSet<Integer>();
+        this.idFaturas = new HashSet<Integer>(c.getFaturas());
         this.totalFaturado = c.getTotalFaturado();
     }
 
@@ -60,15 +60,22 @@ public class ContribuinteIndividual extends Contribuinte implements Serializable
 
     public ArrayList<Integer> getNifsDep() {
        ArrayList<Integer> res = new ArrayList<>();
-       for(Integer n : nifsDependentes) {
+       for(int n : this.nifsDependentes) {
            res.add(n);
        }
        return res;
     }
 
     public void setNifsDep(ArrayList<Integer> nifsDep) {
-        this.nifsDependentes = new ArrayList<>(nifsDep.size());
-        nifsDependentes.forEach(n -> {this.nifsDependentes.add(n);});
+        this.nifsDependentes = new ArrayList<>();
+        nifsDep.forEach(n -> {this.nifsDependentes.add(n);});
+    }
+
+    public boolean pertenceAgredado(int nif) {
+        for(Integer i : this.nifsDependentes) {
+            if (i.equals(nif)) return true;
+        }
+        return false;
     }
 
     /**

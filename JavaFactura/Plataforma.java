@@ -93,8 +93,8 @@ public class Plataforma implements Serializable {
     }
 
     public void adicionarContribuinte(Contribuinte c) {
-        this.contribuintes.put(c.getNIF(), c.clone());
         if (c instanceof Empresa) {
+            this.contribuintes.put(c.getNIF(), ((Empresa)c).clone());
             Integer key = ((Empresa)c).getNumFaturas();
             List<Integer> l = this.empresasComMaisFaturas.get(key);
             if (l == null) {
@@ -103,6 +103,7 @@ public class Plataforma implements Serializable {
             l.add(c.getNIF());
             this.empresasComMaisFaturas.put(key, l);
         } else if (c instanceof ContribuinteIndividual) {
+            this.contribuintes.put(c.getNIF(),((ContribuinteIndividual)c).clone());
             Double totalFaturado = ((ContribuinteIndividual)c).getTotalFaturado();
             Set<Integer> l = new HashSet();
             l.add(((ContribuinteIndividual)c).getNIF());
@@ -189,12 +190,23 @@ public class Plataforma implements Serializable {
                                                                      PermissionDeniedException,
                                                                      FailureOnLoginException {
         Fatura f = this.faturas.get(id);
+
         if (f == null) {
             throw new NonExistentBillException("");
         }
-        if (nif != f.getNifEmitente() && nif != f.getNifCliente()) {
-            throw new PermissionDeniedException("");
+
+        Contribuinte c = this.contribuintes.get(nif);
+
+        if(c instanceof Empresa) {
+            if (nif != f.getNifEmitente()) {
+                throw new PermissionDeniedException("");
+            }            
+        } else if (c instanceof ContribuinteIndividual) {
+            if (nif != f.getNifCliente() && !((ContribuinteIndividual) c).pertenceAgredado(f.getNifCliente())) {
+                throw new PermissionDeniedException("");
+            }
         }
+        
         try {
             this.login(nif, password);
         } catch (FailureOnLoginException e) {
@@ -255,6 +267,21 @@ public class Plataforma implements Serializable {
             return faturas;
         } else {
             throw new PermissionDeniedException("Não é Empresa");
+        }
+    }
+
+    public List<Fatura> getFaturasIndividuo(int nif, String password) throws FailureOnLoginException, 
+                                                                             PermissionDeniedException {
+        Contribuinte c;
+        try {
+            c = this.login(nif, password);
+        } catch (FailureOnLoginException e) {
+            throw e;
+        }
+        if(c instanceof ContribuinteIndividual) {
+            return ((ContribuinteIndividual)c).getFaturas().stream().map(i -> this.faturas.get(i).clone()).collect(Collectors.toList());
+        } else {
+            throw new PermissionDeniedException("Não é um contribuinte individual");
         }
     }
 

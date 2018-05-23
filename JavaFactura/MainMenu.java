@@ -69,7 +69,7 @@ public class MainMenu extends EstadoMenu
             case 1:
                 System.out.print("Número de dependentes no agregado familiar: ");
                 int numDep = this.scanner.nextInt();
-                ArrayList<Integer> nifsDep = new ArrayList<Integer>(numDep);
+                ArrayList<Integer> nifsDep = new ArrayList<Integer>();
                 for(int i = 0; i < numDep; i++) {
                     System.out.print("Nif de um dependente do agregado familiar: ");
                     int nifDep = this.scanner.nextInt();
