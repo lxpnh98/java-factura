@@ -21,6 +21,7 @@ public class Fatura implements Serializable
     private List<Date> registoData;
     private List<String> atividadeEconomica;
     private double valor;
+    private boolean validado;
 
     /**
      * Construtor por omissão de Fatura.
@@ -36,6 +37,7 @@ public class Fatura implements Serializable
         this.atividadeEconomica = new ArrayList<String>();
         this.setAtividade("");
         this.valor = 0;
+        this.validado = false;
     }
 
     /**
@@ -52,6 +54,7 @@ public class Fatura implements Serializable
         this.atividadeEconomica = new ArrayList<String>();
         this.setAtividade(atividade);
         this.valor = valor;
+        this.validado = false;
     }
 
     /**
@@ -67,10 +70,11 @@ public class Fatura implements Serializable
         this.registoData = f.getRegistoData();
         this.atividadeEconomica = f.getRegistoAtividade();
         this.valor = f.getValor();
+        this.validado = f.getValidado();
     }
 
     /**
-     * Devolde o id da fatura.
+     * Devolve o id da fatura.
      * @return Id da fatura.
      */
     public int getId() {
@@ -78,7 +82,7 @@ public class Fatura implements Serializable
     }
 
     /**
-     * Devolde o nif do emissor da fatura.
+     * Devolve o nif do emissor da fatura.
      * @return Nif do emissor.
      */
     public int getNifEmitente(){
@@ -86,7 +90,7 @@ public class Fatura implements Serializable
     }
 
     /**
-     * Devolde o nome do emissor da fatura.
+     * Devolve o nome do emissor da fatura.
      * @return Nome do emissor.
      */
     public String getEmitente(){
@@ -94,7 +98,7 @@ public class Fatura implements Serializable
     }
 
     /**
-     * Devolde o nif do cliente da fatura.
+     * Devolve o nif do cliente da fatura.
      * @return Nif do cliente.
      */
     public int getNifCliente(){
@@ -102,7 +106,7 @@ public class Fatura implements Serializable
     }
 
     /**
-     * Devolde a descrição da fatura.
+     * Devolve a descrição da fatura.
      * @return Descrição da fatura.
      */
     public String getDescrição(){
@@ -110,7 +114,7 @@ public class Fatura implements Serializable
     }
 
     /**
-     * Devolde a data da fatura.
+     * Devolve a data da fatura.
      * @return Data da fatura.
      */
     public Date getData(){
@@ -118,7 +122,7 @@ public class Fatura implements Serializable
     }
 
     /**
-     * Devolde o valor da fatura.
+     * Devolve o valor da fatura.
      * @return Valor da fatura.
      */
     public double getValor(){
@@ -126,7 +130,22 @@ public class Fatura implements Serializable
     }
 
     /**
-     * Devolde o tipo de atividade economica.
+     * Testa se a fatura foi validada.
+     * @return Valor da condição.
+     */
+    public boolean getValidado() {
+        return this.validado;
+    }
+
+    /**
+     * Valida a fatura.
+     */
+    public void validar() {
+        this.validado = true;
+    }
+
+    /**
+     * Devolve o tipo de atividade economica.
      * @return Atividade economica.
      */
     public String getAtividade() {
@@ -134,7 +153,7 @@ public class Fatura implements Serializable
     }
 
     /**
-     * Devolde uma lista com as atividades.
+     * Devolve uma lista com as atividades.
      * @return Lista de Strings.
      */
     public List<String> getRegistoAtividade() {
@@ -142,7 +161,7 @@ public class Fatura implements Serializable
     }
 
     /**
-     * Devolde uma lista com as datas.
+     * Devolve uma lista com as datas.
      * @return Lista de Dates.
      */
     public List<Date> getRegistoData() {
@@ -150,7 +169,7 @@ public class Fatura implements Serializable
         for (Date d : this.registoData) {
             r.add((Date)d.clone());
         }
-        return r; 
+        return r;
     }
 
     /**
@@ -223,7 +242,8 @@ public class Fatura implements Serializable
         return "\nFatura:\n Nif do Emissor - " + this.nifEmitente + "\n Emissor - " + this.emitente +
                "\n Data de criacao - " + this.data + "\n Nif do cliente - " + this.nifCliente + 
                "\n Descrição da fatura - " + this.descrição + "\n Valor da fatura - " + this.valor +
-               "\n Atividade economica - " + this.atividadeEconomica + "\n (" + this.registoData + ")";
+               "\n Atividade economica - " + this.atividadeEconomica + "\n (" + this.registoData + ")" +
+               "\n Validada: " + this.validado;
     }
 
     /**

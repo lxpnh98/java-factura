@@ -1,18 +1,25 @@
 #BlueJ class context
 comment0.target=MainMenu
-comment0.text=\n\ Write\ a\ description\ of\ class\ MainInterface\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ Classe\ MainMenu.\n\n\ @author\ Alexandre\ Pinho\ (a82441);\ Joel\ Gama\ (a82202);\ Tiago\ Pinheiro\ (a82491).\n
 comment1.params=s\ p
 comment1.target=MainMenu(java.util.Scanner,\ Plataforma)
+comment1.text=\n\ Construtor\ parametrizado\ de\ MainMenu.\n
 comment2.params=
 comment2.target=EstadoMenu\ login()
+comment2.text=\n\ M\u00E9todo\ que\ permite\ fazer\ login.\n\ @return\ EstadoMenu\n
 comment3.params=
 comment3.target=EstadoMenu\ sair()
+comment3.text=\n\ M\u00E9todo\ que\ permite\ sair\ do\ sistema.\n\ @return\ EstadoMenu\n
 comment4.params=
 comment4.target=EstadoMenu\ guardarEstado()
+comment4.text=\n\ M\u00E9todo\ que\ guarda\ o\ estado\ do\ sistema.\n\ @return\ EstadoMenu\n
 comment5.params=
 comment5.target=EstadoMenu\ registarContribuinte()
+comment5.text=\n\ M\u00E9todo\ que\ regista\ um\ novo\ contribuinte\ no\ sistema.\n\ @return\ EstadoMenu\n
 comment6.params=
 comment6.target=EstadoMenu\ carregarEstado()
+comment6.text=\n\ M\u00E9todo\ que\ carrega\ o\ estado\ do\ sistema\ a\ partir\ de\ um\ ficheiro.\n\ @return\ EstadoMenu\n
 comment7.params=
 comment7.target=EstadoMenu\ interact()
+comment7.text=\n\ M\u00E9todo\ que\ permite\ ao\ utilizador\ interagir\ com\ o\ programa.\n\ @return\ EstadoMenu\n
 numComments=8
