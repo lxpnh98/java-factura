@@ -400,7 +400,7 @@ public class Plataforma implements Serializable {
                         a = new DespesasGerais();
                         break;
                 }
-                sum += a.calcularDeducao(f.getValor(), new HashSet());
+                sum += (f.getValidado() ? a.calcularDeducao(f.getValor(), new HashSet()) : 0.0);
             }
             return sum;
         } else {

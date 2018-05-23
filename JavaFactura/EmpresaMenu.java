@@ -27,11 +27,11 @@ public class EmpresaMenu extends EstadoMenu {
      * @return EstadoMenu estado do sistema atualizado.
      */
     private EstadoMenu criarFatura() {
-        System.out.print("NIF do cliente:");
+        System.out.println("NIF do cliente:");
         int nifCliente = this.scanner.nextInt();
-        System.out.print("Valor da despesa:");
+        System.out.println("Valor da despesa:");
         double valor = this.scanner.nextDouble();
-        System.out.print("Data da Fatura:\n (1) - Data atual\n (2) - Outra");
+        System.out.println("Data da Fatura:\n (1) - Data atual\n (2) - Outra");
         int decisao = this.scanner.nextInt();
         Date data = new Date();
         switch(decisao) {
@@ -82,27 +82,27 @@ public class EmpresaMenu extends EstadoMenu {
         Calendar data1 = Calendar.getInstance();
         Calendar data2 = Calendar.getInstance();
 
-        System.out.print("Dia da data inicial:");
+        System.out.println("Dia da data inicial:");
         int dia1 = this.scanner.nextInt();
-        System.out.print("Mês da data inicial:");
+        System.out.println("Mês da data inicial:");
         int mes1 = this.scanner.nextInt();
-        System.out.print("Ano da data inicial:");
+        System.out.println("Ano da data inicial:");
         int ano1 = this.scanner.nextInt();
 
         data1.set(ano1, (mes1 - 1), dia1, 0, 0, 0);
         Date begin = data1.getTime();
-        System.out.print("Data inicial: " + begin + "\n\n");
+        System.out.println("Data inicial: " + begin + "\n\n");
 
-        System.out.print("Dia da data final:");
+        System.out.println("Dia da data final:");
         int dia2 = this.scanner.nextInt();
-        System.out.print("Mês da data final:");
+        System.out.println("Mês da data final:");
         int mes2 = this.scanner.nextInt();
-        System.out.print("Ano da data final:");
+        System.out.println("Ano da data final:");
         int ano2 = this.scanner.nextInt();
 
         data2.set(ano2, (mes2 - 1), dia2, 0, 0, 0);
         Date end = data2.getTime();
-        System.out.print("Data final: " + end + "\n\n");
+        System.out.println("Data final: " + end + "\n\n");
 
         try {
             System.out.println("Total acumulado: " + this.plataforma.getTotalFaturado(this.nif, this.password, begin, end));
@@ -178,29 +178,29 @@ public class EmpresaMenu extends EstadoMenu {
         Calendar data1 = Calendar.getInstance();
         Calendar data2 = Calendar.getInstance();
 
-        System.out.print("Dia da data inicial:");
+        System.out.println("Dia da data inicial:");
         int dia1 = this.scanner.nextInt();
-        System.out.print("Mês da data inicial:");
+        System.out.println("Mês da data inicial:");
         int mes1 = this.scanner.nextInt();
-        System.out.print("Ano da data inicial:");
+        System.out.println("Ano da data inicial:");
         int ano1 = this.scanner.nextInt();
 
         data1.set(ano1, (mes1 - 1), dia1, 0, 0, 0);
         Date begin = data1.getTime();
-        System.out.print("Data inicial: " + begin + "\n\n");
+        System.out.println("Data inicial: " + begin + "\n\n");
 
-        System.out.print("Dia da data final:");
+        System.out.println("Dia da data final:");
         int dia2 = this.scanner.nextInt();
-        System.out.print("Mês da data final:");
+        System.out.println("Mês da data final:");
         int mes2 = this.scanner.nextInt();
-        System.out.print("Ano da data final:");
+        System.out.println("Ano da data final:");
         int ano2 = this.scanner.nextInt();
 
         data2.set(ano2, (mes2 - 1), dia2, 0, 0, 0);
         Date end = data2.getTime();
-        System.out.print("Data final: " + end + "\n\n");
+        System.out.println("Data final: " + end + "\n\n");
 
-        System.out.print("Nif do cliente que pretende listar:");
+        System.out.println("Nif do cliente que pretende listar:");
         int nif = this.scanner.nextInt();
         try {
             if(this.plataforma.getFaturasPorDataContribuinte(this.nif, this.password, begin, end, nif).isEmpty()) {

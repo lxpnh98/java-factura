@@ -40,13 +40,51 @@ public class FaturaMenu extends EstadoMenu
     }
 
     /**
+     * Método que permite validar a atividade económica de uma fatura.
+     * @return EstadoMenu
+     */
+    private EstadoMenu validarFatura() {
+        try {
+            Fatura f = this.plataforma.getFatura(this.id, this.nif, this.password);
+            if (f.getValidado() == false) {
+                if (f.getAtividade().equals("")) {
+                    System.out.println("Sem atividade definida.");
+                    return this.alterarAtividade();
+                } else {
+                    System.out.println("Atividade económica: " + f.getAtividade());
+                    System.out.println("(1) - Validar\n(2) - Alterar atividade económica");
+                    int decisao = this.scanner.nextInt();
+                    switch (decisao) {
+                        case 1:
+                            f.validar();
+                            System.out.println("Fatura validada.");
+                            this.plataforma.setFatura(this.id, f, this.nif, this.password);
+                            break;
+                        case 2:
+                            return this.alterarAtividade();
+                    }
+                }
+            } else {
+                System.out.println("Fatura já validada.");
+            }
+        } catch (NonExistentBillException e) {
+            System.out.println("Fatura não existente.");
+        } catch (PermissionDeniedException e) {
+            System.out.println("Sem permissão.");
+        } catch (FailureOnLoginException e) {
+            System.out.println("Informação de login incorreta.");
+        }
+        return this;
+    }
+
+    /**
      * Método que altera a atividade económica de uma fatura.
      * @return EstadoMenu estado do sistema atualizado.
      */
     private EstadoMenu alterarAtividade() {
         Fatura f = null;
         try {
-            f = this.plataforma.getFatura(id, this.nif, this.password);
+            f = this.plataforma.getFatura(this.id, this.nif, this.password);
             System.out.println("\n (1) - Habitação\n (2) - Educação\n (3) - Saúde\n (4) - DespesasGerais\n (5) - Cancelar\n>");
             int decisao = this.scanner.nextInt();
             switch (decisao) {
@@ -65,7 +103,8 @@ public class FaturaMenu extends EstadoMenu
                 case 5:
                     return this;
             }
-            this.plataforma.setFatura(id, f, this.nif, this.password);
+            f.validar();
+            this.plataforma.setFatura(this.id, f, this.nif, this.password);
         } catch (NonExistentBillException e) {
             System.out.println("Fatura não existente.");
         } catch (PermissionDeniedException e) {
@@ -81,14 +120,16 @@ public class FaturaMenu extends EstadoMenu
      * @return EstadoMenu estado do sistema atualizado.
      */
     public EstadoMenu interact() {
-        System.out.println("\n (1) - Imprimir informação\n (2) - Alterar atividade económica\n (3) - Voltar");
+        System.out.println("\n (1) - Imprimir informação\n (2) - Validar fatura\n (3) - Alterar atividade económica\n (4) - Voltar");
         int decisao = this.scanner.nextInt();
         switch (decisao) {
             case 1:
                 return this.imprimirInformacao();
             case 2:
-                return this.alterarAtividade();
+                return this.validarFatura();
             case 3:
+                return this.alterarAtividade();
+            case 4:
                 return new IndividuoMenu(this.scanner, this.plataforma, this.nif, this.password);
         }
         return this;

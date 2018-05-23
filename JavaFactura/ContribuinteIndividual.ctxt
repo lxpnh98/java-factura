@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=ContribuinteIndividual
-comment0.text=\r\n\ class\ ContribuinteIndividual\ -\ Classe\ que\ representa\ um\ contribuinte\ individual.\r\n\r\n\ @author\ Alexandre\ Pinho\ (a82441);\ Joel\ Gama\ (a82202);\ Tiago\ Pinheiro\ (a82491).\r\n
+comment0.text=\r\n\ Classe\ ContribuinteIndividual\ -\ Classe\ que\ representa\ um\ contribuinte\ individual.\r\n\r\n\ @author\ Alexandre\ Pinho\ (a82441);\ Joel\ Gama\ (a82202);\ Tiago\ Pinheiro\ (a82491).\r\n
 comment1.params=
 comment1.target=ContribuinteIndividual()
 comment1.text=\r\n\ Construtor\ por\ omiss\u00E3o\ do\ contribuiente\ individual.\r\n

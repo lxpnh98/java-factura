@@ -1,9 +1,10 @@
 #BlueJ class context
 comment0.target=JavaFactura
-comment0.text=\n\ Write\ a\ description\ of\ class\ Interface\ here.\n\n\ @author\ (your\ name)\n
+comment0.text=\r\n\ Classe\ JavaFatura.\r\n\r\n\ @author\ Alexandre\ Pinho\ (a82441);\ Joel\ Gama\ (a82202);\ Tiago\ Pinheiro\ (a82491).\r\n
 comment1.params=
 comment1.target=JavaFactura()
-comment1.text=\n\ Constructor\ for\ objects\ of\ class\ Interface\n
+comment1.text=\r\n\ Constructor\ por\ omiss\u00E3o\ de\ JavaFatura.\r\n
 comment2.params=args
 comment2.target=void\ main(java.lang.String[])
+comment2.text=\r\n\ M\u00E9todo\ main.\r\n
 numComments=3

@@ -1,12 +1,19 @@
 #BlueJ class context
 comment0.target=FaturaMenu
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ FaturaMenu\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Classe\ FaturaMenu.\r\n\r\n\ @author\ Alexandre\ Pinho\ (a82441);\ Joel\ Gama\ (a82202);\ Tiago\ Pinheiro\ (a82491).\r\n
 comment1.params=s\ p\ nif\ password\ id
 comment1.target=FaturaMenu(java.util.Scanner,\ Plataforma,\ int,\ java.lang.String,\ int)
+comment1.text=\r\n\ Construtor\ parametrizado\ de\ FaturaMenu.\r\n
 comment2.params=
 comment2.target=EstadoMenu\ imprimirInformacao()
+comment2.text=\r\n\ M\u00E9todo\ que\ imprime\ a\ informa\u00E7\u00E3o\ de\ uma\ fatura.\r\n\ @return\ EstadoMenu\r\n
 comment3.params=
-comment3.target=EstadoMenu\ alterarAtividade()
+comment3.target=EstadoMenu\ validarFatura()
+comment3.text=\r\n\ M\u00E9todo\ que\ permite\ validar\ a\ atividade\ econ\u00F3mica\ de\ uma\ fatura.\r\n\ @return\ EstadoMenu\r\n
 comment4.params=
-comment4.target=EstadoMenu\ interact()
-numComments=5
+comment4.target=EstadoMenu\ alterarAtividade()
+comment4.text=\r\n\ M\u00E9todo\ que\ altera\ a\ atividade\ econ\u00F3mica\ de\ uma\ fatura.\r\n\ @return\ EstadoMenu\r\n
+comment5.params=
+comment5.target=EstadoMenu\ interact()
+comment5.text=\r\n\ M\u00E9todo\ que\ permite\ ao\ utilizador\ interagir\ com\ o\ programa.\r\n\ @return\ EstadoMenu\r\n
+numComments=6
