@@ -99,7 +99,8 @@ public class MainMenu extends EstadoMenu
                     int nifDep = this.scanner.nextInt();
                     nifsDep.add(nifDep);
                 }
-                c = new ContribuinteIndividual(nif, name, email, address, pw, numDep, nifsDep);
+                ArrayList<String> codigosAtividades = new ArrayList<String>();
+                c = new ContribuinteIndividual(nif, name, email, address, pw, numDep, nifsDep, codigosAtividades);
                 break;
             case 2:
                 System.out.println("Número de atividades económicas: ");

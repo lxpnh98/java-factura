@@ -1,19 +1,19 @@
 #BlueJ class context
 comment0.target=Administrador
-comment0.text=\n\ Classe\ Administrador\ -\ Classe\ que\ representa\ um\ administrador.\n\n\ @author\ Alexandre\ Pinho\ (a82441);\ Joel\ Gama\ (a82202);\ Tiago\ Pinheiro\ (a82491).\n
+comment0.text=\r\n\ Classe\ Administrador\ -\ Classe\ que\ representa\ um\ administrador.\r\n\r\n\ @author\ Alexandre\ Pinho\ (a82441);\ Joel\ Gama\ (a82202);\ Tiago\ Pinheiro\ (a82491).\r\n
 comment1.params=
 comment1.target=Administrador()
-comment1.text=\n\ Construtor\ por\ omiss\u00E3o\ de\ Administrador.\n
+comment1.text=\r\n\ Construtor\ por\ omiss\u00E3o\ de\ Administrador.\r\n
 comment2.params=nif\ nome\ email\ morada\ password
 comment2.target=Administrador(int,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
-comment2.text=\n\ Construtor\ parametrizado\ de\ Administrador.\n
+comment2.text=\r\n\ Construtor\ parametrizado\ de\ Administrador.\r\n
 comment3.params=a
 comment3.target=Administrador(Administrador)
-comment3.text=\n\ Construtor\ de\ c\u00F3pia\ de\ Administrador.\n
+comment3.text=\r\n\ Construtor\ de\ c\u00F3pia\ de\ Administrador.\r\n
 comment4.params=
 comment4.target=Administrador\ clone()
-comment4.text=\n\ Cria\ uma\ c\u00F3pia\ do\ objecto\ Administrador.\n\ @return\n
+comment4.text=\r\n\ Cria\ uma\ c\u00F3pia\ do\ objecto\ Administrador.\r\n\ @return\ Administrador\r\n
 comment5.params=emp
 comment5.target=boolean\ equals(java.lang.Object)
-comment5.text=\n\ Verifica\ a\ igualdade\ de\ dois\ objectos\n\ @param\ emp;\n\ @return\ Valor\ boleano\ da\ compara\u00E7\u00E3o.\n
+comment5.text=\r\n\ Verifica\ a\ igualdade\ de\ dois\ objectos\r\n\ @param\ emp.\r\n\ @return\ Valor\ boleano\ da\ compara\u00E7\u00E3o.\r\n
 numComments=6

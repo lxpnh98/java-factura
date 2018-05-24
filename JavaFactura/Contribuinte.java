@@ -151,7 +151,7 @@ public abstract class Contribuinte implements Serializable
      * @return String com as informações do contribuiente.
      */
     public String toString(){
-        return "NIF: " + this.nif + "\nNome: " + this.nome + "\nEmail: " + 
-               this.email + "\nMorada: " + this.morada + "\nPassword: " + this.password;
+        return " NIF: " + this.nif + "\n Nome: " + this.nome + "\n Email: " + 
+               this.email + "\n Morada: " + this.morada + "\n Password: " + this.password;
     }
 }

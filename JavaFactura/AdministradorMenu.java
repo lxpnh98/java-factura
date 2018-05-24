@@ -58,11 +58,51 @@ public class AdministradorMenu extends EstadoMenu {
     }
 
     /**
+     * Método que permite ao Adminstrador alterar os códigos das atividades económicas de um contribuinte individual. 
+     * @return EstadoMenu estado do sistema atualizado.
+     */
+    public EstadoMenu alterarCodigosAtividades() {
+        System.out.println(" Qual é o NIF do contribuinte que pretende alterar?");
+        int contribuinte = this.scanner.nextInt();
+        if (this.plataforma.existsIndividuo(contribuinte)) {
+            System.out.println("Quantas atividades económicas pretende adicionar: ");
+            int numAtividades = this.scanner.nextInt();
+            ArrayList<String> atividades = new ArrayList<String>(numAtividades);
+            for(int i = 0; i < numAtividades; i++) {
+                System.out.println(" (1) - Habitação\n (2) - Educação\n (3) - Saúde\n (4) - DespesasGerais\n>");
+                int decisao = this.scanner.nextInt();
+                String atividade = "";
+                switch (decisao) {
+                    case 1:
+                        atividade = "Habitacao";
+                        break;
+                    case 2:
+                        atividade = "Educacao";
+                        break;
+                    case 3:
+                        atividade = "Saude";
+                        break;
+                    case 4:
+                        atividade = "DespesasGerais";
+                        break;
+                }
+                if (!atividade.equals("")) {
+                        atividades.add(atividade);
+                }
+            }
+         	this.plataforma.alterarCodigosAtividades(contribuinte,atividades);
+        } else {
+            System.out.println(" Não existe nenhum contribuinte individual correspondente a esse NIF.");
+        }
+        return this;
+    }
+
+    /**
      * Método que permite ao utilizador interagir com o programa.
      * @return EstadoMenu estado do sistema atualizado.
      */
     public EstadoMenu interact() {
-        System.out.println("(1) - Listar empresas com maior faturação\n(2) - Listar os 10 contribuintes que mais gastam\n(3) - Logout");
+        System.out.println(" (1) - Listar empresas com maior faturação\n (2) - Listar os 10 contribuintes que mais gastam\n (3) - Alterar/Adicionar códigos das Atividades Económicas\n (4) - Logout");
         int decisao = this.scanner.nextInt();
         switch (decisao) {
             case 1:
@@ -70,6 +110,8 @@ public class AdministradorMenu extends EstadoMenu {
             case 2:
                 return this.contribuintesQueMaisGastam();
             case 3:
+                return this.alterarCodigosAtividades();
+            case 4:
                 return new MainMenu(this.scanner, this.plataforma);
             }
         return this;

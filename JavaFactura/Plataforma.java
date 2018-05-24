@@ -124,9 +124,21 @@ public class Plataforma implements Serializable {
             l.add(((ContribuinteIndividual)c).getNIF());
             System.out.println(""+totalFaturado);
             this.contribuintesQueMaisGastam.put(totalFaturado, l);
+        } else {
+            this.contribuintes.put(c.getNIF(),((Administrador)c).clone());
         }
     }
 
+    /** 
+     * Método que alterar as atividades económicas de um contribuinte Individual.
+     * @param int nif do contribuinte
+     * @param ArrayList<String> códigos alterados
+     */
+    public void alterarCodigosAtividades(int nif, ArrayList<String> codigos) {
+        ContribuinteIndividual c = (ContribuinteIndividual)this.contribuintes.get(nif);
+        c.setCodigos(codigos);
+    }
+   
     /**
      * Método que atualiza a lista das empresas que mais  no sistema.
      * @param int nif da empresa
@@ -385,22 +397,27 @@ public class Plataforma implements Serializable {
             Collection<Integer> faturas = ((ContribuinteIndividual)this.contribuintes.get(nif)).getFaturas();
             for (Integer i : faturas) {
                 Fatura f = this.faturas.get(i);
+                String s = "";
                 AtividadeEconomica a = this.atividadesEconomicas.get(f.getAtividade());
                 switch (a.getNome()) {
                     case "Habitacao":
                         a = new Habitacao();
+                        s = "Habitacao";
                         break;
                     case "Saude":
                         a = new Saude();
+                        s = "Saude";
                         break;
                     case "Educacao":
                         a = new Educacao();
+                        s = "Educacao";
                         break;
                     case "DespesasGerais":
                         a = new DespesasGerais();
+                        s = "DespesasGerais";
                         break;
                 }
-                sum += (f.getValidado() ? a.calcularDeducao(f.getValor(), new HashSet()) : 0.0);
+                sum += ((f.getValidado() && ((ContribuinteIndividual)this.contribuintes.get(nif)).getCodigos().contains(s)) ? a.calcularDeducao(f.getValor(), new HashSet()) : 0.0);
             }
             return sum;
         } else {
