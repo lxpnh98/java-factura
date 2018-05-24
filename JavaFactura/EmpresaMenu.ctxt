@@ -1,9 +1,9 @@
 #BlueJ class context
 comment0.target=EmpresaMenu
-comment0.text=\r\n\ Classe\ EmpresaMenu.\r\n\r\n\ @author\ Alexandre\ Pinho\ (a82441);\ Joel\ Gama\ (a82202);\ Tiago\ Pinheiro\ (a82491).\r\n
+comment0.text=\n\ Classe\ EmpresaMenu.\n\n\ @author\ Alexandre\ Pinho\ (a82441);\ Joel\ Gama\ (a82202);\ Tiago\ Pinheiro\ (a82491).\n
 comment1.params=s\ p\ nif\ password
 comment1.target=EmpresaMenu(java.util.Scanner,\ Plataforma,\ int,\ java.lang.String)
-comment1.text=\r\n\ Construtor\ parametrizado\ de\ EmpresaMenu.\r\n
+comment1.text=\n\ Construtor\ parametrizado\ de\ EmpresaMenu.\n
 comment2.params=
 comment2.target=EstadoMenu\ criarFatura()
 comment2.text=\r\n\ M\u00E9todo\ que\ cria\ uma\ fatura.\r\n\ @return\ EstadoMenu\ estado\ do\ sistema\ atualizado.\r\n

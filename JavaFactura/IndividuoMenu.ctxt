@@ -1,9 +1,9 @@
 #BlueJ class context
 comment0.target=IndividuoMenu
-comment0.text=\r\n\ Classe\ IndividuoMenu.\r\n\r\n\ @author\ Alexandre\ Pinho\ (a82441);\ Joel\ Gama\ (a82202);\ Tiago\ Pinheiro\ (a82491).\r\n
+comment0.text=\n\ Classe\ IndividuoMenu.\n\n\ @author\ Alexandre\ Pinho\ (a82441);\ Joel\ Gama\ (a82202);\ Tiago\ Pinheiro\ (a82491).\n
 comment1.params=s\ p\ nif\ password
 comment1.target=IndividuoMenu(java.util.Scanner,\ Plataforma,\ int,\ java.lang.String)
-comment1.text=\r\n\ Construtor\ parametrizado\ de\ IndividuoMenu.\r\n
+comment1.text=\n\ Construtor\ parametrizado\ de\ IndividuoMenu.\n
 comment2.params=
 comment2.target=EstadoMenu\ verificarFatura()
 comment2.text=\r\n\ M\u00E9todo\ que\ verifica\ uma\ fatura.\r\n\ @return\ EstadoMenu\ estado\ do\ sistema\ atualizado.\r\n
@@ -16,4 +16,3 @@ comment4.text=\r\n\ M\u00E9todo\ que\ calcula\ a\ dedu\u00E7\u00E3o\ total\ de\ 
 comment5.params=
 comment5.target=EstadoMenu\ interact()
 comment5.text=\r\n\ M\u00E9todo\ que\ permite\ ao\ utilizador\ interagir\ com\ o\ programa.\r\n\ @return\ EstadoMenu\ estado\ do\ sistema\ atualizado.\r\n
-numComments=6

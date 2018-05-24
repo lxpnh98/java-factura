@@ -56,12 +56,16 @@ public class ContribuinteIndividual extends Contribuinte implements Serializable
 
     /**
      * Devolde o valor do número de dependentes do agregado familiar.
-     * @return Valor do NumDep.
+     * @return int número de dependentes.
      */
     public int getNumDependentes(){
         return this.numDependentes;
     }
 
+    /**
+     * Devolde um ArrayList com os nifs dos dependentes.
+     * @return ArrayList array dos dependentes.
+     */
     public ArrayList<Integer> getNifsDep() {
        ArrayList<Integer> res = new ArrayList<>();
        for(int n : this.nifsDependentes) {
@@ -70,11 +74,20 @@ public class ContribuinteIndividual extends Contribuinte implements Serializable
        return res;
     }
 
+    /**
+     * Atualiza o ArrayList dos nifs dos dependentes.
+     * @param ArrayList array dos dependentes.
+     */
     public void setNifsDep(ArrayList<Integer> nifsDep) {
         this.nifsDependentes = new ArrayList<>();
         nifsDep.forEach(n -> {this.nifsDependentes.add(n);});
     }
 
+    /**
+     * Verifica se um contribuinte pertence ao agregado familiar.
+     * @param int nif do contribuinte.
+     * @return boolean valor da verificação.
+     */
     public boolean pertenceAgredado(int nif) {
         for(Integer i : this.nifsDependentes) {
             if (i.equals(nif)) return true;
@@ -111,13 +124,17 @@ public class ContribuinteIndividual extends Contribuinte implements Serializable
         this.numDependentes = numDep;
     }
 
+    /**
+     * Devolve o total faturado por um contribuinte.
+     * @return Double total faturado.
+     */
     public Double getTotalFaturado() {
         return this.totalFaturado;
     }
 
     /**
      * Adiciona uma fatura à lista de faturas.
-     * @param Fatura.
+     * @param Fatura fatura a adicionar.
      */
     public void adicionarFatura(Fatura f) {
         this.idFaturas.add(f.getId());

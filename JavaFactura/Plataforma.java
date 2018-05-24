@@ -18,7 +18,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * Classe FailureOnLoginException - subclasse de Exception.
+ * Classe FailureOnLoginException - Exceção de falha no login.
  */
 class FailureOnLoginException extends Exception {
     FailureOnLoginException() {
@@ -31,7 +31,7 @@ class FailureOnLoginException extends Exception {
 }
 
 /**
- * Classe PermissionDeniedException - subclasse de Exception.
+ * Classe PermissionDeniedException - Exceção de falta de permição.
  */
 class PermissionDeniedException extends Exception {
     PermissionDeniedException() {
@@ -44,7 +44,7 @@ class PermissionDeniedException extends Exception {
 }
 
 /**
- * Classe NonExistentClientException - subclasse de Exception.
+ * Classe NonExistentClientException - Exceção de cliente não existente.
  */
 class NonExistentClientException extends Exception {
     NonExistentClientException() {
@@ -57,7 +57,7 @@ class NonExistentClientException extends Exception {
 }
 
 /**
- * Classe NonExistentBillException - subclasse de Exception.
+ * Classe NonExistentBillException - Exceção de fatura não existente.
  */
 class NonExistentBillException extends Exception {
     NonExistentBillException() {
@@ -140,7 +140,7 @@ public class Plataforma implements Serializable {
     }
    
     /**
-     * Método que atualiza a lista das empresas que mais  no sistema.
+     * Método que atualiza a lista das empresas com mais faturas no sistema.
      * @param int nif da empresa
      */
     private void updateEmpresasComMaisFaturas(int nif) {
@@ -159,7 +159,7 @@ public class Plataforma implements Serializable {
     }
 
     /**
-     * Método que atualiza a lista dos contribuintes que mais gastam.
+     * Método que atualiza a lista dos contribuintes que mais gastam no sistema.
      * @param Fatura fatura com o valor a adicionar.
      */
     private void updateContribuintesQueMaisGastam(Fatura f) {
@@ -177,7 +177,7 @@ public class Plataforma implements Serializable {
     /**
      * Método que adiciona uma fatura.
      * @param Fatura fatura a adicionar.
-     * @param int nif .
+     * @param int nif.
      * @param String password.
      */
     public void adicionarFatura(Fatura f, int nif, String password) throws FailureOnLoginException,
@@ -209,7 +209,7 @@ public class Plataforma implements Serializable {
      * Método que permite fazer login.
      * @param int nif.
      * @param String password.
-     * @return Contribuinte contribuinte que se fez login.
+     * @return Contribuinte contribuinte que fez login.
      */
     public Contribuinte login(int nif, String password) throws FailureOnLoginException {
         Contribuinte c = this.contribuintes.get(nif);
@@ -572,7 +572,7 @@ public class Plataforma implements Serializable {
 
     /**
      * Método que guarda num ficheiro de objetos o estado atual da aplicação.
-     * @param String nomeFicheiro.
+     * @param String nome do ficheiro.
      */
     public void guardaEstado(String nomeFicheiro) throws FileNotFoundException, IOException {
         FileOutputStream guardaFicheiro = new FileOutputStream(nomeFicheiro);
@@ -591,8 +591,8 @@ public class Plataforma implements Serializable {
     }
     
     /**
-     * Método que carrega um estado apartir de um ficheiro de objetos;
-     * @param String nomeFicheiro;
+     * Método que carrega um estado apartir de um ficheiro de objetos.
+     * @param String nome do ficheiro.
      * @return Plataforma p.
      */
     public static Plataforma carregarPlataforma(String nomeFicheiro) throws FileNotFoundException,

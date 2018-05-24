@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=ContribuinteIndividual
-comment0.text=\r\n\ Classe\ ContribuinteIndividual\ -\ Classe\ que\ representa\ um\ contribuinte\ individual.\r\n\r\n\ @author\ Alexandre\ Pinho\ (a82441);\ Joel\ Gama\ (a82202);\ Tiago\ Pinheiro\ (a82491).\r\n
+comment0.text=\n\ Classe\ ContribuinteIndividual\ -\ Classe\ que\ representa\ um\ contribuinte\ individual.\n\n\ @author\ Alexandre\ Pinho\ (a82441);\ Joel\ Gama\ (a82202);\ Tiago\ Pinheiro\ (a82491).\n
 comment1.params=
 comment1.target=ContribuinteIndividual()
 comment1.text=\r\n\ Construtor\ por\ omiss\u00E3o\ do\ contribuiente\ individual.\r\n
@@ -29,10 +29,10 @@ comment2.target=ContribuinteIndividual(int,\ java.lang.String,\ java.lang.String
 comment2.text=\r\n\ Construtor\ parametrizado\ do\ contribuiente\ individual.\r\n
 comment3.params=c
 comment3.target=ContribuinteIndividual(ContribuinteIndividual)
-comment3.text=\r\n\ Construtor\ de\ c\u00F3pia\ do\ contribuiente\ individual.\r\n
+comment3.text=\n\ Construtor\ de\ c\u00F3pia\ do\ contribuiente\ individual.\n
 comment4.params=
 comment4.target=int\ getNumDependentes()
-comment4.text=\r\n\ Devolde\ o\ valor\ do\ n\u00FAmero\ de\ dependentes\ do\ agregado\ familiar.\r\n\ @return\ Valor\ do\ NumDep.\r\n
+comment4.text=\n\ Devolde\ o\ valor\ do\ n\u00FAmero\ de\ dependentes\ do\ agregado\ familiar.\n\ @return\ Valor\ do\ NumDep.\n
 comment5.params=
 comment5.target=java.util.ArrayList\ getNifsDep()
 comment6.params=nifsDep

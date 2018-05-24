@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Plataforma
-comment0.text=\r\n\ Classe\ Plataforma\r\n\r\n\ @author\ Alexandre\ Pinho\ (a82441);\ Joel\ Gama\ (a82202);\ Tiago\ Pinheiro\ (a82491).\r\n
+comment0.text=\n\ Classe\ Plataforma\n\n\ @author\ Alexandre\ Pinho\ (a82441);\ Joel\ Gama\ (a82202);\ Tiago\ Pinheiro\ (a82491).\n
 comment1.params=
 comment1.target=FailureOnLoginException()
 comment10.params=nif
@@ -55,7 +55,7 @@ comment25.target=Plataforma\ carregarPlataforma(java.lang.String)
 comment25.text=\r\n\ M\u00E9todo\ que\ carrega\ um\ estado\ apartir\ de\ um\ ficheiro\ de\ objetos;\r\n\ @param\ String\ nomeFicheiro;\r\n\ @return\ Plataforma\ p.\r\n
 comment3.params=
 comment3.target=Plataforma()
-comment3.text=\r\n\ Constructor\ por\ omiss\u00E3o\ de\ Plataforma.\r\n
+comment3.text=\n\ Constructor\ por\ omiss\u00E3o\ de\ Plataforma.\n
 comment4.params=c
 comment4.target=void\ adicionarContribuinte(Contribuinte)
 comment4.text=\r\n\ M\u00E9todo\ que\ adiciona\ um\ contribuinte\ ao\ sistema.\r\n\ @param\ Contribuinte\ contribuinte\ a\ adicionar.\r\n

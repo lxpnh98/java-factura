@@ -61,7 +61,7 @@ public class MainMenu extends EstadoMenu
 
     /**
      * Método que guarda o estado do sistema.
-     * @return EstadoMenu
+     * @return EstadoMenu estado do sistema atualizado.
      */
     private EstadoMenu guardarEstado() {
         System.out.println("Nome do ficheiro: ");

@@ -1,13 +1,20 @@
 #BlueJ class context
 comment0.target=EstadoMenu
-comment0.text=\r\n\ Classe\ abstrata\ EstadoMenu.\r\n\r\n\ @author\ Alexandre\ Pinho\ (a82441);\ Joel\ Gama\ (a82202);\ Tiago\ Pinheiro\ (a82491).\r\n
+comment0.text=\n\ Classe\ abstrata\ EstadoMenu.\n\n\ @author\ Alexandre\ Pinho\ (a82441);\ Joel\ Gama\ (a82202);\ Tiago\ Pinheiro\ (a82491).\n
 comment1.params=s\ p
 comment1.target=EstadoMenu(java.util.Scanner,\ Plataforma)
-comment1.text=\r\n\ Construtor\ parametrizado\ de\ EstadoMenu.\r\n
+comment1.text=\n\ Construtor\ parametrizado\ de\ EstadoMenu.\n
 comment2.params=
 comment2.target=EstadoMenu\ interact()
+<<<<<<< HEAD
 comment2.text=\r\n\ M\u00E9todo\ que\ permite\ ao\ utilizador\ interagir\ com\ o\ programa.\r\n\ @return\ EstadoMenu\ estado\ do\ sistema\ atualizado.\r\n
 comment3.params=s
 comment3.target=void\ guardaEstado(java.lang.String)
 comment3.text=\r\n\ M\u00E9todo\ que\ guarda\ o\ estado\ do\ sistema.\r\n\ @param\ String\ nome\ do\ ficheiro\ onde\ o\ estado\ foi\ guardado\r\n
+=======
+comment2.text=\n\ M\u00E9todo\ que\ permite\ ao\ utilizador\ interagir\ com\ o\ programa.\n\ @return\ EstadoMenu\ estado\ do\ sistema\ atualizado.\n
+comment3.params=s
+comment3.target=void\ guardaEstado(java.lang.String)
+comment3.text=\n\ M\u00E9todo\ que\ guarda\ o\ estado\ do\ sistema.\n\ @param\ String\ nome\ do\ ficheiro\ onde\ o\ estado\ foi\ guardado\n
+>>>>>>> 62b9eb913fc0a12eb23f4b70a6945818370884a2
 numComments=4

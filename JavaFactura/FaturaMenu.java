@@ -41,7 +41,7 @@ public class FaturaMenu extends EstadoMenu
 
     /**
      * Método que permite validar a atividade económica de uma fatura.
-     * @return EstadoMenu
+     * @return EstadoMenu estado do sistema atualizado.
      */
     private EstadoMenu validarFatura() {
         try {
