@@ -162,7 +162,7 @@ public class Fatura implements Serializable
 
     /**
      * Devolve uma lista com as datas.
-     * @return Lista de Dates.
+     * @return Lista de datas.
      */
     public List<Date> getRegistoData() {
         ArrayList<Date> r = new ArrayList<Date>();
