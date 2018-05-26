@@ -126,7 +126,7 @@ public class Plataforma implements Serializable {
             l.add(((ContribuinteIndividual)c).getNIF());
             System.out.println(""+totalFaturado);
             this.contribuintesQueMaisGastam.put(totalFaturado, l);
-        } else {
+        } else if (c instanceof Administrador){
             this.contribuintes.put(c.getNIF(),((Administrador)c).clone());
         }
     }

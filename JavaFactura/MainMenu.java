@@ -78,60 +78,62 @@ public class MainMenu extends EstadoMenu
         Contribuinte c = null;
         System.out.println("(1) - Contribuinte individual\n(2) - Empresa\n> ");
         int type = this.scanner.nextInt();
-        System.out.println("NIF: ");
-        int nif = this.scanner.nextInt();
-        System.out.println("Password: ");
-        String pw = this.scanner.next();
-        System.out.println("Nome: ");
-        this.scanner.nextLine();
-        String name = this.scanner.nextLine();
-        System.out.println("Email: ");
-        String email = this.scanner.nextLine();
-        System.out.println("Morada: ");
-        String address = this.scanner.nextLine();
-        switch (type) {
-            case 1:
-                System.out.println("Número de dependentes no agregado familiar: ");
-                int numDep = this.scanner.nextInt();
-                ArrayList<Integer> nifsDep = new ArrayList<Integer>();
-                for(int i = 0; i < numDep; i++) {
-                    System.out.print("Nif de um dependente do agregado familiar: ");
-                    int nifDep = this.scanner.nextInt();
-                    nifsDep.add(nifDep);
-                }
-                ArrayList<String> codigosAtividades = new ArrayList<String>();
-                c = new ContribuinteIndividual(nif, name, email, address, pw, numDep, nifsDep, codigosAtividades);
-                break;
-            case 2:
-                System.out.println("Número de atividades económicas: ");
-                int numAtividades = this.scanner.nextInt();
-                HashSet<String> atividades = new HashSet<String>(numAtividades);
-                for(int i = 0; i < numAtividades; i++) {
-                    System.out.println("(1) - Habitação\n(2) - Educação\n(3) - Saúde\n(4) - DespesasGerais\n>");
-                    int decisao = this.scanner.nextInt();
-                    String atividade = "";
-                    switch (decisao) {
-                        case 1:
-                            atividade = "Habitacao";
-                            break;
-                        case 2:
-                            atividade = "Educacao";
-                            break;
-                        case 3:
-                            atividade = "Saude";
-                            break;
-                        case 4:
-                            atividade = "DespesasGerais";
-                            break;
+        if (type == 1 || type == 2) {
+            System.out.println("NIF: ");
+            int nif = this.scanner.nextInt();
+            System.out.println("Password: ");
+            String pw = this.scanner.next();
+            System.out.println("Nome: ");
+            this.scanner.nextLine();
+            String name = this.scanner.nextLine();
+            System.out.println("Email: ");
+            String email = this.scanner.nextLine();
+            System.out.println("Morada: ");
+            String address = this.scanner.nextLine();
+            switch (type) {
+                case 1:
+                    System.out.println("Número de dependentes no agregado familiar: ");
+                    int numDep = this.scanner.nextInt();
+                    ArrayList<Integer> nifsDep = new ArrayList<Integer>();
+                    for(int i = 0; i < numDep; i++) {
+                        System.out.print("Nif de um dependente do agregado familiar: ");
+                        int nifDep = this.scanner.nextInt();
+                        nifsDep.add(nifDep);
                     }
-                    if (!atividade.equals("")) {
-                        atividades.add(atividade);
+                    ArrayList<String> codigosAtividades = new ArrayList<String>();
+                    c = new ContribuinteIndividual(nif, name, email, address, pw, numDep, nifsDep, codigosAtividades);
+                    break;
+                case 2:
+                    System.out.println("Número de atividades económicas: ");
+                    int numAtividades = this.scanner.nextInt();
+                    HashSet<String> atividades = new HashSet<String>(numAtividades);
+                    for(int i = 0; i < numAtividades; i++) {
+                        System.out.println("(1) - Habitação\n(2) - Educação\n(3) - Saúde\n(4) - DespesasGerais\n>");
+                        int decisao = this.scanner.nextInt();
+                        String atividade = "";
+                        switch (decisao) {
+                            case 1:
+                             atividade = "Habitacao";
+                             break;
+                            case 2:
+                                atividade = "Educacao";
+                                break;
+                            case 3:
+                                atividade = "Saude";
+                                break;
+                            case 4:
+                                atividade = "DespesasGerais";
+                                break;
+                        }
+                        if (!atividade.equals("")) {
+                            atividades.add(atividade);
+                        }
                     }
-                }
-                c = new Empresa(nif, name, email, address, pw, atividades);
-                break;
+                    c = new Empresa(nif, name, email, address, pw, atividades);
+                    break;
+            }
+            this.plataforma.adicionarContribuinte(c);
         }
-        this.plataforma.adicionarContribuinte(c);
         return this;
     }
 
