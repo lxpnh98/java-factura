@@ -424,7 +424,30 @@ public class Plataforma implements Serializable {
             throw new PermissionDeniedException("Não é contribuinte individual");
         }
     }
-
+    
+    /**
+     * Método que imprime a informação de um contribuinte Individual ou de uma Empresa.
+     * @param int nif do contribuinte.
+     * @param String password.
+     * @return String informação.
+     */
+    public String imprimirInformacao(int nif, String password) throws FailureOnLoginException,
+                                                                        PermissionDeniedException {
+        Contribuinte c;
+        try {
+            c = this.login(nif, password);
+        } catch (FailureOnLoginException e) {
+            throw e;
+        }
+        if (c instanceof ContribuinteIndividual) {            
+            return ((ContribuinteIndividual)this.contribuintes.get(nif)).toString();
+        } else if (c instanceof Empresa) {
+            return ((Empresa)this.contribuintes.get(nif)).toString();
+        } else {
+            throw new PermissionDeniedException("Não é contribuinte individual");
+        }
+    }
+    
     /**
      * Método que devolve o total faturado por uma empresa entre duas datas.
      * @param int nif da empresa.

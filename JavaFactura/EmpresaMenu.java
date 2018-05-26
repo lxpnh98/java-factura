@@ -218,13 +218,28 @@ public class EmpresaMenu extends EstadoMenu {
         }
         return this;
     }
-
+    
+    /**
+     * Método que imprime a informação de uma Empresa.
+     * @return EstadoMenu estado do sistema atualizado.
+     */
+    public EstadoMenu imprimirInformacao() {
+        try {
+            System.out.println(this.plataforma.imprimirInformacao(this.nif, this.password));
+        } catch (FailureOnLoginException e) {
+            System.out.println("Informação de login incorreta.");
+        } catch (PermissionDeniedException e) {
+            System.out.println("Sem permissão.");
+        }
+        return this;
+    }
+    
     /**
      * Método que permite ao utilizador interagir com o programa.
      * @return EstadoMenu estado do sistema atualizado.
      */
     public EstadoMenu interact() {
-        System.out.println("(1) - Criar fatura\n(2) - Listar faturas por valor\n(3) - Listar faturas por data\n(4) - Calcular total acumulado da empresa\n(5) - Listar faturas por contribuinte e valor\n(6) - Listar faturas por contribuinte e data\n(7) - Logout");
+        System.out.println("\n (1) - Criar fatura\n (2) - Listar faturas por valor\n (3) - Listar faturas por data\n (4) - Calcular total acumulado da empresa\n (5) - Listar faturas por contribuinte e valor\n (6) - Listar faturas por contribuinte e data\n (7) - Imprimir Informação\n (8) - Logout");
         int decisao = this.scanner.nextInt();
         switch (decisao) {
             case 1:
@@ -239,7 +254,9 @@ public class EmpresaMenu extends EstadoMenu {
                 return this.listarFaturasPorValorContribuinte();
             case 6: 
                 return this.listarFaturasPorDataContribuinte();
-            case 7:
+            case 7: 
+                return this.imprimirInformacao();
+            case 8:
                 return new MainMenu(this.scanner, this.plataforma);
             }
         return this;

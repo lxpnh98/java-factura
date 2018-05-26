@@ -160,7 +160,7 @@ public class Empresa extends Contribuinte implements Serializable
      * @return String com as informações da Empresa.
      */
     public String toString(){
-        return super.toString();
+        return super.toString() + "\n Atividades económicas: " + this.atividadesEconomicas;
     }
 
     /**

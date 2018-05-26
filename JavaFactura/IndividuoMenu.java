@@ -61,13 +61,29 @@ public class IndividuoMenu extends EstadoMenu
         }
         return this;
     }
+    
+    /**
+     * Método que imprime a informação de um contribuinte Individual.
+     * @return EstadoMenu estado do sistema atualizado.
+     */
+    public EstadoMenu imprimirInformacao() {
+        try {
+            System.out.println(this.plataforma.imprimirInformacao(this.nif, this.password));
+        } catch (FailureOnLoginException e) {
+            System.out.println("Informação de login incorreta.");
+        } catch (PermissionDeniedException e) {
+            System.out.println("Sem permissão.");
+        }
+        return this;
+    }
+    
 
     /**
      * Método que permite ao utilizador interagir com o programa.
      * @return EstadoMenu estado do sistema atualizado.
      */
     public EstadoMenu interact() {
-        System.out.println(" (1) - Verificar fatura\n (2) - Listar faturas\n (3) - Calcular valor de dedução total\n (4) - Logout");
+        System.out.println("\n (1) - Verificar fatura\n (2) - Listar faturas\n (3) - Calcular valor de dedução total\n (4) - Imprimir Informação\n (5) - Logout");
         int decisao = this.scanner.nextInt();
         switch (decisao) {
             case 1:
@@ -76,7 +92,9 @@ public class IndividuoMenu extends EstadoMenu
                 return this.listarFaturas();
             case 3:    
                 return this.calcularDeducaoTotal();
-            case 4:
+            case 4: 
+                return this.imprimirInformacao();
+            case 5:
                 return new MainMenu(this.scanner, this.plataforma);
             }
         return this;

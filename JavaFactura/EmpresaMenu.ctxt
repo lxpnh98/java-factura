@@ -1,9 +1,9 @@
 #BlueJ class context
 comment0.target=EmpresaMenu
-comment0.text=\n\ Classe\ EmpresaMenu.\n\n\ @author\ Alexandre\ Pinho\ (a82441);\ Joel\ Gama\ (a82202);\ Tiago\ Pinheiro\ (a82491).\n
+comment0.text=\r\n\ Classe\ EmpresaMenu.\r\n\r\n\ @author\ Alexandre\ Pinho\ (a82441);\ Joel\ Gama\ (a82202);\ Tiago\ Pinheiro\ (a82491).\r\n
 comment1.params=s\ p\ nif\ password
 comment1.target=EmpresaMenu(java.util.Scanner,\ Plataforma,\ int,\ java.lang.String)
-comment1.text=\n\ Construtor\ parametrizado\ de\ EmpresaMenu.\n
+comment1.text=\r\n\ Construtor\ parametrizado\ de\ EmpresaMenu.\r\n
 comment2.params=
 comment2.target=EstadoMenu\ criarFatura()
 comment2.text=\r\n\ M\u00E9todo\ que\ cria\ uma\ fatura.\r\n\ @return\ EstadoMenu\ estado\ do\ sistema\ atualizado.\r\n
@@ -23,6 +23,9 @@ comment7.params=
 comment7.target=EstadoMenu\ listarFaturasPorDataContribuinte()
 comment7.text=\r\n\ M\u00E9todo\ que\ lista\ as\ faturas\ de\ um\ dado\ contribuinte\ por\ data\ crescente\ entre\ duas\ datas.\r\n\ @return\ EstadoMenu\ estado\ do\ sistema\ atualizado.\r\n
 comment8.params=
-comment8.target=EstadoMenu\ interact()
-comment8.text=\r\n\ M\u00E9todo\ que\ permite\ ao\ utilizador\ interagir\ com\ o\ programa.\r\n\ @return\ EstadoMenu\ estado\ do\ sistema\ atualizado.\r\n
-numComments=9
+comment8.target=EstadoMenu\ imprimirInformacao()
+comment8.text=\r\n\ M\u00E9todo\ que\ imprime\ a\ informa\u00E7\u00E3o\ de\ uma\ Empresa.\r\n\ @return\ EstadoMenu\ estado\ do\ sistema\ atualizado.\r\n
+comment9.params=
+comment9.target=EstadoMenu\ interact()
+comment9.text=\r\n\ M\u00E9todo\ que\ permite\ ao\ utilizador\ interagir\ com\ o\ programa.\r\n\ @return\ EstadoMenu\ estado\ do\ sistema\ atualizado.\r\n
+numComments=10
