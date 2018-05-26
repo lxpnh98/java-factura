@@ -61,7 +61,7 @@ public class EmpresaMenu extends EstadoMenu {
             case 2:
                 break;
         }
-        Fatura f = new Fatura(this.nif, this.plataforma.getNomeEmpresa(this.nif), data, nifCliente, descricao, "", valor);
+        Fatura f = new Fatura(this.plataforma.newFaturaId(), this.nif, this.plataforma.getNomeEmpresa(this.nif), data, nifCliente, descricao, "", valor);
         try {
             this.plataforma.adicionarFatura(f, this.nif, this.password);
         } catch (FailureOnLoginException e) {

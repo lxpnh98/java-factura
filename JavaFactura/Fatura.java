@@ -11,7 +11,6 @@ import java.io.Serializable;
  */
 public class Fatura implements Serializable
 {
-    private static int idCounter = 0;
     private int id;
     private int nifEmitente;
     private String emitente;
@@ -27,7 +26,7 @@ public class Fatura implements Serializable
      * Construtor por omissão de Fatura.
      */
     public Fatura(){
-        this.id = idCounter++;
+        this.id = 0;
         this.nifEmitente = 0;
         this.emitente = "";
         this.data = new Date();
@@ -43,8 +42,8 @@ public class Fatura implements Serializable
     /**
      * Construtor parametrizado de Fatura.
      */
-    public Fatura(int nifEmitente, String emitente, Date data, int nifCliente, String descrição, String atividade, double valor){
-        this.id = idCounter++;
+    public Fatura(int id, int nifEmitente, String emitente, Date data, int nifCliente, String descrição, String atividade, double valor){
+        this.id = id;
         this.nifEmitente = nifEmitente;
         this.emitente = emitente;
         this.data = (Date)data.clone();

@@ -75,6 +75,7 @@ class NonExistentBillException extends Exception {
  * @author Alexandre Pinho (a82441); Joel Gama (a82202); Tiago Pinheiro (a82491).
  */
 public class Plataforma implements Serializable {
+    private int idCounter;
     private Map<Integer,Contribuinte> contribuintes;
     private Map<Integer,Fatura> faturas;
     private Map<String,AtividadeEconomica> atividadesEconomicas;
@@ -86,6 +87,7 @@ public class Plataforma implements Serializable {
      */
     public Plataforma()
     {
+        this.idCounter = 0;
         this.contribuintes = new HashMap<Integer,Contribuinte>();
         this.faturas = new HashMap<Integer,Fatura>();
         this.atividadesEconomicas = new HashMap<String,AtividadeEconomica>();
@@ -129,6 +131,14 @@ public class Plataforma implements Serializable {
         }
     }
 
+    /**
+     * Método que dá o id da próxima fatura a ser registada, atualizando o valor do seu contador interno.
+     * @return int Próximo id disponível para uma fatura.
+     */
+    public int newFaturaId() {
+        return this.idCounter++;
+    }
+
     /** 
      * Método que alterar as atividades económicas de um contribuinte Individual.
      * @param int nif do contribuinte
@@ -138,7 +148,7 @@ public class Plataforma implements Serializable {
         ContribuinteIndividual c = (ContribuinteIndividual)this.contribuintes.get(nif);
         c.setCodigos(codigos);
     }
-   
+
     /**
      * Método que atualiza a lista das empresas com mais faturas no sistema.
      * @param int nif da empresa
@@ -152,7 +162,7 @@ public class Plataforma implements Serializable {
         }
         List<Integer> l = this.empresasComMaisFaturas.get(numFaturas);
         if (l == null) {
-            l = new ArrayList<Integer>();        
+            l = new ArrayList<Integer>();
         }
         l.add(nif);
         this.empresasComMaisFaturas.put(numFaturas, l);
@@ -264,13 +274,13 @@ public class Plataforma implements Serializable {
         if(c instanceof Empresa) {
             if (nif != f.getNifEmitente()) {
                 throw new PermissionDeniedException("");
-            }            
+            }
         } else if (c instanceof ContribuinteIndividual) {
             if (nif != f.getNifCliente() && !((ContribuinteIndividual) c).pertenceAgredado(f.getNifCliente())) {
                 throw new PermissionDeniedException("");
             }
         }
-        
+
         try {
             this.login(nif, password);
         } catch (FailureOnLoginException e) {
@@ -319,7 +329,7 @@ public class Plataforma implements Serializable {
      * @param String password.
      * @return ArrayList de faturas.
      */
-    public ArrayList<Fatura> getFaturasPorValor(int nif, String password) throws FailureOnLoginException, 
+    public ArrayList<Fatura> getFaturasPorValor(int nif, String password) throws FailureOnLoginException,
                                                                                  PermissionDeniedException {
         Contribuinte c;
         try {
@@ -341,7 +351,7 @@ public class Plataforma implements Serializable {
      * @param String password.
      * @return ArrayList das faturas.
      */
-    public ArrayList<Fatura> getFaturasPorData(int nif, String password) throws FailureOnLoginException, 
+    public ArrayList<Fatura> getFaturasPorData(int nif, String password) throws FailureOnLoginException,
                                                                                 PermissionDeniedException {
         Contribuinte c;
         try {
@@ -363,7 +373,7 @@ public class Plataforma implements Serializable {
      * @param String password.
      * @return List das faturas.
      */
-    public List<Fatura> getFaturasIndividuo(int nif, String password) throws FailureOnLoginException, 
+    public List<Fatura> getFaturasIndividuo(int nif, String password) throws FailureOnLoginException,
                                                                              PermissionDeniedException {
         Contribuinte c;
         try {
@@ -393,7 +403,7 @@ public class Plataforma implements Serializable {
         } catch (FailureOnLoginException e) {
             throw e;
         }
-        if (c instanceof ContribuinteIndividual) {            
+        if (c instanceof ContribuinteIndividual) {
             Collection<Integer> faturas = ((ContribuinteIndividual)this.contribuintes.get(nif)).getFaturas();
             for (Integer i : faturas) {
                 Fatura f = this.faturas.get(i);
@@ -424,7 +434,7 @@ public class Plataforma implements Serializable {
             throw new PermissionDeniedException("Não é contribuinte individual");
         }
     }
-    
+
     /**
      * Método que imprime a informação de um contribuinte Individual ou de uma Empresa.
      * @param int nif do contribuinte.
@@ -439,7 +449,7 @@ public class Plataforma implements Serializable {
         } catch (FailureOnLoginException e) {
             throw e;
         }
-        if (c instanceof ContribuinteIndividual) {            
+        if (c instanceof ContribuinteIndividual) {
             return ((ContribuinteIndividual)this.contribuintes.get(nif)).toString();
         } else if (c instanceof Empresa) {
             return ((Empresa)this.contribuintes.get(nif)).toString();
@@ -447,7 +457,7 @@ public class Plataforma implements Serializable {
             throw new PermissionDeniedException("Não é contribuinte individual");
         }
     }
-    
+
     /**
      * Método que devolve o total faturado por uma empresa entre duas datas.
      * @param int nif da empresa.
@@ -599,9 +609,9 @@ public class Plataforma implements Serializable {
      */
     public void guardaEstado(String nomeFicheiro) throws FileNotFoundException, IOException {
         FileOutputStream guardaFicheiro = new FileOutputStream(nomeFicheiro);
-        if (guardaFicheiro == null) { 
+        if (guardaFicheiro == null) {
             throw new FileNotFoundException("");
-        } else { 
+        } else {
             ObjectOutputStream objeto = new ObjectOutputStream(guardaFicheiro);
             if (objeto == null) {
                 throw new IOException("");
@@ -612,7 +622,7 @@ public class Plataforma implements Serializable {
             }
         }
     }
-    
+
     /**
      * Método que carrega um estado apartir de um ficheiro de objetos.
      * @param String nome do ficheiro.
@@ -621,7 +631,7 @@ public class Plataforma implements Serializable {
     public static Plataforma carregarPlataforma(String nomeFicheiro) throws FileNotFoundException,
                                                             IOException, ClassNotFoundException {
        FileInputStream carregaFicheiro = new FileInputStream(nomeFicheiro);
-       if (carregaFicheiro == null) { 
+       if (carregaFicheiro == null) {
             throw new FileNotFoundException("");
        } else {
             ObjectInputStream obj = new ObjectInputStream(carregaFicheiro);

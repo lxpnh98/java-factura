@@ -97,24 +97,24 @@ public class ContribuinteIndividual extends Contribuinte implements Serializable
 
     /**
      * Atualiza os códigos das atividades económicas do ContribuinteIndividual.
-	 * @param ArrayList<String> códigos das atividades.
+     * @param ArrayList<String> códigos das atividades.
      */
     public void setCodigos(ArrayList<String> codigosAE) {
-    	this.codigosAtividades = new ArrayList<>();
-    	codigosAE.forEach(n -> {this.codigosAtividades.add(n);});
+        this.codigosAtividades = new ArrayList<>();
+        codigosAE.forEach(n -> {this.codigosAtividades.add(n);});
     }
 
     /**
      * Devolve os códigos das atividades económicas do ContribuinteIndividual.
-	 * @return ArrayList<String> códigos das atividades.
+     * @return ArrayList<String> códigos das atividades.
      */
     public ArrayList<String> getCodigos() {
-    	ArrayList<String> res = new ArrayList<>();
-    	for (String n : this.codigosAtividades) {
-    		res.add(n);
-    	}
-    	return res;
-	}
+        ArrayList<String> res = new ArrayList<>();
+        for (String n : this.codigosAtividades) {
+            res.add(n);
+        }
+        return res;
+    }
 
     /**
      * Atualiza número de dependentes do agregado familiar.
