@@ -85,17 +85,25 @@ public class Empresa extends Contribuinte implements Serializable
         for (Fatura f2 : l) {
             if (f.getId() == f2.getId()) {
                 f2.setAtividade(f.getAtividade());
+                if (f.getValidado()) {
+                    f2.validar();
+                }
                 break;
             }
         }
+        this.faturasPorValor.put(f.getValor(), l);
 
         List<Fatura> l2 = this.faturasPorData.get(f.getData());
         for (Fatura f2 : l2) {
             if (f.getId() == f2.getId()) {
                 f2.setAtividade(f.getAtividade());
+                if (f.getValidado()) {
+                    f2.validar();
+                }
                 break;
             }
         }
+        this.faturasPorData.put(f.getData(), l2);
     }
 
     /**
@@ -110,7 +118,7 @@ public class Empresa extends Contribuinte implements Serializable
      * Calcula a dedução.
      * @return Double valor da dedução.
      */
-    public Double getDeducaoTotal() {
+    public Double getDeducaoTotal(Plataforma p) {
         double sum = 0.0;
         for (Double d : this.faturasPorValor.keySet()) {
             for (Fatura f : this.faturasPorValor.get(d)) {
@@ -129,7 +137,8 @@ public class Empresa extends Contribuinte implements Serializable
                         a = new DespesasGerais();
                         break;
                 }
-                sum += a.calcularDeducao(f.getValor(), new HashSet());
+                System.out.println("Nif cliente: " + f.getNifCliente());
+                sum += ((f.getValidado() && p.isIndividuoEligivel(f.getNifCliente(), a)) ? a.calcularDeducao(f.getValor(), new HashSet()) : 0.0);
             }
         }
         return sum;
