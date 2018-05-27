@@ -44,6 +44,19 @@ class PermissionDeniedException extends Exception {
 }
 
 /**
+ * Classe ContribuinteAlreadyExistsException - Exceção de contribuinte já existente na plataforma
+ */
+class ContribuinteAlreadyExistsException extends Exception {
+    ContribuinteAlreadyExistsException() {
+        super();
+    }
+
+    ContribuinteAlreadyExistsException(String s) {
+        super(s);
+    }
+}
+
+/**
  * Classe NonExistentClientException - Exceção de cliente não existente.
  */
 class NonExistentClientException extends Exception {
@@ -102,20 +115,25 @@ public class Plataforma implements Serializable {
         this.atividadesEconomicas.put(s.getNome(), s);
         DespesasGerais d = new DespesasGerais();
         this.atividadesEconomicas.put(d.getNome(), d);
-        this.adicionarContribuinte(new Administrador(0, "", "", "", "admin"));
+        try {
+            this.adicionarContribuinte(new Administrador(0, "", "", "", "admin"));
+        } catch (ContribuinteAlreadyExistsException ex) {}
     }
 
     /**
      * Método que adiciona um contribuinte ao sistema.
      * @param Contribuinte contribuinte a adicionar.
      */
-    public void adicionarContribuinte(Contribuinte c) {
+    public void adicionarContribuinte(Contribuinte c) throws ContribuinteAlreadyExistsException {
+        if (this.contribuintes.containsKey(c.getNIF())) {
+            throw new ContribuinteAlreadyExistsException(""+c.getNIF());
+        }
         if (c instanceof Empresa) {
             this.contribuintes.put(c.getNIF(), ((Empresa)c).clone());
             Integer key = ((Empresa)c).getNumFaturas();
             List<Integer> l = this.empresasComMaisFaturas.get(key);
             if (l == null) {
-                l = new ArrayList<Integer>();        
+                l = new ArrayList<Integer>();
             }
             l.add(c.getNIF());
             this.empresasComMaisFaturas.put(key, l);
@@ -427,12 +445,17 @@ public class Plataforma implements Serializable {
                         s = "DespesasGerais";
                         break;
                 }
-                sum += ((f.getValidado() && ((ContribuinteIndividual)this.contribuintes.get(nif)).getCodigos().contains(s)) ? a.calcularDeducao(f.getValor(), new HashSet()) : 0.0);
+                sum += ((f.getValidado() && this.isIndividuoEligivel(nif, a)) ? a.calcularDeducao(f.getValor(), new HashSet()) : 0.0);
             }
             return sum;
         } else {
             throw new PermissionDeniedException("Não é contribuinte individual");
         }
+    }
+
+    public boolean isIndividuoEligivel(int nif, AtividadeEconomica a) {
+        if (!this.existsIndividuo(nif)) return false;
+        return ((ContribuinteIndividual)this.contribuintes.get(nif)).getCodigos().contains(a.getNome());
     }
 
     /**

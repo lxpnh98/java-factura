@@ -30,7 +30,7 @@ public class AdministradorMenu extends EstadoMenu {
 
         try {
             for(Empresa e : this.plataforma.getXEmpresasComMaisFaturas(x, this.nif, this.password)){
-                System.out.println("A empresa é: " + e.toString() + "\nCom a dedução fiscal de:" + e.getDeducaoTotal());
+                System.out.println("A empresa é: " + e.toString() + "\nCom a dedução fiscal de:" + e.getDeducaoTotal(this.plataforma));
             }
         } catch (FailureOnLoginException e){
             System.out.println("Informação de login incorreta.");

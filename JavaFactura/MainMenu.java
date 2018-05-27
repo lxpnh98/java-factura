@@ -132,7 +132,11 @@ public class MainMenu extends EstadoMenu
                     c = new Empresa(nif, name, email, address, pw, atividades);
                     break;
             }
-            this.plataforma.adicionarContribuinte(c);
+            try {
+                this.plataforma.adicionarContribuinte(c);
+            } catch (ContribuinteAlreadyExistsException e) {
+                System.out.println("Contribuinte com NIF " + e.getMessage() + " ja registado na plataforma.");
+            }
         }
         return this;
     }
